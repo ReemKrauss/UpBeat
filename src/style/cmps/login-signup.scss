@@ -1,0 +1,21 @@
+.form-container {
+    form {
+        display: flex;
+        flex-direction: column;
+        max-width: 400px;
+        margin: auto;
+        // gap: 1rem;
+        padding: 1.5rem 2rem;
+        border: 1px solid $color-secondary;
+        border-radius: 10px;
+        background-color: rgba($color-primary, 0.2);
+
+        .error {
+            color: $color-secondary;
+            height: 25px;
+            // margin-block: 0.7rem;
+            font-size: 0.8rem;
+        }
+    }
+
+}

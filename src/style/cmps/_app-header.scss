@@ -1,0 +1,113 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    font-size: 0.8rem;
+
+    .logo-container {
+        align-self: center;
+    
+    }
+
+    .logo {
+        font-family: Koulen;
+        line-height: 3rem;
+        font-size: 2.3rem;
+        white-space: nowrap;
+
+        span {
+            color: $color-secondary;
+        }
+    }
+
+    .info-login {
+        justify-self: flex-end;
+        background-color: $color-secondary;
+        color: white;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        border-radius: 5rem;
+        padding-inline-end: 2rem;
+        white-space: nowrap;
+    }
+
+    .search-container {
+        background-color: $color-second-dark;
+        border-radius: 5rem;
+
+        input {
+            background-color: transparent;
+            color: white;
+            height: 40px;
+        }
+
+        input::placeholder {
+            color: darken($color: $color-second-dark, $amount: 20%);
+        }
+    }
+
+    .info {
+        display: flex;
+        gap: 0.5rem;
+
+        span span {
+            color: $color-second-dark;
+            font-weight: 700;
+        }
+    }
+
+    .btn {
+        background-color: transparent;
+        color: white;
+        padding: 0.25rem 0.7rem;
+        border-radius: 5rem;
+        font-size: 0.7rem;
+    }
+    
+    .btn.login {
+        margin-inline-end: 1rem;
+    }
+
+    .btn.sign-up {
+        border: 1px solid rgba($color-primary, 0.5);
+    }
+
+    .nav-container {
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        nav a {
+            font-weight: 700;
+            margin-inline-end: 20px;
+        }
+        
+        nav a.active {
+            color: $color-secondary;
+        }
+    }
+    
+    .cart-fav {
+        display: flex;
+        gap: 1rem;
+        
+        .cart-items, .fav-items {
+            display: flex;
+        }
+
+        .cart-items {
+            align-items: center;
+        }
+    }
+    
+}
+
+
+
+
+
+
+
+
+

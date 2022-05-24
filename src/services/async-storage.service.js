@@ -1,10 +1,14 @@
+import { PLAYLIST_DATA } from "../data/data"
+
 export const storageService = {
   query,
   get,
   post,
   put,
   remove,
+  saveDummy
 }
+
 
 function query(entityType, delay = 1200) {
   var entities = JSON.parse(localStorage.getItem(entityType)) || []
@@ -78,4 +82,9 @@ function postMany(entityType, newEntities) {
           _save(entityType, entities)
           return entities
       })
+}
+
+function saveDummy(){
+  _save('playlistDB', PLAYLIST_DATA)
+  
 }

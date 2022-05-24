@@ -1,6 +1,6 @@
 import { Home } from './pages/home.jsx'
 import { Search } from './pages/search.jsx'
-import { StationDetails } from './pages/station-details.jsx'
+import { PlaylistDetails } from './pages/playlist-details.jsx'
 
 
 
@@ -14,8 +14,8 @@ export default [
         component: Home,
     },
     {
-        path: '/station/:stationId',
-        component: StationDetails,
+        path: '/playlist/:playlistId',
+        component: PlaylistDetails,
     },
 
 

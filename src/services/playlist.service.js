@@ -5,6 +5,7 @@ const STORAGE_KEY = 'playlistDB'
 
 export const playlistService = {
     query,
+    getById,
     makeDummy
 }
 
@@ -15,7 +16,13 @@ async function query(filterBy){
     return playlists
 }
 
+async function getById(playlistId){
+    return await storageService.get(STORAGE_KEY, playlistId)
+    
+}
+
 function makeDummy(){
     storageService.saveDummy()
 }
+
 

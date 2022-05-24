@@ -7,12 +7,12 @@ export const PLAYLIST_DATA =[
           "Happy",
           "Classics"
         ],
-        "imgUrl": "https://res.cloudinary.com/dc3nhq1gd/image/upload/v1653256036/ix396xg1ugc7mbjocvis.jpg/",
+        "imgUrl": "https://res.cloudinary.com/dc3nhq1gd/image/upload/v1653256036/ix396xg1ugc7mbjocvis.jpg",
         "createdAt": 1541652422,
         "createdBy": {
           "_id": "u101",
           "fullname": "Yotam Elani",
-          "imgUrl": "https://res.cloudinary.com/dc3nhq1gd/image/upload/v1653256036/ix396xg1ugc7mbjocvis.jpg/"
+          "imgUrl": "https://res.cloudinary.com/dc3nhq1gd/image/upload/v1653256036/ix396xg1ugc7mbjocvis.jpg"
         },
         "likedByUsers": [],
         "songs": [
@@ -41,7 +41,7 @@ export const PLAYLIST_DATA =[
         ]
       },
       {
-        "_id": "p101",
+        "_id": "p102",
         "name": "Yotam's Playlist 2",
         "tags": [
           "Sad",
@@ -53,7 +53,7 @@ export const PLAYLIST_DATA =[
         "createdBy": {
           "_id": "u101",
           "fullname": "Yotam Elani",
-          "imgUrl": "https://res.cloudinary.com/dc3nhq1gd/image/upload/v1653256036/ix396xg1ugc7mbjocvis.jpg/"
+          "imgUrl": "https://res.cloudinary.com/dc3nhq1gd/image/upload/v1653256036/ix396xg1ugc7mbjocvis.jpg"
         },
         "likedByUsers": [],
         "songs": [

@@ -11,3 +11,4 @@ function togglePlay(player, isPlaying) {
     if (!isPlaying) player.playVideo()
     else player.pauseVideo()
 }
+

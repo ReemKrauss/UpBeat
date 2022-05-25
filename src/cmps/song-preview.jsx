@@ -12,6 +12,7 @@ export const SongPreview = ({song}) => {
         dispatch(setMiniPlaylist(playlistId, idx))
     }
 
+
     return <section className="song-preview flex">
         <div className="flex">
             <h5>{idx +1}</h5>

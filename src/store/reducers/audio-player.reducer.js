@@ -3,6 +3,9 @@
 const initialState = {
     player: null,
     isPlaying: false,
+    songs:[],
+    currSongIdx:0,
+    playListName:'',
 }
 
 

@@ -35,6 +35,33 @@ body {
   background-color: #121212;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+.playlist-details .playlist-header {
+  gap: 20px;
+}
+.playlist-details .playlist-header img {
+  height: 232px;
+  width: 232px;
+}
+.playlist-details .playlist-header h5:nth-child(1) {
+  text-transform: uppercase;
+}
+.playlist-details .playlist-header h1 {
+  font-size: 5.9375rem;
+}
+.playlist-details .playlist-header div {
+  justify-content: flex-end;
+}
+
+.playlist-list {
+  display: grid;
+  grid-template-columns: minmax(auto, 30%) 1fr;
+  grid-template-rows: 256.433px;
+}
+
 .playlist-preview {
   width: 188.433px;
   height: 266.433px;
@@ -47,7 +74,7 @@ body {
 }
 
 .song-preview {
-  padding: 0 10px;
+  padding: 7px 10px;
   border-radius: 5px;
 }
 .song-preview div {

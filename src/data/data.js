@@ -80,5 +80,106 @@ export const PLAYLIST_DATA =[
             txt: ':)'
           }
         ]
+      },
+      {
+        "_id": "p103",
+        "name": "Rock Classics",
+        "description": "Rock legends & epic songs that continue to inspire generations. Celebrating 50 Years of Exile On Main Street",
+        "tags": [
+          "Rock",
+          "Classics"
+        ],
+        "imgUrl": "https://i.scdn.co/image/ab67706f00000003fa8c71f4d9a74d9d3335577b",
+        "createdAt": 1541652422,
+        "createdBy": {
+          "_id": "u102",
+          "fullname": "Ido Bakimer",
+          "imgUrl": ""
+        },
+        "likedByUsers": [],
+        "songs": [
+          {
+            "id": "s1001",
+            "title": "Linkin Park - Numb",
+            "url": "youtube/song.mp4",
+            "imgUrl": "https://i.ytimg.com/vi/kXYiU_JCYtU/maxresdefault.jpg",
+            "addedBy": 'Yotam Elani',
+            "addedAt": 162521765262
+          },
+          {
+            "id": "s1002",
+            "title": "Sia - Soon We'll Be Found",
+            "url": "youtube/song.mp4",
+            "imgUrl": "https://i1.sndcdn.com/artworks-000088316182-0gx912-t500x500.jpg",
+            "addedBy": 'Yotam Elani'
+          },
+          {
+            "id": "s1003",
+            "title": "Linkin Park - Numb",
+            "url": "youtube/song.mp4",
+            "imgUrl": "https://i.ytimg.com/vi/kXYiU_JCYtU/maxresdefault.jpg",
+            "addedBy": 'Yotam Elani',
+            "addedAt": 162521765262
+          },
+          {
+            "id": "s1004",
+            "title": "Sia - Soon We'll Be Found",
+            "url": "youtube/song.mp4",
+            "imgUrl": "https://i1.sndcdn.com/artworks-000088316182-0gx912-t500x500.jpg",
+            "addedBy": 'Yotam Elani'
+          },
+          {
+            "id": "s1005",
+            "title": "Linkin Park - Numb",
+            "url": "youtube/song.mp4",
+            "imgUrl": "https://i.ytimg.com/vi/kXYiU_JCYtU/maxresdefault.jpg",
+            "addedBy": 'Yotam Elani',
+            "addedAt": 162521765262
+          },
+          {
+            "id": "s1006",
+            "title": "Sia - Soon We'll Be Found",
+            "url": "youtube/song.mp4",
+            "imgUrl": "https://i1.sndcdn.com/artworks-000088316182-0gx912-t500x500.jpg",
+            "addedBy": 'Yotam Elani'
+          },
+          {
+            "id": "s1007",
+            "title": "Linkin Park - Numb",
+            "url": "youtube/song.mp4",
+            "imgUrl": "https://i.ytimg.com/vi/kXYiU_JCYtU/maxresdefault.jpg",
+            "addedBy": 'Yotam Elani',
+            "addedAt": 162521765262
+          },
+          {
+            "id": "s1008",
+            "title": "Sia - Soon We'll Be Found",
+            "url": "youtube/song.mp4",
+            "imgUrl": "https://i1.sndcdn.com/artworks-000088316182-0gx912-t500x500.jpg",
+            "addedBy": 'Yotam Elani'
+          },
+          {
+            "id": "s1009",
+            "title": "Linkin Park - Numb",
+            "url": "youtube/song.mp4",
+            "imgUrl": "https://i.ytimg.com/vi/kXYiU_JCYtU/maxresdefault.jpg",
+            "addedBy": 'Yotam Elani',
+            "addedAt": 162521765262
+          },
+          {
+            "id": "s1010",
+            "title": "Sia - Soon We'll Be Found",
+            "url": "youtube/song.mp4",
+            "imgUrl": "https://i1.sndcdn.com/artworks-000088316182-0gx912-t500x500.jpg",
+            "addedBy": 'Yotam Elani'
+          },
+        ],
+        "msgs": [
+          {
+            id: 'm101',
+            from: 'Yotam Elani',
+            txt: ':)'
+          }
+        ]
       }
 ] 

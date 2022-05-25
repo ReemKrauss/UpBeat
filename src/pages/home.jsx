@@ -1,21 +1,22 @@
-import { playlistService } from "../services/playlist.service" //for dev purposes, adding service to window
-
-import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useEffect, useState } from 'react'
 import { PlaylistList } from '../cmps/playlist-list'
-import { loadPlaylists } from '../store/actions/playlist.action'
+import { playlistService } from "../services/playlist.service"
 
 
 export const Home = (props) => {
-    const { playlists } = useSelector((storeState) => storeState.playlistModule)
-    const dispatch = useDispatch()
+    const [playlists, setPlaylists] = useState(null)
 
     useEffect(() => {
-        dispatch(loadPlaylists())
+        loadPlaylists()
     }, [])
+
+    const loadPlaylists = async () => {
+        const playlists = await playlistService.query()
+        setPlaylists(playlists)
+    }
 
     return <section className="search">
         <h1>Good Morning</h1>
-        {playlists && <PlaylistList playlists={playlists}/>}
+        {playlists && <PlaylistList playlists={playlists} />}
     </section>
 }

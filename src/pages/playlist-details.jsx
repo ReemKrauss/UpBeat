@@ -17,10 +17,18 @@ export const PlaylistDetails = (props) => {
         setPlaylist(playlist)
     }
 
-    if(!playlist) return <h2>loading...</h2>
+    if (!playlist) return <h2>loading...</h2>
 
     return <section className="playlist-details">
-        {playlist.songs.map((song,idx) => <SongPreview key={song.id} song={({...song, idx:idx + 1})}/>)}
+        <div className="playlist-header flex">
+            <img src={playlist.imgUrl} />
+            <div className="flex-col">
+                <h5>playlist</h5>
+                <h1>{playlist.name}</h1>
+                <h5>{playlist.createdBy.fullname} • {playlist.songs.length} songs</h5>
+            </div>
+        </div>
+        {playlist.songs.map((song, idx) => <SongPreview key={song.id} song={({ ...song, idx: idx + 1 })} />)}
 
     </section>
 }

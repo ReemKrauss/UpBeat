@@ -6,7 +6,7 @@ const initialState = {
 
 
 
-export function playlistReducer(state = initialState, action) {
+export function audioPlayerReducer(state = initialState, action) {
     switch (action.type) {
         case 'SET_PLAYER':
             return { ...state, player: action.player }

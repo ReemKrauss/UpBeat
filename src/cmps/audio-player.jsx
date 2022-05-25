@@ -1,10 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import YouTube from 'react-youtube';
+import { setPlayer } from '../store/actions/audio-player.action';
 
 
 class _AudioPlayer extends React.Component {
-    state={
+    state = {
 
     }
 
@@ -33,11 +34,11 @@ class _AudioPlayer extends React.Component {
 
 function mapStateToProps(storeState) {
     return {
-
+        player: state.audioPlayerModule.player
     }
 }
 const mapDispatchToProps = {
-
+    setPlayer,
 }
 
 export const AudioPlayer = connect(mapStateToProps, mapDispatchToProps)(_AudioPlayer)

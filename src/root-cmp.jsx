@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Switch, Route } from 'react-router-dom'
 import routes from './routes.js'
 import { NavBar } from './cmps/nav-bar.jsx'
+import { AudioPlayer } from './cmps/audio-player.jsx'
 
 
 class _App extends React.Component {
@@ -14,8 +15,9 @@ class _App extends React.Component {
         <main>
           <NavBar />
           <Switch>
-          {routes.map(route => <Route key={route.path} exact component={route.component} path={route.path} />)}
+            {routes.map(route => <Route key={route.path} exact component={route.component} path={route.path} />)}
           </Switch>
+          <AudioPlayer />
         </main>
       </div>
     )

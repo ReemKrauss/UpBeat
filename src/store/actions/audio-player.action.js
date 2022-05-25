@@ -1,4 +1,5 @@
 import { playlistService } from "../../services/playlist.service";
+import { audioPlayerService } from "../../services/audio-player.service";
 
 export function setPlayer(player) {
     return (dispatch) => {
@@ -6,5 +7,19 @@ export function setPlayer(player) {
             type: 'SET_PLAYER',
             player
         })
+    }
+}
+
+
+export function togglePlay() {
+    return (dispatch,getState) => {
+        console.log('1');
+        const {player, isPlaying} = getState().audioPlayerModule
+        audioPlayerService.togglePlay(player,isPlaying)
+        dispatch({
+            type: 'TOGGLE_PLAY',
+            isPlaying: !isPlaying
+        })
+
     }
 }

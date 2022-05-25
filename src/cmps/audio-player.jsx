@@ -1,44 +1,51 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import YouTube from 'react-youtube';
-import { setPlayer } from '../store/actions/audio-player.action';
+import { setPlayer, togglePlay } from '../store/actions/audio-player.action';
 
 
 class _AudioPlayer extends React.Component {
     state = {
-
+        isPlayerReady: false,
     }
 
     onReady = (ev) => {
-        this.setState(prevState => ({ ...prevState, isPlayerReady: true }))
         this.props.setPlayer(ev.target)
-        this.props.player.playVideo()
+        this.setState({ isPlayerReady: true })
+        // this.props.player.playVideo()
     }
 
+    onTogglePlay = () => {
 
+        this.props.togglePlay()
+    }
 
     render() {
-        return <div className="audio-player">
-            <YouTube videoId="2g811Eo7K8U" opts={{
+       const { isPlayerReady } = this.state
+        return <div className={isPlayerReady ?'audio-player':'audio-player hidden'}>
+            <YouTube videoId="-qvEdRkCwrI" opts={{
                 height: '0',
                 width: '0',
                 playerVars: {
                     // https://developers.google.com/youtube/player_parameters
-                    autoplay: 1,
+                    autoplay: 0,
                 },
             }} onReady={this.onReady} />
+            <button onClick={this.onTogglePlay}>play/stop</button>
         </div>
     }
 }
 
 
-function mapStateToProps(storeState) {
+function mapStateToProps(state) {
     return {
-        player: state.audioPlayerModule.player
+        player: state.audioPlayerModule.player,
+        isPlaying: state.audioPlayerModule.isPlaying,
     }
 }
 const mapDispatchToProps = {
     setPlayer,
+    togglePlay,
 }
 
 export const AudioPlayer = connect(mapStateToProps, mapDispatchToProps)(_AudioPlayer)

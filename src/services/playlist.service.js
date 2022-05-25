@@ -11,17 +11,18 @@ export const playlistService = {
 
 window.ps = playlistService
 
-async function query(filterBy){
+async function query(filterBy) {
     const playlists = await storageService.query(STORAGE_KEY)
     return playlists
 }
 
-async function getById(playlistId){
-    return await storageService.get(STORAGE_KEY, playlistId)
-    
+async function getById(playlistId, filterBy) {
+    console.log(filterBy)
+    return await storageService.get(STORAGE_KEY, playlistId, filterBy)
+
 }
 
-function makeDummy(){
+function makeDummy() {
     storageService.saveDummy()
 }
 

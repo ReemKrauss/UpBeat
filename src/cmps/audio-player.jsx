@@ -11,19 +11,17 @@ class _AudioPlayer extends React.Component {
 
     onReady = (ev) => {
         this.props.setPlayer(ev.target)
-        this.setState({ isPlayerReady: true })
-        // this.props.player.playVideo()
+        this.setState({ isPlayerReady: true },this.onTogglePlay)
     }
 
     onTogglePlay = () => {
-
         this.props.togglePlay()
     }
 
     render() {
        const { isPlayerReady } = this.state
         return <div className={isPlayerReady ?'audio-player':'audio-player hidden'}>
-            <YouTube videoId="-qvEdRkCwrI" opts={{
+            <YouTube videoId="" opts={{
                 height: '0',
                 width: '0',
                 playerVars: {

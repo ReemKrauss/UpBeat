@@ -13,7 +13,6 @@ export function setPlayer(player) {
 
 export function togglePlay() {
     return (dispatch,getState) => {
-        console.log('1');
         const {player, isPlaying} = getState().audioPlayerModule
         audioPlayerService.togglePlay(player,isPlaying)
         dispatch({

@@ -5,7 +5,9 @@ const initialState = {
     isPlaying: false,
     songs:[],
     currSongIdx:0,
-    playListName:'',
+    playlistName:'',
+    playlistId:'',
+    currTimePass:0,
 }
 
 

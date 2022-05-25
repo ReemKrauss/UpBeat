@@ -10,6 +10,12 @@
 @import 'basics/layout';
 
 
+//PAGES
+@import 'pages/playlist-details';
+
+
 // COMPONENTS
+@import 'cmps/playlist-list';
 @import 'cmps/playlist-preview';
 @import 'cmps/song-preview';
+

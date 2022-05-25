@@ -1,0 +1,22 @@
+.playlist-details {
+    .playlist-header {
+        gap: 20px;
+
+        img {
+            height: 232px;
+            width: 232px;
+        }
+
+        h5:nth-child(1){
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: rem(95px);
+        }
+
+        div {
+            justify-content: flex-end;
+        }
+    }
+}

@@ -34,7 +34,7 @@ export const PlaylistDetails = (props) => {
             </div>
         </div>
         <PlayListFilter onChangeFilter={onChangeFilter} />
-        {playlist.songs.map((song, idx) => <SongPreview key={song.id} song={({ ...song, idx: idx + 1 })} />)}
+        {playlist.songs.map((song, idx) => <SongPreview key={song.id} song={({ ...song, idx, playlistId:playlist._id })} />)}
 
     </section>
 }

@@ -39,6 +39,11 @@ function mapStateToProps(state) {
     return {
         player: state.audioPlayerModule.player,
         isPlaying: state.audioPlayerModule.isPlaying,
+        songs: state.audioPlayerModule.songs,
+        currSongIdx: state.audioPlayerModule.currSongIdx,
+        playlistName: state.audioPlayerModule.playlistName,
+        playlistId: state.audioPlayerModule.playlistId,
+        currTimePass: state.audioPlayerModule.currTimePass
     }
 }
 const mapDispatchToProps = {

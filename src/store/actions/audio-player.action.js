@@ -12,12 +12,23 @@ export function setPlayer(player) {
 
 
 export function togglePlay() {
-    return (dispatch,getState) => {
-        const {player, isPlaying} = getState().audioPlayerModule
-        audioPlayerService.togglePlay(player,isPlaying)
+    return (dispatch, getState) => {
+        const { player, isPlaying } = getState().audioPlayerModule
+        audioPlayerService.togglePlay(player, isPlaying)
         dispatch({
             type: 'TOGGLE_PLAY',
             isPlaying: !isPlaying
+        })
+
+    }
+}
+
+export function setMiniPlaylist(playlistId, songIdx = 0){
+    return async (dispatch) => {
+        const miniPlaylist = await playlistService.getMiniPlaylist(playlistId, songIdx)
+        dispatch({
+            type: 'SET_MINI_PLAYLIST',
+            miniPlaylist
         })
 
     }

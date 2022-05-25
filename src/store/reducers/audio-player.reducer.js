@@ -3,10 +3,13 @@
 const initialState = {
     player: null,
     isPlaying: false,
-    songs: [],
-    currSongIdx: 0,
-    playlistName: '',
-    playlistId: '',
+    miniPlaylist:{
+        songs:[],
+        currSongIdx:0,
+        playlistName:'',
+        playlistId:'',
+
+    },
     currTimePass: 0,
 }
 
@@ -19,8 +22,9 @@ export function audioPlayerReducer(state = initialState, action) {
         case 'TOGGLE_PLAY':
             return { ...state, isPlaying: action.isPlaying }
         case 'SET_MINI_PLAYLIST':
-            const {songs,currSongIdx,playlistName,playlistId} = action.miniPlaylist
-            return { ...state, songs, currSongIdx ,playlistName ,playlistId}
+            return { ...state, miniPlaylist: action.miniPlaylist}
+        case 'CHANGE_SONG':
+            return { ...state, miniPlaylist: {...state.miniPlaylist,currSongIdx:action.currSongIdx}}
         default:
             return state
     }

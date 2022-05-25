@@ -23,6 +23,15 @@ export function togglePlay() {
     }
 }
 
+export function changeSong(currSongIdx){
+    return(dispatch)=>{
+       dispatch({
+           type:'CHANGE_SONG',
+           currSongIdx
+       })
+    }
+}
+
 export function setMiniPlaylist(playlistId, songIdx = 0){
     return async (dispatch) => {
         const miniPlaylist = await playlistService.getMiniPlaylist(playlistId, songIdx)

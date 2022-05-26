@@ -1,7 +1,8 @@
 export const utilService = {
     makeId,
     makeLorem,
-    getRandomIntInclusive
+    getRandomIntInclusive,
+    formatISODate
 }
 
 function makeId(length = 6) {
@@ -30,3 +31,18 @@ function getRandomIntInclusive(min, max) {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive 
 }
+
+
+function formatISODate(youtube_time) {
+    const array = youtube_time.match(/(\d+)(?=[MHS])/ig) || []
+    const display = array.map(function (item, idx) {
+        if (item.length < 2 && idx === array.length - 1) item = '0' + item
+        if (array.length === 1) item = '0:' + item
+        return item
+    }).join(':')
+    console.log(+array[0])
+    if (array.length === 3) return { durationTotal: (+array[0]) * 3600 + (+array[1]) * 60 + (+array[2]), display }
+    if (array.length === 2) return { durationTotal: (+array[0]) * 60 + (+array[1]), display }
+    return { durationTotal: +array[0], display }
+}
+

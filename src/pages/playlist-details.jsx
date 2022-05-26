@@ -14,7 +14,7 @@ export const PlaylistDetails = (props) => {
     }, [params.id])
 
     const loadPlaylist = async (filterBy) => {
-        const playlist = await playlistService.getById(params.playlistId,filterBy)
+        const playlist = await playlistService.getById(params.playlistId, filterBy)
         setPlaylist(playlist)
     }
 
@@ -34,7 +34,7 @@ export const PlaylistDetails = (props) => {
             </div>
         </div>
         <PlayListFilter onChangeFilter={onChangeFilter} />
-        {playlist.songs.map((song, idx) => <SongPreview key={idx} song={({ ...song, idx, playlistId:playlist._id })} />)}
+        {playlist.songs.map((song, idx) => <SongPreview key={idx} song={({ ...song, idx })} playlistId={playlist._id} />)}
 
     </section>
 }

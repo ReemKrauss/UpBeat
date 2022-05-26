@@ -1,0 +1,53 @@
+.app-container {
+    height:100vh;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-areas:
+      "content"
+      "nav"
+   }
+.nav-bar {
+grid-area: nav;
+flex-direction: row;
+}
+
+.nav-list{
+    flex-direction: row;
+}
+
+.header{
+grid-area: header;
+flex-direction: column;
+background-color: rgba(255, 255, 255, 0.10);}
+
+.content{
+grid-area: content;
+flex-direction: column;
+background-color: rgba(255, 255, 255, 0.10);}
+
+.audio-player{
+    align-items: center;
+    justify-content: space-around;
+    height: 5vh;
+    width: 100%;
+    display: flex;
+    z-index: 5;
+    position: fixed;
+    bottom: 0px;
+    background-color: rgba(255, 255, 255, 0.10)
+    ;
+
+}
+
+@media screen and (min-width: 600px) {
+    .app-container {
+        grid-template-columns: 220px 1fr;
+        grid-template-areas:
+          "nav    content  content"
+          "nav    content content"
+          "nav    content content"
+       }
+    .nav-bar{
+        flex-direction: column;
+    }
+  }

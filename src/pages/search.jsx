@@ -7,6 +7,7 @@ import _ from 'lodash'
 
 
 
+
 export const Search = (props) => {
     const [params, setParams] = useState('')
     const [songs, setSongs] = useState(null)
@@ -25,7 +26,7 @@ export const Search = (props) => {
                 const results = await searchService.search(params)
                 setSongs(results)
                 timeOutId.current = null
-            }, 250)
+            }, 300)
 
         } //switch to debounce hook
     }
@@ -34,7 +35,6 @@ export const Search = (props) => {
         setParams(target.value)
     }
 
-    console.log('songs', songs)
     return <section className="search">
         <SearchBar params={params} onHandleChange={onHandleChange} />
         {songs && songs.map((song, idx) => <SongPreview key={idx} song={({ ...song, idx })} />)}

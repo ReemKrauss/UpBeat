@@ -35,5 +35,22 @@
             justify-content: flex-end;
         }
     }
+    .song-preview{
+        padding:7px 10px;
+        border-radius: 5px;
+        div{
+            display: flex;
+            align-items: center;
+            gap:20px;
+            img{
+                height:40px;
+                width:40px;
+                object-fit: cover;
+            }
+        }
+        &:hover{
+            background-color: rgba($color: #ffffff, $alpha: 0.35);
+        }
+    }
 }
 

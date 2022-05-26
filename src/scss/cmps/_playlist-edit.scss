@@ -1,0 +1,12 @@
+.playlist-edit {
+    position: fixed;
+    bottom: 50%;
+    right: 50%;
+    width: 524px;
+    height: 400px;
+    background-color: aqua;
+    border-radius: 8px;
+    display: grid;
+    grid-template-areas:
+        "edit "
+}

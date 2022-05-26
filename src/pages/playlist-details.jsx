@@ -7,11 +7,20 @@ import { useHistory } from 'react-router-dom'
 import { DecimationAlgorithm } from 'chart.js'
 import { BsMusicNoteBeamed } from 'react-icons/bs'
 import { HiOutlinePencil } from 'react-icons/hi'
+import { useForm } from '../hooks/useForm'
+import { PlaylistEdit } from '../cmps/playlist-edit'
 
 
 export const PlaylistDetails = (props) => {
     const params = useParams()
     const [playlist, setPlaylist] = useState(null)
+    const [isEditing, setisEditing] = useState(false)
+    const [editData, handleChange, setEditData] = useForm({
+        name: (playlist && playlist.name) || 'My Playlist',
+        description: (playlist && playlist.description) || '',
+        imgUrl: (playlist && playlist.imgUrl) || null
+    })
+
 
     useEffect(() => {
         loadPlaylist()
@@ -25,6 +34,10 @@ export const PlaylistDetails = (props) => {
     const onChangeFilter = useCallback(async (filterBy) => {
         loadPlaylist(filterBy)
     }, [])
+
+    const onUploaded = (imgUrl) => {
+        setEditData({ ...editData, imgUrl });
+    }
 
     const songSection = (playlist)? <div>
         <PlayListFilter onChangeFilter={onChangeFilter} />
@@ -48,6 +61,7 @@ export const PlaylistDetails = (props) => {
         </div>
 
         {playlist && songSection}
+        {isEditing && <PlaylistEdit handleChange={handleChange} onUploaded={onUploaded} editData={editData}/>}
 
     </section>
 }

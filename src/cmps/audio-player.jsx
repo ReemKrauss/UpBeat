@@ -116,6 +116,7 @@ class _AudioPlayer extends React.Component {
             <FaForward className="change-song-btn" onClick={this.onForward} />
             <FiRepeat className="repeat-btn" onClick={this.onToggleRepeat} />
             <div>
+<<<<<<< HEAD
                 <span>{this.currTimePassStr}</span>
                 <input type="range" id="duration" className="duration" min="0" max={song.duration.total} value={this.props.currTimePass} />
                 <span>{song.duration.display}</span>
@@ -123,6 +124,11 @@ class _AudioPlayer extends React.Component {
             <div>
                 <FaVolumeUp className="volume-btn" onClick={this.onToggleMute} />
                 <input type="range" id="volume" className="volume" min="0" max="100" value={volume} onChange={this.onChangeVolume} />
+=======
+            <span>{this.props.currTimePass}</span>
+            <input type="range" id="duration" name="duration" min="0" max={song.duration.total} value={this.props.currTimePass} />
+            <span>{song.duration.display}</span>
+>>>>>>> 31fb9029258172c75ff93790e670c776183c0b47
             </div>
         </div>
     }

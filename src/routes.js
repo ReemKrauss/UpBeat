@@ -20,7 +20,7 @@ export default [
         component: Home,
     },
     {
-        path: '/playlist/:playlistId',
+        path: '/playlist/:playlistId?',
         component: PlaylistDetails,
     },
 

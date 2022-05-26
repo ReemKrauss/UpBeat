@@ -100,10 +100,24 @@ h1, h2, h3, h4, h5, h6 {
 }
 .playlist-details .playlist-header {
   gap: 20px;
+  background-color: rgb(83, 83, 83);
+  background: linear-gradient(transparent 0, rgba(0, 0, 0, 0.5) 100%);
+  padding: 20px;
+}
+.playlist-details .playlist-header .img-container {
+  height: 233px;
+  width: 233px;
+  text-align: center;
+  background: #282828;
+  align-items: center;
+  justify-content: center;
 }
 .playlist-details .playlist-header img {
-  height: 232px;
-  width: 232px;
+  height: 100%;
+  width: 100%;
+}
+.playlist-details .playlist-header .new-playlist-icon {
+  font-size: 4.375rem;
 }
 .playlist-details .playlist-header h5:nth-child(1) {
   text-transform: uppercase;

@@ -40,7 +40,6 @@ function formatISODate(youtube_time) {
         if (array.length === 1) item = '0:' + item
         return item
     }).join(':')
-    console.log(+array[0])
     if (array.length === 3) return { durationTotal: (+array[0]) * 3600 + (+array[1]) * 60 + (+array[2]), display }
     if (array.length === 2) return { durationTotal: (+array[0]) * 60 + (+array[1]), display }
     return { durationTotal: +array[0], display }

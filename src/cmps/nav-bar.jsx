@@ -19,7 +19,13 @@ export const NavBar=(props)=>{
 
                     <NavLink to="/library" activeClassName="chosen" >
                         <li>
-                            <div className="text library">Library</div>
+                            <div className="text library">Your Library</div>
+                        </li>
+                    </NavLink>
+
+                    <NavLink to="/playlist" activeClassName="chosen" >
+                        <li>
+                            <div className="text create">Create Playlist</div>
                         </li>
                     </NavLink>
 
@@ -28,6 +34,7 @@ export const NavBar=(props)=>{
                             <div className="text">liked songs</div>
                         </li>
                     </NavLink>
+
 
                 </ul>
             </nav>

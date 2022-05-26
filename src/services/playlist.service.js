@@ -19,7 +19,6 @@ async function query(filterBy) {
 }
 
 async function getById(playlistId, filterBy) {
-    console.log(filterBy)
     return await storageService.get(STORAGE_KEY, playlistId, filterBy)
 
 }

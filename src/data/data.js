@@ -104,14 +104,16 @@ export const PLAYLIST_DATA =[
             "url": "youtube/song.mp4",
             "imgUrl": "https://i.ytimg.com/vi/kXYiU_JCYtU/maxresdefault.jpg",
             "addedBy": 'Yotam Elani',
-            "addedAt": 162521765262
+            "addedAt": 162521765262,
+            "duration":{"total":186,"display":'3:06'}
           },
           {
             "id": "t1x8DMfbYN4",
             "title": "Sia - Soon We'll Be Found",
             "url": "youtube/song.mp4",
             "imgUrl": "https://i1.sndcdn.com/artworks-000088316182-0gx912-t500x500.jpg",
-            "addedBy": 'Yotam Elani'
+            "addedBy": 'Yotam Elani',
+            "duration":{"total":241,"display":'4:01'}
           },
           {
             "id": "kXYiU_JCYtU",
@@ -119,14 +121,16 @@ export const PLAYLIST_DATA =[
             "url": "youtube/song.mp4",
             "imgUrl": "https://i.ytimg.com/vi/kXYiU_JCYtU/maxresdefault.jpg",
             "addedBy": 'Yotam Elani',
-            "addedAt": 162521765262
+            "addedAt": 162521765262,
+            "duration":{"total":186,"display":'3:06'}
           },
           {
             "id": "t1x8DMfbYN4",
             "title": "Sia - Soon We'll Be Found",
             "url": "youtube/song.mp4",
             "imgUrl": "https://i1.sndcdn.com/artworks-000088316182-0gx912-t500x500.jpg",
-            "addedBy": 'Yotam Elani'
+            "addedBy": 'Yotam Elani',
+            "duration":{"total":241,"display":'4:01'}
           },
           {
             "id": "kXYiU_JCYtU",
@@ -134,7 +138,8 @@ export const PLAYLIST_DATA =[
             "url": "youtube/song.mp4",
             "imgUrl": "https://i.ytimg.com/vi/kXYiU_JCYtU/maxresdefault.jpg",
             "addedBy": 'Yotam Elani',
-            "addedAt": 162521765262
+            "addedAt": 162521765262,
+            "duration":{"total":186,"display":'3:06'}
           },
         ],
         "msgs": [

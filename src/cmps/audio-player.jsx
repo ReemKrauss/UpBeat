@@ -91,9 +91,11 @@ class _AudioPlayer extends React.Component {
             {this.props.isPlaying && <FaPause className="play-btn" onClick={this.onTogglePlay} />}
             <FaForward className="change-song-btn" onClick={this.onForward} />
             <FiRepeat className="repeat-btn" onClick={this.onToggleRepeat} />
+            <div>
             <span>{this.props.currTimePass}</span>
             <input type="range" id="duration" name="duration" min="0" max={song.duration.total} value={this.props.currTimePass} />
             <span>{song.duration.display}</span>
+            </div>
         </div>
     }
 }

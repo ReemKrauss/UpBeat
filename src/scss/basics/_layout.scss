@@ -7,6 +7,8 @@
       "nav"
    }
 .nav-bar {
+    background-color: $clr2;
+    border-top: 1px solid #282828;
 grid-area: nav;
 flex-direction: row;
 }
@@ -18,23 +20,23 @@ flex-direction: row;
 .header{
 grid-area: header;
 flex-direction: column;
-background-color: rgba(255, 255, 255, 0.10);}
+background-color: $clr1;}
 
 .content{
 grid-area: content;
 flex-direction: column;
-background-color: rgba(255, 255, 255, 0.10);}
+background-color: $clr1;}
 
 .audio-player{
     align-items: center;
     justify-content: space-around;
-    height: 5vh;
+    height: 90px;
     width: 100%;
     display: flex;
     z-index: 5;
     position: fixed;
     bottom: 0px;
-    background-color: rgba(255, 255, 255, 0.10)
+    background-color: $clr1
     ;
 
 }

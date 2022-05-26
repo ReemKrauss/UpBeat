@@ -5,7 +5,7 @@ export const NavBar=(props)=>{
            <nav className="nav-bar">
                 <ul className="nav-list">
 
-                    <NavLink exact to="/" activeClassName="chosen">
+                    <NavLink exact to="/home" activeClassName="chosen">
                         <li>
                             <div className="text">Home</div>
                         </li>

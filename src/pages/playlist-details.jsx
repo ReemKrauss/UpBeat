@@ -9,6 +9,7 @@ import { BsMusicNoteBeamed } from 'react-icons/bs'
 import { HiOutlinePencil } from 'react-icons/hi'
 import { useForm } from '../hooks/useForm'
 import { PlaylistEdit } from '../cmps/playlist-edit'
+import { useEffectUpdate } from '../hooks/useEffectUpdate'
 
 
 export const PlaylistDetails = (props) => {
@@ -21,14 +22,18 @@ export const PlaylistDetails = (props) => {
         imgUrl: null
     })
 
-
+    
     useEffect(() => {
         loadPlaylist()
-    }, [])
+    }, [params.playlistId])
+
+    useEffectUpdate(() => {
+        if(playlist) setEditData(playlist)
+
+    },[playlist])
 
     const loadPlaylist = async (filterBy) => {
-        setPlaylist(await playlistService.getById(params.playlistId, filterBy))
-        if(playlist) setEditData(playlist) 
+            setPlaylist(await playlistService.getById(params.playlistId, filterBy))
     }
 
     const onChangeFilter = useCallback(async (filterBy) => {
@@ -47,7 +52,6 @@ export const PlaylistDetails = (props) => {
         ev.preventDefault()
         if(playlist) {
             const res = await playlistService.save({...editData, _id: playlist._id})
-            console.log(res)
             setPlaylist(res)
             
     }

@@ -294,12 +294,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .logo-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
   height: 80px;
-  width: 80px;
+}
+.logo-container img {
+  border-radius: 50%;
+  height: 40px;
 }
 
-img {
-  height: 80px;
+h1 {
+  font-size: 25px;
 }
 
 .playlist-preview {

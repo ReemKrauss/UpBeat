@@ -8,14 +8,14 @@ import { FaPlay, FaPause, FaForward, FaBackward, FaVolumeUp, FaVolumeMute } from
 import { FiRepeat } from 'react-icons/fi'
 import { TiArrowShuffle } from 'react-icons/ti'
 
-import { setPlayer, togglePlay, changeSong, setCurrTimePass,toggleShuffle } from '../store/actions/audio-player.action';
+import { setPlayer, togglePlay, changeSong, setCurrTimePass, toggleShuffle } from '../store/actions/audio-player.action';
 
 
 class _AudioPlayer extends React.Component {
     state = {
         isRepeat: false,
         isMute: false,
-        volume: 100,
+        volume: 0,
     }
 
     timerIntervalId
@@ -117,36 +117,48 @@ class _AudioPlayer extends React.Component {
         const volume = (state.isMute) ? 0 : state.volume
         const song = songs[currSongIdx]
         if (!song) return
-        return <div className="audio-player">
+        return <>
             <YouTube videoId={song.id} opts={{
                 height: '0',
                 width: '0',
                 playerVars: {
                 },
             }} onReady={this.onReady} onStateChange={this.onStateChange} onEnd={this.onEnd} />
-            <section className="song-preview flex">
-                <img src={song.imgUrl} style={{width: '60px'}}/>
-                <h4 className='song-title'>{song.title}</h4>
-                <Link to={`/playlist/${playlistId}`}>{playlistName}</Link>
-            </section>
+            <div className="audio-player">
+                    <Link  to={`/playlist/${playlistId}`}>
+                <section className="song-preview flex">
+                        <img src={song.imgUrl} />
+                        <div>
+                            <h4 className='song-title'>{song.title}</h4>
+                            <span>{playlistName}</span>
+                        </div>
+                </section>
+                    </Link>
 
-            <TiArrowShuffle className={`shuffle-btn ${props.isShuffled}`} onClick={props.toggleShuffle} />
-            <FaBackward className="change-song-btn" onClick={this.onBackward} />
-            {!props.isPlaying && <FaPlay className="play-btn" onClick={this.onTogglePlay} />}
-            {props.isPlaying && <FaPause className="play-btn" onClick={this.onTogglePlay} />}
-            <FaForward className="change-song-btn" onClick={this.onForward} />
-            <FiRepeat className={`repeat-btn ${state.isRepeat}`} onClick={this.onToggleRepeat} />
-            <div>
-                <span>{this.currTimePassStr}</span>
-                <input type="range" id="duration" className="duration" min="0" max={song.duration.total} value={this.props.currTimePass} onChange={this.onChangeDuration} onMouseUp={(ev) => this.onChangeDuration(ev, true)} />
-                <span>{song.duration.display}</span>
+                <section className='player-controlers'>
+                    <div className="player-btns">
+                        <TiArrowShuffle className={`shuffle btn ${props.isShuffled}`} onClick={props.toggleShuffle} />
+                        <FaBackward className="change-song btn" onClick={this.onBackward} />
+                        <button className="play btn" onClick={this.onTogglePlay}>
+                            {!props.isPlaying && <FaPlay className='play-svg' />}
+                            {props.isPlaying && <FaPause className='pause-svg' />}
+                        </button>
+                        <FaForward className="change-song btn" onClick={this.onForward} />
+                        <FiRepeat className={`repeat btn ${state.isRepeat}`} onClick={this.onToggleRepeat} />
+                    </div>
+                    <div className='player-timer'>
+                        <span>{this.currTimePassStr}</span>
+                        <input type="range" id="duration" className="duration" min="0" max={song.duration.total} value={this.props.currTimePass} onChange={this.onChangeDuration} onMouseUp={(ev) => this.onChangeDuration(ev, true)} />
+                        <span>{song.duration.display}</span>
+                    </div>
+                </section>
+                <div className='volume'>
+                    {!state.isMute && <FaVolumeUp className="volume-btn btn" onClick={this.onToggleMute} />}
+                    {state.isMute && <FaVolumeMute className="volume-btn btn" onClick={this.onToggleMute} />}
+                    <input type="range" id="volume-slider" className="volume-slider" min="0" max="100" value={volume} onChange={this.onChangeVolume} />
+                </div>
             </div>
-            <div>
-                {!state.isMute && <FaVolumeUp className="volume-btn" onClick={this.onToggleMute} />}
-                {state.isMute && <FaVolumeMute className="volume-btn" onClick={this.onToggleMute} />}
-                <input type="range" id="volume" className="volume" min="0" max="100" value={volume} onChange={this.onChangeVolume} />
-            </div>
-        </div>
+        </>
     }
 }
 

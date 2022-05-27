@@ -27,19 +27,18 @@ grid-area: content;
 flex-direction: column;
 background-color: $clr1;}
 
-.audio-player{
-    align-items: center;
-    justify-content: space-around;
-    height: 90px;
-    width: 100%;
-    display: flex;
-    z-index: 5;
-    position: fixed;
-    bottom: 0px;
-    background-color: $clr1;
-    box-shadow: 1px -1px 0px 0px rgba(179, 179, 179,0.2);
-
-}
+// .audio-player{
+//     align-items: center;
+//     justify-content: space-around;
+//     height: 90px;
+//     width: 100%;
+//     display: flex;
+//     z-index: 5;
+//     position: fixed;
+//     bottom: 0px;
+//     background-color: $clr1;
+//     box-shadow: 1px -1px 0px 0px rgba(179, 179, 179,0.2);
+// }
 
 @media screen and (min-width: 600px) {
     .app-container {

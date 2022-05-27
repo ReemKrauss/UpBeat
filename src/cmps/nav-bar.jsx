@@ -11,14 +11,15 @@ export const NavBar=(props)=>{
                </div>
 
                 <ul className="nav-list">
-
+                <li>
                     <NavLink exact to="/home" activeClassName="chosen">
-                        <li>
-                        <MdHomeFilled></MdHomeFilled>
-                            <div className="text">Home</div>
-                        </li>
+                        
+                            <div className="text">
+                                <MdHomeFilled></MdHomeFilled>
+                                 Home</div>
+                        
                     </NavLink>
-
+                </li>
                     <NavLink to="/search" activeClassName="chosen" >
                         <li>
                             <div className="text">Search</div>
@@ -37,7 +38,7 @@ export const NavBar=(props)=>{
                         </li>
                     </NavLink>
 
-                    <NavLink exact to="/playlist/liked" activeClassName="chosen">
+                    <NavLink exact to="/liked" activeClassName="chosen">
                         <li>
                             <div className="text">liked songs</div>
                         </li>

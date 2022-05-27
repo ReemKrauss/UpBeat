@@ -1,18 +1,40 @@
-.logo-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 5px;
-    height: 80px;
+.nav-bar {
+    .nav-list{
+     color: aqua;
+    }
+    .logo-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 5px;
+        height: 80px;
 
-    img {
-        border-radius: 50%;
-        height: 40px;
+        img {
+            border-radius: 50%;
+            height: 40px;
+        }
+
+        h1 {
+            font-size: 25px;
+        }
+
+
+
+        .text {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+    }
+
+    .chosen {
+        color: $clr3;
+    }
+
+    .text:hover {
+        color: $clr3;
     }
 }
 
-
-
-h1 {
-    font-size: 25px;
-}

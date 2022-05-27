@@ -5,6 +5,8 @@ import routes from './routes.js'
 import { NavBar } from './cmps/nav-bar.jsx'
 import { AudioPlayer } from './cmps/audio-player.jsx'
 import { Header } from './cmps/header.jsx'
+import { Hero } from './pages/hero.jsx'
+
 
 
 class _App extends React.Component {
@@ -12,6 +14,7 @@ class _App extends React.Component {
   render() {
     return (
         <main >
+          {/* <Hero/> */}
           <div className="app-container">          
           <NavBar />
           <div className="content">

@@ -16,10 +16,10 @@ export const SongPreview = ({ song, playlistId, isFromPlayer, playlistName }) =>
     return <section className="song-preview flex">
         <div className="flex">
             {!isFromPlayer && <h5>{song.idx + 1}</h5>}
+            {!isFromPlayer && <BsPlayFill className="play-btn" onClick={onSetMiniPlaylist} />}
             <img src={song.imgUrl} />
             <h4 className='song-title'>{song.title}</h4>
             {isFromPlayer && <Link to={`/playlist/${playlistId}`}>{playlistName}</Link>}
-            {!isFromPlayer && <BsPlayFill className="play-btn" onClick={onSetMiniPlaylist} />}
         </div>
     </section>
 }

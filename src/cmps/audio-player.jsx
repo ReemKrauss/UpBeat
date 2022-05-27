@@ -1,13 +1,14 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
+
 import { connect } from 'react-redux'
 import YouTube from 'react-youtube';
 
 import { FaPlay, FaPause, FaForward, FaBackward, FaVolumeUp, FaVolumeMute } from 'react-icons/fa'
 import { FiRepeat } from 'react-icons/fi'
+import { TiArrowShuffle } from 'react-icons/ti'
 
-import { SongPreview } from './song-preview';
-
-import { setPlayer, togglePlay, changeSong, setCurrTimePass } from '../store/actions/audio-player.action';
+import { setPlayer, togglePlay, changeSong, setCurrTimePass,toggleShuffle } from '../store/actions/audio-player.action';
 
 
 class _AudioPlayer extends React.Component {
@@ -30,8 +31,8 @@ class _AudioPlayer extends React.Component {
         ev.target.setVolume(this.state.volume)
     }
 
-    onEnd =()=>{
-        if(this.state.isRepeat)this.props.player.seekTo(0)
+    onEnd = () => {
+        if (this.state.isRepeat) this.props.player.seekTo(0)
         else this.onForward()
     }
 
@@ -95,9 +96,9 @@ class _AudioPlayer extends React.Component {
         }
     }
 
-    onChangeDuration = (ev,boolean) => {
+    onChangeDuration = (ev, boolean) => {
         this.props.setCurrTimePass(+ev.target.value)
-        if(boolean)this.props.player.seekTo(+ev.target.value)
+        if (boolean) this.props.player.seekTo(+ev.target.value)
     }
 
     get currTimePassStr() {
@@ -123,8 +124,13 @@ class _AudioPlayer extends React.Component {
                 playerVars: {
                 },
             }} onReady={this.onReady} onStateChange={this.onStateChange} onEnd={this.onEnd} />
-            <SongPreview song={song} playlistId={playlistId} isFromPlayer={true} playlistName={playlistName} />
+            <section className="song-preview flex">
+                <img src={song.imgUrl} style={{width: '60px'}}/>
+                <h4 className='song-title'>{song.title}</h4>
+                <Link to={`/playlist/${playlistId}`}>{playlistName}</Link>
+            </section>
 
+            <TiArrowShuffle className={`shuffle-btn ${props.isShuffled}`} onClick={props.toggleShuffle} />
             <FaBackward className="change-song-btn" onClick={this.onBackward} />
             {!props.isPlaying && <FaPlay className="play-btn" onClick={this.onTogglePlay} />}
             {props.isPlaying && <FaPause className="play-btn" onClick={this.onTogglePlay} />}
@@ -132,7 +138,7 @@ class _AudioPlayer extends React.Component {
             <FiRepeat className={`repeat-btn ${state.isRepeat}`} onClick={this.onToggleRepeat} />
             <div>
                 <span>{this.currTimePassStr}</span>
-                <input type="range" id="duration" className="duration" min="0" max={song.duration.total} value={this.props.currTimePass} onChange={this.onChangeDuration} onMouseUp={(ev)=>this.onChangeDuration(ev,true)} />
+                <input type="range" id="duration" className="duration" min="0" max={song.duration.total} value={this.props.currTimePass} onChange={this.onChangeDuration} onMouseUp={(ev) => this.onChangeDuration(ev, true)} />
                 <span>{song.duration.display}</span>
             </div>
             <div>
@@ -151,6 +157,7 @@ function mapStateToProps(state) {
         isPlaying: state.audioPlayerModule.isPlaying,
         miniPlaylist: state.audioPlayerModule.miniPlaylist,
         currTimePass: state.audioPlayerModule.currTimePass,
+        isShuffled: state.audioPlayerModule.isShuffled,
     }
 }
 const mapDispatchToProps = {
@@ -158,6 +165,7 @@ const mapDispatchToProps = {
     togglePlay,
     changeSong,
     setCurrTimePass,
+    toggleShuffle,
 }
 
 export const AudioPlayer = connect(mapStateToProps, mapDispatchToProps)(_AudioPlayer)

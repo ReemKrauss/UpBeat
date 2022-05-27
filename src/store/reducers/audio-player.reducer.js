@@ -3,8 +3,10 @@
 const initialState = {
     player: null,
     isPlaying: false,
+    isShuffled: false,
     miniPlaylist: {
         songs: [],
+        idxArr:[],
         currSongIdx: 0,
         playlistName: '',
         playlistId: '',
@@ -27,6 +29,8 @@ export function audioPlayerReducer(state = initialState, action) {
             return { ...state, miniPlaylist: { ...state.miniPlaylist, currSongIdx: action.currSongIdx } }
         case 'SET_TIME':
             return { ...state, currTimePass:action.currTimePass}
+        case 'TOGGLE_SHUFFLE':
+            return { ...state, isShuffled:action.isShuffled, miniPlaylist:{ ...state.miniPlaylist, songs: action.songs,currSongIdx: action.currSongIdx } }
         default:
             return state
     }

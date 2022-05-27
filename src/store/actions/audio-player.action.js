@@ -57,11 +57,17 @@ export function setCurrTimePass(currTimePass) {
 export function toggleShuffle(){
     return async (dispatch, getState) =>{
         const { isShuffled,miniPlaylist } = getState().audioPlayerModule
+        let currSongIdx = 0
         if(!isShuffled)audioPlayerService.shuffleSongs(miniPlaylist.songs,miniPlaylist.currSongIdx)
-        else audioPlayerService.unShuffleSongs()
+        else{
+             currSongIdx = miniPlaylist.songs[miniPlaylist.currSongIdx].initIdx
+             audioPlayerService.unShuffleSongs(miniPlaylist.songs)
+            }
         dispatch({
             type: 'TOGGLE_SHUFFLE',
-            isShuffled: !isShuffled
+            isShuffled: !isShuffled,
+            songs: miniPlaylist.songs,
+            currSongIdx
         })
     }
 }

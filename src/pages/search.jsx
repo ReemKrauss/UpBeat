@@ -8,7 +8,7 @@ import _ from 'lodash'
 
 
 
-export const Search = (props) => {
+export const Search = () => {
     const [params, setParams] = useState('')
     const [songs, setSongs] = useState(null)
 
@@ -38,5 +38,6 @@ export const Search = (props) => {
     return <section className="search">
         <SearchBar params={params} onHandleChange={onHandleChange} />
         {songs && songs.map((song, idx) => <SongPreview key={idx} song={({ ...song, idx })} />)}
+        
     </section>
 }

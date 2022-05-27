@@ -8,6 +8,7 @@ import { HiOutlinePencil } from 'react-icons/hi'
 import { useForm } from '../hooks/useForm'
 import { PlaylistEdit } from '../cmps/playlist-edit'
 import { useEffectUpdate } from '../hooks/useEffectUpdate'
+import { SearchBar } from '../cmps/search-bar'
 
 
 export const PlaylistDetails = (props) => {
@@ -52,12 +53,21 @@ export const PlaylistDetails = (props) => {
     const onSaveEdit = async (ev) => {
         ev.preventDefault()
         if (playlist) {
-            const res = await playlistService.save({ ...editData, _id: playlist._id })
-            setPlaylist(res)
+            const newPlaylist = await playlistService.save({ ...editData, _id: playlist._id })
+            setPlaylist(newPlaylist)
 
         }
         else setPlaylist(await playlistService.save(editData))
         toggleEdit()
+    }
+
+    const onAddFromPlaylist = async (song) => {
+        let newPlaylist
+        if (playlist) {
+            newPlaylist = await playlistService.addSong(song, playlist)
+            
+        } else newPlaylist = await playlistService.save({...editData, songs:[song]})
+        setPlaylist(newPlaylist)
     }
 
     const songSection = (playlist) ? <div>
@@ -83,6 +93,7 @@ export const PlaylistDetails = (props) => {
 
         {playlist && songSection}
         {isEditing && <PlaylistEdit handleChange={handleChange} onUploaded={onUploaded} editData={editData} toggleEdit={toggleEdit} onSaveEdit={onSaveEdit} />}
+        <SearchBar onAddFromPlaylist = {onAddFromPlaylist}/>
 
     </section>
 }

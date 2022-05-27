@@ -30,7 +30,7 @@ export function audioPlayerReducer(state = initialState, action) {
         case 'SET_TIME':
             return { ...state, currTimePass:action.currTimePass}
         case 'TOGGLE_SHUFFLE':
-            return { ...state, }
+            return { ...state, isShuffled:action.isShuffled, miniPlaylist:{ ...state.miniPlaylist, songs: action.songs,currSongIdx: action.currSongIdx } }
         default:
             return state
     }

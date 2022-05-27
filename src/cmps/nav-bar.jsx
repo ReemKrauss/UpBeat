@@ -1,17 +1,20 @@
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min"
-import Logo from "../assets/img/upbeatlogograd.png"
+import Logo from "../assets/img/upbeatinvertedsquare.svg"
+import { MdHomeFilled } from "react-icons/md";
 
 export const NavBar=(props)=>{
         return (
            <nav className="nav-bar">
-               <div className="logo-container">               
+               <div className="logo-container">
                <img src={Logo} alt="" />
+               <h1>UpBeat</h1>               
                </div>
 
                 <ul className="nav-list">
 
                     <NavLink exact to="/home" activeClassName="chosen">
                         <li>
+                        <MdHomeFilled></MdHomeFilled>
                             <div className="text">Home</div>
                         </li>
                     </NavLink>

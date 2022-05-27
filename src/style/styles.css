@@ -305,15 +305,63 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .playlist-edit {
-  position: fixed;
   bottom: 50%;
   right: 50%;
   width: 524px;
   height: 400px;
-  background-color: aqua;
+  padding: 20px;
+  background-color: #282828;
   border-radius: 8px;
   display: grid;
-  grid-template-areas: "edit ";
+  grid-template-areas: "edit . close" "image form form" "image form form" ". form form";
+}
+.playlist-edit h3 {
+  grid-area: edit;
+}
+.playlist-edit form {
+  grid-area: form;
+  display: flex;
+  flex-direction: column;
+}
+.playlist-edit form input {
+  background-color: rgba(255, 255, 255, 0.1);
+  margin-bottom: 16px;
+  border: 0;
+  border-radius: 4px;
+  outline: none;
+  padding: 0 12px;
+  height: 40px;
+  font-size: 0.875rem;
+  color: #ffffff;
+}
+.playlist-edit form textarea {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  resize: none;
+  height: 150px;
+  border-radius: 4px;
+  outline: none;
+  padding: 0 12px;
+  font-size: 0.875rem;
+  font-family: inherit;
+  color: #ffffff;
+}
+.playlist-edit form input:nth-child(2) {
+  height: 130px;
+}
+.playlist-edit .close-btn {
+  grid-area: close;
+}
+.playlist-edit .img-container {
+  grid-area: image;
+  width: 180px;
+  height: 180px;
+  background: #282828;
+  align-items: center;
+  justify-content: center;
+}
+.playlist-edit .new-playlist-icon {
+  font-size: 50px;
 }
 
 /*# sourceMappingURL=styles.css.map */

@@ -1,6 +1,5 @@
 import { Component } from 'react'
 import { uploadService } from '../services/upload.service'
-import { BsMusicNoteBeamed } from 'react-icons/bs'
 export class ImgUploader extends Component {
   state = {
     imgUrl: null,
@@ -27,7 +26,7 @@ export class ImgUploader extends Component {
 
     return (
       <div className="upload-preview"  >
-        <label htmlFor="imgUpload">{(imgUrl && <img src={imgUrl} style={{width: '233px',height: '233px'}} />) || <BsMusicNoteBeamed className='new-playlist-icon' />}</label>
+        <label htmlFor="imgUpload">{this.props.display}</label>
         <input type="file" onChange={ this.uploadImg } accept="img/*" id="imgUpload" className='hidden' />
       </div>
     )

@@ -1,12 +1,77 @@
 .playlist-edit {
-    position: fixed;
+    // position: fixed;
     bottom: 50%;
     right: 50%;
     width: 524px;
     height: 400px;
-    background-color: aqua;
+    padding: 20px;
+    background-color: $clr6;
     border-radius: 8px;
     display: grid;
     grid-template-areas:
-        "edit "
+        "edit . close"
+        "image form form"
+        "image form form"
+        ". form form";
+
+    h3 {
+        grid-area: edit;
+    }
+
+    form {
+        grid-area: form;
+        display: flex;
+        flex-direction: column;
+
+        input {
+            background-color: rgba($color: $clr3, $alpha: 0.1);
+            margin-bottom: 16px;
+            border: 0;
+            border-radius: 4px;
+            outline: none;
+            padding: 0 12px;
+            height: 40px;
+            font-size: rem(14px);
+            color: $clr3;
+        }
+
+        textarea {
+            background-color: rgba($color: $clr3, $alpha: 0.1);
+            border: none;
+            resize: none;
+            height: 150px;
+            border-radius: 4px;
+            outline: none;
+            padding: 0 12px;
+            font-size: rem(14px);
+            font-family: inherit;
+            color: $clr3;
+        }
+
+        input:nth-child(2) {
+            // grid-area: form;
+            height: 130px;
+        }
+
+        button:nth-child(2) {
+            // grid-area: save;
+        }
+    }
+
+    .close-btn {
+        grid-area: close;
+
+    }
+
+    .img-container {
+        grid-area: image;
+        width: 180px;
+        height: 180px;
+        background: #282828;
+        align-items: center;
+        justify-content: center;
+    }
+    .new-playlist-icon{
+        font-size: 50px;
+    }
 }

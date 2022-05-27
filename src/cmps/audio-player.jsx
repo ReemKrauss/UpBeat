@@ -125,15 +125,15 @@ class _AudioPlayer extends React.Component {
                 },
             }} onReady={this.onReady} onStateChange={this.onStateChange} onEnd={this.onEnd} />
             <div className="audio-player">
-                    <Link  to={`/playlist/${playlistId}`}>
-                <section className="song-preview flex">
+                <Link to={`/playlist/${playlistId}`}>
+                    <section className="song-preview flex">
                         <img src={song.imgUrl} />
                         <div>
                             <h4 className='song-title'>{song.title}</h4>
                             <span>{playlistName}</span>
                         </div>
-                </section>
-                    </Link>
+                    </section>
+                </Link>
 
                 <section className='player-controlers'>
                     <div className="player-btns">

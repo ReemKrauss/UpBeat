@@ -88,6 +88,7 @@ h1, h2, h3, h4, h5, h6 {
   position: fixed;
   bottom: 0px;
   background-color: #121212;
+  box-shadow: 1px -1px 0px 0px rgba(179, 179, 179, 0.2);
 }
 
 @media screen and (min-width: 600px) {
@@ -129,6 +130,23 @@ h1, h2, h3, h4, h5, h6 {
 }
 .playlist-details .playlist-header div {
   justify-content: flex-end;
+}
+.playlist-details .song-preview {
+  padding: 7px 10px;
+  border-radius: 5px;
+}
+.playlist-details .song-preview div {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.playlist-details .song-preview div img {
+  height: 40px;
+  width: 40px;
+  object-fit: cover;
+}
+.playlist-details .song-preview:hover {
+  background-color: rgba(255, 255, 255, 0.35);
 }
 
 .hero {
@@ -289,26 +307,64 @@ h1, h2, h3, h4, h5, h6 {
   width: 156px;
 }
 
-.playlist-preview:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+.playlist-edit {
+  bottom: 50%;
+  right: 50%;
+  width: 524px;
+  height: 400px;
+  padding: 20px;
+  background-color: #282828;
+  border-radius: 8px;
+  display: grid;
+  grid-template-areas: "edit . close" "image form form" "image form form" ". form form";
 }
-
-.song-preview {
-  padding: 7px 10px;
-  border-radius: 5px;
+.playlist-edit h3 {
+  grid-area: edit;
 }
-.song-preview div {
+.playlist-edit form {
+  grid-area: form;
   display: flex;
-  align-items: center;
-  gap: 20px;
+  flex-direction: column;
 }
-.song-preview div img {
+.playlist-edit form input {
+  background-color: rgba(255, 255, 255, 0.1);
+  margin-bottom: 16px;
+  border: 0;
+  border-radius: 4px;
+  outline: none;
+  padding: 0 12px;
   height: 40px;
-  width: 40px;
-  object-fit: cover;
+  font-size: 0.875rem;
+  color: #ffffff;
 }
-.song-preview:hover {
-  background-color: rgba(255, 255, 255, 0.35);
+.playlist-edit form textarea {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  resize: none;
+  height: 150px;
+  border-radius: 4px;
+  outline: none;
+  padding: 0 12px;
+  font-size: 0.875rem;
+  font-family: inherit;
+  color: #ffffff;
+}
+.playlist-edit form input:nth-child(2) {
+  height: 130px;
+}
+.playlist-edit .close-btn {
+  grid-area: close;
+}
+.playlist-edit .img-container {
+  grid-area: image;
+  width: 180px;
+  height: 180px;
+  background: #282828;
+  align-items: center;
+  justify-content: center;
+}
+.playlist-edit .new-playlist-icon {
+  font-size: 50px;
 }
 
 .header {

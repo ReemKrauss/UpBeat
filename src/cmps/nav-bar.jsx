@@ -1,8 +1,10 @@
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min"
+import { Logo } from "../assets/upbeatlogograd.png"
 
 export const NavBar=(props)=>{
         return (
            <nav className="nav-bar">
+               <img src={Logo} alt="" />
                 <ul className="nav-list">
 
                     <NavLink exact to="/home" activeClassName="chosen">

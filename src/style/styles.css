@@ -276,14 +276,21 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .playlist-preview {
+  border-radius: 5px;
   width: 188.433px;
   height: 266.433px;
   background-color: rgba(255, 255, 255, 0.01);
   padding: 10px;
+  margin: 5px;
+  transition: 0.3s;
 }
 .playlist-preview img {
   height: 156px;
   width: 156px;
+}
+
+.playlist-preview:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .song-preview {
@@ -302,6 +309,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 .song-preview:hover {
   background-color: rgba(255, 255, 255, 0.35);
+}
+
+.header {
+  background-color: #121212;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  position: sticky;
 }
 
 /*# sourceMappingURL=styles.css.map */

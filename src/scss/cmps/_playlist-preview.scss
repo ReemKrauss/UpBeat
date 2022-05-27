@@ -1,11 +1,19 @@
 .playlist-preview{
+    border-radius: 5px;
     width:188.433px;
     height:266.433px;
     background-color: rgba($color: #ffffff, $alpha: 0.01);
     padding: 10px;
+    margin: 5px;
+    transition: 0.3s;
 
     img{
         height: 156px;
         width: 156px;
     }
+}
+
+.playlist-preview:hover{
+    background-color: rgba($color: #ffffff, $alpha: 0.20);
+
 }

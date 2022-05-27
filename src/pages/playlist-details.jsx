@@ -8,6 +8,7 @@ import { HiOutlinePencil } from 'react-icons/hi'
 import { useForm } from '../hooks/useForm'
 import { PlaylistEdit } from '../cmps/playlist-edit'
 import { useEffectUpdate } from '../hooks/useEffectUpdate'
+import { SearchBar } from '../cmps/search-bar'
 
 
 export const PlaylistDetails = (props) => {
@@ -60,6 +61,10 @@ export const PlaylistDetails = (props) => {
         toggleEdit()
     }
 
+    const onAddFromPlaylist = async (song) => {
+        console.log(song)
+    }
+
     const songSection = (playlist) ? <div>
         <PlayListFilter onChangeFilter={onChangeFilter} />
         {playlist.songs && playlist.songs.map((song, idx) => <SongPreview key={idx} song={({ ...song, idx })} playlistId={playlist._id} />)}
@@ -83,6 +88,7 @@ export const PlaylistDetails = (props) => {
 
         {playlist && songSection}
         {isEditing && <PlaylistEdit handleChange={handleChange} onUploaded={onUploaded} editData={editData} toggleEdit={toggleEdit} onSaveEdit={onSaveEdit} />}
+        {playlist && <SearchBar onAddFromPlaylist = {onAddFromPlaylist}/>}
 
     </section>
 }

@@ -33,8 +33,10 @@ export function changeSong(currSongIdx) {
 }
 
 export function setMiniPlaylist(playlistId, songIdx = 0) {
-    return async (dispatch) => {
+    return async (dispatch, getState) => {
+        const { isShuffled } = getState().audioPlayerModule
         const miniPlaylist = await playlistService.getMiniPlaylist(playlistId, songIdx)
+        if(isShuffled) audioPlayerService.shuffleSongs(miniPlaylist.songs,miniPlaylist.currSongIdx)
         dispatch({
             type: 'SET_MINI_PLAYLIST',
             miniPlaylist
@@ -48,6 +50,18 @@ export function setCurrTimePass(currTimePass) {
         dispatch({
             type: 'SET_TIME',
             currTimePass
+        })
+    }
+}
+
+export function toggleShuffle(){
+    return async (dispatch, getState) =>{
+        const { isShuffled,miniPlaylist } = getState().audioPlayerModule
+        if(!isShuffled)audioPlayerService.shuffleSongs(miniPlaylist.songs,miniPlaylist.currSongIdx)
+        else audioPlayerService.unShuffleSongs()
+        dispatch({
+            type: 'TOGGLE_SHUFFLE',
+            isShuffled: !isShuffled
         })
     }
 }

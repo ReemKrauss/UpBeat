@@ -5,7 +5,7 @@ import { BsPlayFill } from 'react-icons/bs'
 
 
 
-export const SongPreview = ({ song, playlistId, isFromPlayer, playlistName }) => {
+export const SongPreview = ({ song, playlistId}) => {
     const dispatch = useDispatch()
 
     const onSetMiniPlaylist = () => {
@@ -15,11 +15,10 @@ export const SongPreview = ({ song, playlistId, isFromPlayer, playlistName }) =>
 
     return <section className="song-preview flex">
         <div className="flex">
-            {!isFromPlayer && <h5>{song.idx + 1}</h5>}
-            {!isFromPlayer && <BsPlayFill className="play-btn" onClick={onSetMiniPlaylist} />}
+            <h5>{song.idx + 1}</h5>
+            <BsPlayFill className="play-btn" onClick={onSetMiniPlaylist} />
             <img src={song.imgUrl} />
             <h4 className='song-title'>{song.title}</h4>
-            {isFromPlayer && <Link to={`/playlist/${playlistId}`}>{playlistName}</Link>}
         </div>
     </section>
 }

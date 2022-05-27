@@ -1,11 +1,11 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
+
 import { connect } from 'react-redux'
 import YouTube from 'react-youtube';
 
 import { FaPlay, FaPause, FaForward, FaBackward, FaVolumeUp, FaVolumeMute } from 'react-icons/fa'
 import { FiRepeat } from 'react-icons/fi'
-
-import { SongPreview } from './song-preview';
 
 import { setPlayer, togglePlay, changeSong, setCurrTimePass } from '../store/actions/audio-player.action';
 
@@ -123,7 +123,11 @@ class _AudioPlayer extends React.Component {
                 playerVars: {
                 },
             }} onReady={this.onReady} onStateChange={this.onStateChange} onEnd={this.onEnd} />
-            <SongPreview song={song} playlistId={playlistId} isFromPlayer={true} playlistName={playlistName} />
+            <section className="song-preview flex">
+            <img src={song.imgUrl} />
+            <h4 className='song-title'>{song.title}</h4>
+             <Link to={`/playlist/${playlistId}`}>{playlistName}</Link>
+            </section>
 
             <FaBackward className="change-song-btn" onClick={this.onBackward} />
             {!props.isPlaying && <FaPlay className="play-btn" onClick={this.onTogglePlay} />}

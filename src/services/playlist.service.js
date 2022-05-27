@@ -9,7 +9,7 @@ export const playlistService = {
     getMiniPlaylist,
     save,
     makeDummy,
-
+    addSong
 }
 
 window.ps = playlistService
@@ -32,8 +32,13 @@ async function getMiniPlaylist(playlistId, songIdx) {
 async function save(playlist) {
     console.log(playlist)
     if (playlist._id) return await storageService.put(STORAGE_KEY, playlist)
-    playlist = { ...playlist, tags: [], createdAt: Date.now(),createdBy: {_id: 'u100', fullname: 'UpBeat'}, songs:[]}
+    playlist = { ...playlist, tags: [], createdAt: Date.now(),createdBy: {_id: 'u100', fullname: 'UpBeat'}, songs:playlist.songs || []}
     return await storageService.post(STORAGE_KEY, playlist)
+}
+
+async function addSong(song, playlist){
+    playlist.songs.push(song)
+    return await storageService.put(STORAGE_KEY, playlist)
 }
 
 function makeDummy() {

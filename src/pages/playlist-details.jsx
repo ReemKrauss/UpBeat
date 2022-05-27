@@ -53,8 +53,8 @@ export const PlaylistDetails = (props) => {
     const onSaveEdit = async (ev) => {
         ev.preventDefault()
         if (playlist) {
-            const res = await playlistService.save({ ...editData, _id: playlist._id })
-            setPlaylist(res)
+            const newPlaylist = await playlistService.save({ ...editData, _id: playlist._id })
+            setPlaylist(newPlaylist)
 
         }
         else setPlaylist(await playlistService.save(editData))
@@ -62,7 +62,12 @@ export const PlaylistDetails = (props) => {
     }
 
     const onAddFromPlaylist = async (song) => {
-        console.log(song)
+        let newPlaylist
+        if (playlist) {
+            newPlaylist = await playlistService.addSong(song, playlist)
+            
+        } else newPlaylist = await playlistService.save({...editData, songs:[song]})
+        setPlaylist(newPlaylist)
     }
 
     const songSection = (playlist) ? <div>
@@ -88,7 +93,7 @@ export const PlaylistDetails = (props) => {
 
         {playlist && songSection}
         {isEditing && <PlaylistEdit handleChange={handleChange} onUploaded={onUploaded} editData={editData} toggleEdit={toggleEdit} onSaveEdit={onSaveEdit} />}
-        {playlist && <SearchBar onAddFromPlaylist = {onAddFromPlaylist}/>}
+        <SearchBar onAddFromPlaylist = {onAddFromPlaylist}/>
 
     </section>
 }

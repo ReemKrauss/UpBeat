@@ -4,9 +4,9 @@ import { useState } from 'react';
 
 export const Hero = (props) => {
 
+const windowHeight = window.outerHeight
 
-
-    return <section className="hero">
+    return <section className="hero" style={{height:(windowHeight+50)}}>
         <div className="hero-txt-container">
             <img src="../assets/upbeatlogograd.png" alt="" />
             <h1>UpBeat</h1>

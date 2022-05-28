@@ -77,7 +77,7 @@ export const PlaylistDetails = (props) => {
 
     if (!playlist && params.playlistId) return <h2>loading...</h2>
 
-
+    console.log(playlist)
     return <section className="playlist-details main-layout">
         <div className="playlist-header flex full">
             <div onClick={toggleEdit} className="img-container flex">

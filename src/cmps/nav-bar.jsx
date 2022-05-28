@@ -1,89 +1,62 @@
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min"
 import Logo from "../assets/img/upbeatinvertedsquare.svg"
 import { MdHomeFilled } from "react-icons/md";
+import { RiSearchLine, RiSearchFill } from "react-icons/ri";
+import { BsFillPlusSquareFill } from "react-icons/bs";
 
-export const NavBar=(props)=>{
-        return (
-           <nav className="nav-bar">
-               <div className="logo-container">
-               <img src={Logo} alt="" />
-               <h1>UpBeat</h1>               
-               </div>
 
-                <ul className="nav-list">
+export const NavBar = (props) => {
+    return (
+        <nav className="nav-bar">
+            <div className="logo-container">
+                <img src={Logo} alt="" />
+                <h1>UpBeat</h1>
+            </div>
+
+            <ul className="nav-list">
                 <li>
                     <NavLink exact to="/" activeClassName="chosen">
-                        
-                            <div className="text">
-                                <MdHomeFilled></MdHomeFilled>
-                                 Home</div>
-                        
+
+                        <div className="text">
+                            <MdHomeFilled></MdHomeFilled>
+                            Home</div>
+
                     </NavLink>
                 </li>
+                <li>
                     <NavLink to="/search" activeClassName="chosen" >
-                        <li>
-                            <div className="text">Search</div>
-                        </li>
-                    </NavLink>
 
+                        <div className="text">
+                        <RiSearchLine></RiSearchLine>
+                            Search</div>
+
+                    </NavLink>
+                </li>
+                {/* <li>
                     <NavLink to="/library" activeClassName="chosen" >
-                        <li>
-                            <div className="text library">Your Library</div>
-                        </li>
-                    </NavLink>
 
+                        <div className="text library">Your Library</div>
+
+                    </NavLink>
+                </li> */}
+                <li>
                     <NavLink to="/playlist" activeClassName="chosen" >
-                        <li>
-                            <div className="text create">Create Playlist</div>
-                        </li>
-                    </NavLink>
 
+                        <div className="text create">
+                        <BsFillPlusSquareFill></BsFillPlusSquareFill>
+                            Create Playlist</div>
+
+                    </NavLink>
+                </li>
+                {/* <li>
                     <NavLink exact to="/liked" activeClassName="chosen">
-                        <li>
-                            <div className="text">liked songs</div>
-                        </li>
+
+                        <div className="text">liked songs</div>
+
                     </NavLink>
+                </li> */}
 
-
-                </ul>
-            </nav>
-        )
+            </ul>
+        </nav>
+    )
 }
-
-
-
-// function mapStateToProps(state) {
-//     return {
-//         unRead: state.activityLogModule.unRead,
-//     }
-// }
-// const mapDispatchToProps = {
-// }
-
-
-// export const NavBar = connect(mapStateToProps, mapDispatchToProps)(_NavBar)
-
-
- // <nav className="nav-bar">
-            //     <ul className="nav-list">
-
-            //         <NavLink exact to="/" activeClassName="chosen">
-            //             <li>
-            //                 <div className="text">Home</div>
-            //             </li>
-            //         </NavLink>
-
-            //         <NavLink to="/search" activeClassName="chosen" >
-            //             <li>
-            //                 <div className="text">Search</div>
-            //             </li>
-            //         </NavLink>
-
-            //         <NavLink to="/library" activeClassName="chosen" >
-            //             <li>
-            //                 <div className="text library">Library</div>
-            //             </li>
-            //         </NavLink>
-
-            //     </ul>
-            // </nav>

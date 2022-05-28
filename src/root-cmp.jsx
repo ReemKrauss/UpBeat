@@ -25,6 +25,7 @@ export const App = () => {
     sessionService.save('initial', true)
   }
 
+  
   return (
     <main >
       {!isInitial && <Hero onInitialEntry={onInitialEntry} />}

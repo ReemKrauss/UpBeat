@@ -9,6 +9,8 @@ import { useForm } from '../hooks/useForm'
 import { PlaylistEdit } from '../cmps/playlist-edit'
 import { useEffectUpdate } from '../hooks/useEffectUpdate'
 import { SearchBar } from '../cmps/search-bar'
+import { setMiniPlaylist } from "../store/actions/audio-player.action"
+import { useDispatch } from "react-redux"
 
 
 export const PlaylistDetails = (props) => {
@@ -19,6 +21,7 @@ export const PlaylistDetails = (props) => {
     }
 
     const params = useParams()
+    const dispatch = useDispatch()
     const [playlist, setPlaylist] = useState(null)
     const [isEditing, setisEditing] = useState(false)
     const [editData, handleChange, setEditData] = useForm(initialValueEdit)
@@ -85,9 +88,14 @@ export const PlaylistDetails = (props) => {
         setPlaylist(newPlaylist)
     }
 
+    const onSetMiniPlaylist = (songIdx) => {
+        const songs =  getFilteredSongs()
+        dispatch(setMiniPlaylist(playlist._id, songIdx, songs))
+    }
+
     const songSection = (playlist) ? <div>
         <PlayListFilter onChangeFilter={onChangeFilter} filterBy = {filterBy} />
-        {playlist.songs && getFilteredSongs().map((song, idx) => <SongPreview key={idx} song={({ ...song, idx })} playlistId={playlist._id} />)}
+        {playlist.songs && getFilteredSongs().map((song, idx) => <SongPreview key={idx} song={({ ...song, idx })} playlistId={playlist._id} onSetMiniPlaylist = {onSetMiniPlaylist} />)}
     </div> : ''
 
     if (!playlist && params.playlistId) return <h2>loading...</h2>

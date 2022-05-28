@@ -32,10 +32,11 @@ export function changeSong(currSongIdx) {
     }
 }
 
-export function setMiniPlaylist(playlistId, songIdx = 0) {
+export function setMiniPlaylist(playlistId, songIdx = 0, songs) {
     return async (dispatch, getState) => {
         const { isShuffled } = getState().audioPlayerModule
         const miniPlaylist = await playlistService.getMiniPlaylist(playlistId, songIdx)
+        miniPlaylist.songs = songs
         if(isShuffled) audioPlayerService.shuffleSongs(miniPlaylist.songs,miniPlaylist.currSongIdx)
         dispatch({
             type: 'SET_MINI_PLAYLIST',

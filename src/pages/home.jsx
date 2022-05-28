@@ -15,6 +15,7 @@ export const Home = (props) => {
         setPlaylists(playlists)
     }
 
+    console.log(playlists)
     return <section className="search">
         <h1>Good Morning</h1>
         {playlists && <PlaylistList playlists={playlists} />}

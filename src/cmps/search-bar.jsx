@@ -32,8 +32,8 @@ export const SearchBar = ({onAddFromPlaylist}) => {
         setParams(target.value)
     }
 
-    return <section className="search">
-        <input type="text" value={params} placeholder="Search" onChange={onHandleChange} />
+    return <section className="search-bar">
+        <input type="text" value={params} placeholder="Search for songs" onChange={onHandleChange} />
         {songs && songs.map((song, idx) => <SongPreview key={idx} song={({ ...song, idx })} onAddFromPlaylist = {onAddFromPlaylist || ''} />)}
 
     </section>

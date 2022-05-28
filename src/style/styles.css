@@ -356,6 +356,9 @@ input, select {
   background-color: #181818;
   box-shadow: 1px -1px 0px 0px rgba(179, 179, 179, 0.2);
 }
+.audio-player .song-container {
+  width: 220px;
+}
 .audio-player .song-preview {
   justify-content: center;
   align-items: center;
@@ -363,16 +366,31 @@ input, select {
   margin-left: 5px;
 }
 .audio-player .song-preview img {
-  height: 60px;
-  width: 60px;
+  height: 56px;
+  width: 56px;
   object-fit: cover;
 }
+.audio-player .song-preview .song-title {
+  color: #ffffff;
+  font-size: 0.875rem;
+  line-height: 1rem;
+  font-weight: 400;
+}
+.audio-player .song-preview .playlist-name {
+  font-size: 0.6875rem;
+  line-height: 1rem;
+  font-weight: 400;
+  color: #b3b3b3;
+}
 .audio-player .player-controlers {
+  height: 100%;
   display: flex;
   flex-direction: column;
-  width: 33%;
+  width: 36%;
+  gap: 3px;
 }
 .audio-player .player-btns {
+  margin-top: 17px;
   align-self: center;
   display: flex;
   justify-content: space-between;
@@ -418,16 +436,23 @@ input, select {
 .audio-player .time-container {
   position: relative;
 }
+.audio-player .time-container span {
+  font-size: 0.6875rem;
+  line-height: 1rem;
+  font-weight: 400;
+  color: #b3b3b3;
+}
 .audio-player .player-timer {
   position: relative;
   width: 100%;
+  margin: 0 7px;
 }
 .audio-player progress {
   border: none;
-  height: 6px;
+  height: 4px;
   width: 100%;
   position: absolute;
-  top: 2px;
+  bottom: 45%;
   z-index: -1;
   background: #5e5e5e;
   border-radius: 100px;
@@ -456,7 +481,7 @@ input, select {
 .audio-player input[type=range] {
   width: 100%;
   height: 15px;
-  margin: 0;
+  margin-left: 0;
   -webkit-appearance: none;
   background: transparent;
   /* Otherwise white in Chrome */
@@ -477,7 +502,6 @@ input, select {
   background: #FFFFFF;
   cursor: pointer;
   -webkit-appearance: none;
-  margin-top: -3px;
 }
 .audio-player input[type=range]::-moz-range-thumb {
   position: relative;
@@ -492,7 +516,6 @@ input, select {
   background: #FFFFFF;
   cursor: pointer;
   -webkit-appearance: none;
-  margin-top: -3px;
 }
 
 .playlist-list {

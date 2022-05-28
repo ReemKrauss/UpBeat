@@ -22,7 +22,10 @@ export const PlaylistDetails = (props) => {
     const [playlist, setPlaylist] = useState(null)
     const [isEditing, setisEditing] = useState(false)
     const [editData, handleChange, setEditData] = useForm(initialValueEdit)
-
+    const [filterBy, setFilterBy] = useState({
+        title: '',
+        order: 'date'
+    })
 
     useEffect(() => {
         loadPlaylist()
@@ -34,13 +37,25 @@ export const PlaylistDetails = (props) => {
 
     }, [playlist])
 
-    const loadPlaylist = async (filterBy) => {
-        setPlaylist(await playlistService.getById(params.playlistId, filterBy))
+   
+    const loadPlaylist = async () => {
+        setPlaylist(await playlistService.getById(params.playlistId))
     }
 
     const onChangeFilter = useCallback(async (filterBy) => {
-        loadPlaylist(filterBy)
+        setFilterBy(filterBy)
     }, [])
+
+    const getFilteredSongs = () => {
+        if (playlist){
+            let filteredSongs = playlist.songs.filter(song => {
+                return song.title.toLowerCase().includes(filterBy.title.toLowerCase())
+            })
+            filteredSongs = filteredSongs.sort((a, b) => a[filterBy.order] !== b[filterBy.order] ? a[filterBy.order] < b[filterBy.order] ? -1 : 1 : 0);
+            return filteredSongs
+        }
+        return playlist.songs
+    }
 
     const onUploaded = (imgUrl) => {
         setEditData({ ...editData, imgUrl });
@@ -71,8 +86,8 @@ export const PlaylistDetails = (props) => {
     }
 
     const songSection = (playlist) ? <div>
-        <PlayListFilter onChangeFilter={onChangeFilter} />
-        {playlist.songs && playlist.songs.map((song, idx) => <SongPreview key={idx} song={({ ...song, idx })} playlistId={playlist._id} />)}
+        <PlayListFilter onChangeFilter={onChangeFilter} filterBy = {filterBy} />
+        {playlist.songs && getFilteredSongs().map((song, idx) => <SongPreview key={idx} song={({ ...song, idx })} playlistId={playlist._id} />)}
     </div> : ''
 
     if (!playlist && params.playlistId) return <h2>loading...</h2>

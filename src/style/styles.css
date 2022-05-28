@@ -316,10 +316,17 @@ ul {
   width: 60px;
   object-fit: cover;
 }
+.audio-player .player-controlers {
+  display: flex;
+  flex-direction: column;
+  width: 33%;
+}
 .audio-player .player-btns {
+  align-self: center;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 200px;
 }
 .audio-player .btn {
   color: #b3b3b3;
@@ -352,31 +359,81 @@ ul {
   transition-property: all;
 }
 .audio-player .true {
-  color: #18aa4c;
+  color: #19b350;
+}
+.audio-player .true:hover {
+  color: #1ed760;
+}
+.audio-player .time-container {
+  position: relative;
+}
+.audio-player .player-timer {
+  position: relative;
+  width: 100%;
+}
+.audio-player progress {
+  border: none;
+  height: 6px;
+  width: 100%;
+  position: absolute;
+  top: 2px;
+  z-index: -1;
+  background: #5e5e5e;
+  border-radius: 100px;
+}
+.audio-player progress::-moz-progress-bar {
+  border-radius: 100px;
+  background: #ffffff;
+}
+.audio-player progress::-webkit-progress-value {
+  border-radius: 100px;
+  background: #ffffff;
+}
+.audio-player progress:hover::-webkit-progress-value {
+  background: #1bc156;
+}
+.audio-player .player-timer:hover progress::-webkit-progress-value {
+  background: #1bc156;
+}
+.audio-player .player-timer:hover progress::-moz-progress-bar {
+  background: #1bc156;
+}
+.audio-player progress::-webkit-progress-bar {
+  border-radius: 100px;
+  background: #5e5e5e;
 }
 .audio-player input[type=range] {
+  width: 100%;
   height: 15px;
+  margin: 0;
   -webkit-appearance: none;
   background: transparent;
   /* Otherwise white in Chrome */
+  background-color: transparent;
+  overflow: hidden;
 }
 .audio-player input[type=range]:focus {
   outline: none;
-}
-.audio-player input[type=range]::-webkit-slider-runnable-track {
-  width: 100%;
-  height: 6px;
-  cursor: pointer;
-  background: #5e5e5e;
-  border-radius: 49px;
-}
-.audio-player input[type=range]:hover::-webkit-slider-runnable-track {
-  background: #1bc156;
 }
 .audio-player input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
 }
 .audio-player input[type=range]:hover::-webkit-slider-thumb {
+  box-shadow: 1px 1px 10px #000000;
+  height: 12px;
+  width: 12px;
+  border-radius: 50px;
+  background: #FFFFFF;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -3px;
+}
+.audio-player input[type=range]::-moz-range-thumb {
+  position: relative;
+  background-color: transparent;
+  border: none;
+}
+.audio-player input:hover::-moz-range-thumb {
   box-shadow: 1px 1px 10px #000000;
   height: 12px;
   width: 12px;

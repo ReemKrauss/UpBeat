@@ -117,7 +117,6 @@ class _AudioPlayer extends React.Component {
         const volume = (state.isMute) ? 0 : state.volume
         const song = songs[currSongIdx]
         if (!song) return
-        console.log(song.duration)
         return <>
             <YouTube videoId={song.id} opts={{
                 height: '0',
@@ -147,16 +146,22 @@ class _AudioPlayer extends React.Component {
                         <FaForward className="change-song btn" onClick={this.onForward} />
                         <FiRepeat className={`repeat btn ${state.isRepeat}`} onClick={this.onToggleRepeat} />
                     </div>
-                    <div className='player-timer'>
+                    <div className="time-container flex">
                         <span>{this.currTimePassStr}</span>
-                        <input type="range" id="duration" className="duration" min="0" max={song.duration.total} value={this.props.currTimePass} onChange={this.onChangeDuration} onMouseUp={(ev) => this.onChangeDuration(ev, true)} />
+                        <div className='player-timer'>
+                            <progress min="0" max={song.duration.total} value={this.props.currTimePass}></progress>
+                            <input type="range" id="duration" className="duration" min="0" max={song.duration.total} value={this.props.currTimePass} onChange={this.onChangeDuration} onMouseUp={(ev) => this.onChangeDuration(ev, true)} />
+                        </div>
                         <span>{song.duration.display}</span>
                     </div>
                 </section>
-                <div className='volume'>
+                <div className='volume flex'>
                     {!state.isMute && <FaVolumeUp className="volume-btn btn" onClick={this.onToggleMute} />}
                     {state.isMute && <FaVolumeMute className="volume-btn btn" onClick={this.onToggleMute} />}
-                    <input type="range" id="volume-slider" className="volume-slider" min="0" max="100" value={volume} onChange={this.onChangeVolume} />
+                    <div className='player-timer'>
+                        <progress className='volume-progress' min="0" max="100" value={volume}></progress>
+                        <input type="range" id="volume-slider" className="volume-slider" min="0" max="100" value={volume} onChange={this.onChangeVolume} />
+                    </div>
                 </div>
             </div>
         </>

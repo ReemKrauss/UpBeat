@@ -65,8 +65,8 @@ export const PlaylistDetails = (props) => {
         let newPlaylist
         if (playlist) {
             newPlaylist = await playlistService.addSong(song, playlist)
-            
-        } else newPlaylist = await playlistService.save({...editData, songs:[song]})
+
+        } else newPlaylist = await playlistService.save({ ...editData, songs: [song] })
         setPlaylist(newPlaylist)
     }
 
@@ -78,11 +78,10 @@ export const PlaylistDetails = (props) => {
     if (!playlist && params.playlistId) return <h2>loading...</h2>
 
 
-
-    return <section className="playlist-details">
-        <div className="playlist-header flex">
+    return <section className="playlist-details main-layout">
+        <div className="playlist-header flex full">
             <div onClick={toggleEdit} className="img-container flex">
-                {(playlist && <img src={playlist.imgUrl} />) || <BsMusicNoteBeamed className='new-playlist-icon' />}
+                {(playlist && playlist.imgUrl && <img src={playlist.imgUrl} />) || <BsMusicNoteBeamed className='new-playlist-icon' />}
             </div>
             <div className="flex-col">
                 <h5>playlist</h5>
@@ -93,7 +92,10 @@ export const PlaylistDetails = (props) => {
 
         {playlist && songSection}
         {isEditing && <PlaylistEdit handleChange={handleChange} onUploaded={onUploaded} editData={editData} toggleEdit={toggleEdit} onSaveEdit={onSaveEdit} />}
-        <SearchBar onAddFromPlaylist = {onAddFromPlaylist}/>
+        <div className='search-container'>
+            <h3>Let's find something for your playlist</h3>
+            <SearchBar onAddFromPlaylist={onAddFromPlaylist} />
+        </div>
 
     </section>
 }

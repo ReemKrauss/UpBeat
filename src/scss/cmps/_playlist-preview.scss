@@ -7,10 +7,24 @@
     margin: 5px;
     transition: 0.3s;
 
-    img{
+    .img-container {
         height: 156px;
         width: 156px;
+        text-align: center;
+        background: #282828;
+        align-items: center;
+        justify-content: center;
     }
+
+    img {
+        height: 100%;
+        width: 100%;
+    }
+
+    .new-playlist-icon {
+        font-size: rem(55px);
+    }
+
 }
 
 .playlist-preview:hover{

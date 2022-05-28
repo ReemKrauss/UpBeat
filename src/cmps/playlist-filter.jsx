@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react'
 import { useFormRegister } from '../hooks/useFormRegister'
+import { FiSearch } from 'react-icons/fi'
 
 export const PlayListFilter = React.memo((props) => {
     // useMemo()
@@ -8,19 +9,20 @@ export const PlayListFilter = React.memo((props) => {
         order: 'date',
     }, props.onChangeFilter)
 
-    const sectionProps = { className: "playlist-filter" }
+    const sectionProps = { className: "playlist-filter flex" }
     return (
         <section {...sectionProps}>
-            <section >
-                <label htmlFor="name">Name</label>
-                <input {...register('name')} />
-            </section>
-            <section>
+            <div className='filter-container flex'>
+                <label htmlFor="toggle"><FiSearch className='search-label' /></label>
+                <input className="hidden" type="checkbox" id="toggle" />
+                <input autoFocus={true} className='filter-name hidden' {...register('name')} />
+            </div>
+            <div>
                 <select {...register('order')}>
-                    <option value="date">Date Added</option>
+                    <option value="date">Date added</option>
                     <option value="title">Title</option>
                 </select>
-            </section>
+            </div>
         </section>
     )
 }

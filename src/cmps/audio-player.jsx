@@ -117,7 +117,6 @@ class _AudioPlayer extends React.Component {
         const volume = (state.isMute) ? 0 : state.volume
         const song = songs[currSongIdx]
         if (!song) return
-        console.log(song.duration)
         return <>
             <YouTube videoId={song.id} opts={{
                 height: '0',

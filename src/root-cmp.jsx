@@ -6,37 +6,41 @@ import { NavBar } from './cmps/nav-bar.jsx'
 import { AudioPlayer } from './cmps/audio-player.jsx'
 import { Header } from './cmps/header.jsx'
 import { Hero } from './pages/hero.jsx'
+import { sessionService } from './services/session.service';
+import { useState } from 'react';
 
 
 
-class _App extends React.Component {
 
-  render() {
-    return (
-        <main >
-          {/* <Hero/> */}
-          <div className="app-container">          
-          <NavBar />
-          <div className="content">
+
+
+export const App = () => {
+  const initialEntry = sessionService.load('initial')
+  const [isInitial, setIsInitial] = useState(initialEntry);
+
+
+  const onInitialEntry = () => {
+    window.scrollTo(0, 0);
+    setIsInitial(true)
+    sessionService.save('initial', true)
+  }
+
+  return (
+    <main >
+      {!isInitial && <Hero onInitialEntry={onInitialEntry} />}
+      <div className="app-container">
+        <NavBar />
+        <div className="content">
           <Header />
           <Switch>
             {routes.map(route => <Route key={route.path} exact component={route.component} path={route.path} />)}
           </Switch>
-          </div>
-          </div>
-          <AudioPlayer />
-        </main>
-    )
-  }
+        </div>
+      </div>
+      <AudioPlayer />
+    </main>
+  )
 }
 
-function mapStateToProps(storeState) {
-  return {
 
-  }
-}
-const mapDispatchToProps = {
 
-}
-
-export const App = connect(mapStateToProps, mapDispatchToProps)(_App)

@@ -90,7 +90,7 @@ export const PlaylistDetails = (props) => {
 
     const onSetMiniPlaylist = (songIdx) => {
         const songs =  getFilteredSongs()
-        dispatch(setMiniPlaylist(playlist._id, songIdx, songs))
+        dispatch(setMiniPlaylist(playlist._id, songIdx, songs,playlist.name))
     }
 
     const songSection = (playlist) ? <div>

@@ -51,10 +51,12 @@
         border-radius: 5px;
         
 
-        div {
+        .song-container {
             display: flex;
             align-items: center;
             gap: 20px;
+            width: 100%;
+
 
             img {
                 height: 40px;

@@ -167,20 +167,21 @@ input, select {
   padding: 7px 10px;
   border-radius: 5px;
 }
-.playlist-details .song-preview div {
+.playlist-details .song-preview .song-container {
   display: flex;
   align-items: center;
   gap: 20px;
+  width: 100%;
 }
-.playlist-details .song-preview div img {
+.playlist-details .song-preview .song-container img {
   height: 40px;
   width: 40px;
   object-fit: cover;
 }
-.playlist-details .song-preview div h5 {
+.playlist-details .song-preview .song-container h5 {
   color: #b3b3b3;
 }
-.playlist-details .song-preview div .play-container {
+.playlist-details .song-preview .song-container .play-container {
   width: 20px;
   justify-content: center;
   position: initial;

@@ -16,9 +16,10 @@
     background-color: $clr8;
     box-shadow: 1px -1px 0px 0px rgba(179, 179, 179, 0.2);
 
-    .song-container{
+    .song-container {
         width: 220px;
     }
+
     .song-preview {
         justify-content: center;
         align-items: center;
@@ -30,13 +31,15 @@
             width: 56px;
             object-fit: cover;
         }
-        .song-title{
+
+        .song-title {
             color: $clr3;
             font-size: 0.875rem;
             line-height: 1rem;
             font-weight: 400;
         }
-        .playlist-name{
+
+        .playlist-name {
             font-size: 0.6875rem;
             line-height: 1rem;
             font-weight: 400;
@@ -63,6 +66,7 @@
 
     .btn {
         color: $clr7;
+        font-size: 1.2rem;
 
         &:hover {
             color: $clr3;
@@ -79,14 +83,13 @@
         background-color: $clr3;
         border: 1px solid transparent;
         border-radius: 50%;
+        font-size: 1rem;
 
         .play-svg {
             padding-left: 2px;
         }
 
-        .pause-svg {
-            margin-right: 1px;
-        }
+
 
         &:hover {
             color: $clr8;
@@ -107,12 +110,14 @@
 
     .time-container {
         position: relative;
-      span{
-        font-size: 0.6875rem;
-        line-height: 1rem;
-        font-weight: 400;
-        color: $clr7;
-      }
+
+        span {
+            font-size: 0.6875rem;
+            line-height: 1rem;
+            font-weight: 400;
+            color: $clr7;
+        }
+
         // right: 28%;
     }
 
@@ -144,8 +149,34 @@
         background: $clr3;
     }
 
-    progress:hover::-webkit-progress-value {
-        background: darken($clr5, 5%);
+    .volume:hover {
+        & progress::-webkit-progress-value {
+            background: darken($clr5, 5%);
+        }
+
+        & progress::-moz-progress-bar {
+            background: darken($clr5, 5%);
+        }
+
+        & input[type=range]::-webkit-slider-thumb {
+            box-shadow: 1px 1px 10px #000000;
+            height: 12px;
+            width: 12px;
+            border-radius: 50px;
+            background: #FFFFFF;
+            cursor: pointer;
+            -webkit-appearance: none;
+        }
+
+        & input[type=range]::-moz-range-thumb {
+            box-shadow: 1px 1px 10px #000000;
+            height: 12px;
+            width: 12px;
+            border-radius: 50px;
+            background: #FFFFFF;
+            cursor: pointer;
+            -webkit-appearance: none;
+        }
     }
 
     .player-timer:hover {
@@ -155,6 +186,26 @@
 
         & progress::-moz-progress-bar {
             background: darken($clr5, 5%);
+        }
+
+        & input[type=range]::-webkit-slider-thumb {
+            box-shadow: 1px 1px 10px #000000;
+            height: 12px;
+            width: 12px;
+            border-radius: 50px;
+            background: #FFFFFF;
+            cursor: pointer;
+            -webkit-appearance: none;
+        }
+
+        & input[type=range]::-moz-range-thumb {
+            box-shadow: 1px 1px 10px #000000;
+            height: 12px;
+            width: 12px;
+            border-radius: 50px;
+            background: #FFFFFF;
+            cursor: pointer;
+            -webkit-appearance: none;
         }
     }
 
@@ -178,21 +229,8 @@
         outline: none;
     }
 
-
-
     input[type=range]::-webkit-slider-thumb {
         -webkit-appearance: none;
-    }
-
-    input[type=range]:hover::-webkit-slider-thumb {
-        box-shadow: 1px 1px 10px #000000;
-        height: 12px;
-        width: 12px;
-        border-radius: 50px;
-        background: #FFFFFF;
-        cursor: pointer;
-        -webkit-appearance: none;
-        // margin-top: -3px;
     }
 
     input[type=range]::-moz-range-thumb {
@@ -201,27 +239,4 @@
         border: none;
     }
 
-    input:hover::-moz-range-thumb {
-        box-shadow: 1px 1px 10px #000000;
-        height: 12px;
-        width: 12px;
-        border-radius: 50px;
-        background: #FFFFFF;
-        cursor: pointer;
-        -webkit-appearance: none;
-        // margin-top: -3px;
-    }
-
 }
-
-// input[type=range]::-webkit-slider-runnable-track {
-//     // width: 100%;
-//     // height: 6px;
-//     // cursor: pointer;
-//     // background: $clr9;
-//     // border-radius: 49px;
-// }
-
-// input[type=range]:hover::-webkit-slider-runnable-track {
-//     // background: darken($clr5, 5%);
-// }

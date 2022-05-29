@@ -441,6 +441,7 @@ input, select {
 }
 .audio-player .btn {
   color: #b3b3b3;
+  font-size: 1.2rem;
 }
 .audio-player .btn:hover {
   color: #ffffff;
@@ -455,12 +456,10 @@ input, select {
   background-color: #ffffff;
   border: 1px solid transparent;
   border-radius: 50%;
+  font-size: 1rem;
 }
 .audio-player .play .play-svg {
   padding-left: 2px;
-}
-.audio-player .play .pause-svg {
-  margin-right: 1px;
 }
 .audio-player .play:hover {
   color: #181818;
@@ -507,14 +506,53 @@ input, select {
   border-radius: 100px;
   background: #ffffff;
 }
-.audio-player progress:hover::-webkit-progress-value {
+.audio-player .volume:hover progress::-webkit-progress-value {
   background: #1bc156;
+}
+.audio-player .volume:hover progress::-moz-progress-bar {
+  background: #1bc156;
+}
+.audio-player .volume:hover input[type=range]::-webkit-slider-thumb {
+  box-shadow: 1px 1px 10px #000000;
+  height: 12px;
+  width: 12px;
+  border-radius: 50px;
+  background: #FFFFFF;
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+.audio-player .volume:hover input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 10px #000000;
+  height: 12px;
+  width: 12px;
+  border-radius: 50px;
+  background: #FFFFFF;
+  cursor: pointer;
+  -webkit-appearance: none;
 }
 .audio-player .player-timer:hover progress::-webkit-progress-value {
   background: #1bc156;
 }
 .audio-player .player-timer:hover progress::-moz-progress-bar {
   background: #1bc156;
+}
+.audio-player .player-timer:hover input[type=range]::-webkit-slider-thumb {
+  box-shadow: 1px 1px 10px #000000;
+  height: 12px;
+  width: 12px;
+  border-radius: 50px;
+  background: #FFFFFF;
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+.audio-player .player-timer:hover input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 10px #000000;
+  height: 12px;
+  width: 12px;
+  border-radius: 50px;
+  background: #FFFFFF;
+  cursor: pointer;
+  -webkit-appearance: none;
 }
 .audio-player progress::-webkit-progress-bar {
   border-radius: 100px;
@@ -536,28 +574,10 @@ input, select {
 .audio-player input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
 }
-.audio-player input[type=range]:hover::-webkit-slider-thumb {
-  box-shadow: 1px 1px 10px #000000;
-  height: 12px;
-  width: 12px;
-  border-radius: 50px;
-  background: #FFFFFF;
-  cursor: pointer;
-  -webkit-appearance: none;
-}
 .audio-player input[type=range]::-moz-range-thumb {
   position: relative;
   background-color: transparent;
   border: none;
-}
-.audio-player input:hover::-moz-range-thumb {
-  box-shadow: 1px 1px 10px #000000;
-  height: 12px;
-  width: 12px;
-  border-radius: 50px;
-  background: #FFFFFF;
-  cursor: pointer;
-  -webkit-appearance: none;
 }
 
 .playlist-list {

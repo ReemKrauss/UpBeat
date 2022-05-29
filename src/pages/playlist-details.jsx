@@ -4,7 +4,7 @@ import { playlistService } from '../services/playlist.service'
 import { SongPreview } from '../cmps/song-preview'
 import { PlayListFilter } from '../cmps/playlist-filter'
 import { BsMusicNoteBeamed } from 'react-icons/bs'
-import { HiOutlinePencil } from 'react-icons/hi'
+import { HiOutlinePencil, HiOutlineClock } from 'react-icons/hi'
 import { useForm } from '../hooks/useForm'
 import { PlaylistEdit } from '../cmps/playlist-edit'
 import { useEffectUpdate } from '../hooks/useEffectUpdate'
@@ -95,6 +95,12 @@ export const PlaylistDetails = (props) => {
 
     const songSection = (playlist) ? <div>
         <PlayListFilter onChangeFilter={onChangeFilter} filterBy = {filterBy} />
+        <div className='sorting-table flex'>
+            <span>#</span>
+            <span>TITLE</span>
+            <span>DATE ADDED</span>
+            <HiOutlineClock />
+        </div>
         {playlist.songs && getFilteredSongs().map((song, idx) => <SongPreview key={idx} song={({ ...song, idx })} playlistId={playlist._id} onSetMiniPlaylist = {onSetMiniPlaylist} />)}
     </div> : ''
 

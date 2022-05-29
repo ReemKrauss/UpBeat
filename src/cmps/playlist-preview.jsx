@@ -7,6 +7,6 @@ export function PlaylistPreview({ playlist }) {
             {(playlist && playlist.imgUrl && <img src={playlist.imgUrl} />) || <BsMusicNoteBeamed className='new-playlist-icon' />}
         </div>
         <h3 className="playlist-name">{playlist.name}</h3>
-        <p className="playlist-by">{playlist.createdBy.fullname}</p>
+        {playlist.description && <p>{playlist.description}</p> || <p >{playlist.createdBy.fullname}</p>}
     </Link>
 }

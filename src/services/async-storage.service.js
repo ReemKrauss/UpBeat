@@ -10,8 +10,9 @@ export const storageService = {
 }
 
 
-function query(entityType, delay = 1200) {
-  var entities = JSON.parse(localStorage.getItem(entityType)) || []
+function query(entityType, delay = 1200, filterBy) {
+  let entities = JSON.parse(localStorage.getItem(entityType)) || []
+  if(filterBy) entities = entities.filter(entity => entity.tags.includes(filterBy.tags))
 
   return new Promise((resolve, reject)=>{
       setTimeout(()=>{

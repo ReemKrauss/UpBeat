@@ -3,10 +3,10 @@
     display: flex;
     position: absolute;
     flex-direction: column;
-    justify-content: center;
+        justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     left: 0%;
     top: 0%;
     
@@ -35,6 +35,7 @@
     }
     
     button{
+        cursor: pointer;
         align-self: center;
         background-color: $clr5;
         color: #2941ab;

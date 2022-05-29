@@ -15,7 +15,7 @@ class _AudioPlayer extends React.Component {
     state = {
         isRepeat: false,
         isMute: false,
-        volume: 0,
+        volume: 100,
     }
 
     timerIntervalId

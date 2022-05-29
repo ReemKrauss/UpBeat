@@ -1,8 +1,5 @@
 import { BsPlayFill } from 'react-icons/bs'
 
-
-
-
 export const SongPreview = ({ song, playlistId, AddSong, onAddFromPlaylist, onSetMiniPlaylist}) => {
     return <section className="song-preview flex">
         <div className="flex">

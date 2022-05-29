@@ -2,7 +2,7 @@
     margin-bottom: 130px;
 
     .playlist-header {
-        gap: 20px;
+        gap: 30px;
         background-color: rgb(83, 83, 83);
         background: linear-gradient(transparent 0, rgba(0, 0, 0, .5) 100%);
         padding: 30px;
@@ -24,6 +24,7 @@
 
         .new-playlist-icon {
             font-size: rem(70px);
+            
         }
 
         h5:nth-child(1) {
@@ -32,6 +33,12 @@
 
         h1 {
             font-size: rem(95px);
+            margin: 8px 0;
+        }
+
+        p {
+            color: $clr7;
+            margin: 12px 0;
         }
 
         div {
@@ -42,6 +49,7 @@
     .song-preview {
         padding: 7px 10px;
         border-radius: 5px;
+        
 
         div {
             display: flex;
@@ -53,10 +61,34 @@
                 width: 40px;
                 object-fit: cover;
             }
+
+            h5{
+                color: $clr7;
+                
+                
+            }
+
+            .play-container {
+                width: 20px;
+                justify-content: center;
+                position: initial;
+            }
         }
 
+        
         &:hover {
             background-color: rgba($color: #ffffff, $alpha: 0.1);
+        }
+
+        &:hover > div > div > h5 {
+            display: none;
+        }
+
+        &:hover > div > div > .play-btn {
+            display: block;
+            font-size: 20px; 
+            position: relative;
+            left: 1px;
         }
     }
 
@@ -94,5 +126,24 @@
                 transition-property: all
             }
         }
+    }
+
+    .sorting-table{
+        color: $clr7;
+        padding-bottom: 10px;
+        box-shadow: 0px 1px 0px 0px rgba($color: $clr3, $alpha: 0.2);
+        margin-bottom: 20px;
+        .idx-label{
+            margin-left: 16px;
+        }
+        .title-label{
+            margin-left: 24px;
+        }
+        .date-label{
+
+       }
+       .duration-label{
+           float: right;
+       }
     }
 }

@@ -37,6 +37,7 @@ html {
 }
 
 body {
+  overflow: hidden;
   margin: 0;
   background-color: #121212;
 }
@@ -91,6 +92,8 @@ input, select {
 }
 
 .content {
+  height: 100vh;
+  overflow: scroll;
   grid-area: content;
   flex-direction: column;
   background-color: #121212;
@@ -107,7 +110,7 @@ input, select {
   grid-column: 1/-1;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 680px) {
   .app-container {
     grid-template-columns: 220px 1fr;
     grid-template-areas: "nav    content  content" "nav    content content" "nav    content content";
@@ -204,7 +207,7 @@ input, select {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   left: 0%;
   top: 0%;
 }
@@ -228,6 +231,7 @@ input, select {
   z-index: 5;
 }
 .hero button {
+  cursor: pointer;
   align-self: center;
   background-color: #1ed760;
   color: #2941ab;
@@ -590,11 +594,28 @@ input, select {
   padding: 24px;
 }
 .nav-bar .nav-list {
+  width: 100%;
+  background-color: #121212;
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  flex-direction: row;
   color: #b3b3b3;
   padding: 0px;
+  column-gap: 5%;
+  justify-content: space-around;
+  left: 0;
+  margin-bottom: 0;
+  padding: 10px;
+  box-shadow: 0px 0px 50px 50px #121212;
 }
 .nav-bar .nav-list li {
+  display: inline-block;
   row-gap: 16px;
+}
+.nav-bar .nav-list li .a {
+  display: flex;
+  flex-direction: column;
 }
 .nav-bar .text {
   font-weight: bold;
@@ -611,6 +632,10 @@ input, select {
   width: 24px;
 }
 .nav-bar .logo-container {
+  position: fixed;
+  z-index: 5;
+  top: 5px;
+  left: 5px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -634,6 +659,30 @@ input, select {
 }
 .nav-bar .chosen .text {
   color: #ffffff;
+}
+.nav-bar .navbar-playlists {
+  display: none;
+  box-shadow: 0px -9px 0px -8px rgba(255, 255, 255, 0.2);
+}
+@media screen and (min-width: 680px) {
+  .nav-bar .logo-container {
+    position: static;
+  }
+  .nav-bar .navbar-playlists {
+    display: block;
+  }
+  .nav-bar .nav-list {
+    background-color: rgba(255, 255, 255, 0);
+    padding: 0;
+    box-shadow: none;
+    width: 172px;
+    background-color: none;
+    position: relative;
+    flex-direction: column;
+  }
+  .nav-bar .nav-list li {
+    display: inline;
+  }
 }
 
 .playlist-preview {
@@ -671,11 +720,19 @@ input, select {
 
 .header {
   height: 40px;
+  margin-bottom: 20px;
   background-color: #121212;
   display: flex;
   justify-content: space-between;
   flex-direction: row-reverse;
   position: sticky;
+  top: 0;
+  box-shadow: 0px 0px 15px 15px #121212;
+}
+@media screen and (min-width: 680px) {
+  .header .header {
+    height: 60px;
+  }
 }
 
 .playlist-edit {

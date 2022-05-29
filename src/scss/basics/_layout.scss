@@ -23,6 +23,8 @@ flex-direction: column;
 background-color: $clr1;}
 
 .content{
+    height: 100vh;
+    overflow: scroll;
 grid-area: content;
 flex-direction: column;
 background-color: $clr1;}
@@ -55,7 +57,7 @@ background-color: $clr1;}
 //     box-shadow: 1px -1px 0px 0px rgba(179, 179, 179,0.2);
 // }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 680px) {
     .app-container {
         grid-template-columns: 220px 1fr;
         grid-template-areas:

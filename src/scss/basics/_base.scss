@@ -30,6 +30,10 @@ ul {
     list-style-type: none;
 }
 
+p {
+    margin: 0;
+}
+
 input, select{
     background-color: rgba($color: $clr3, $alpha: 0.1);
     border: 0;

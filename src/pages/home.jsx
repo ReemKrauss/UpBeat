@@ -42,5 +42,9 @@ export const Home = (props) => {
             <h2>Decades</h2>
             <PlaylistList playlists={playlists.decades} />
         </div>}
+        {playlists && <div className='playlists-container'>
+            <h2>Musicals</h2>
+            <PlaylistList playlists={playlists.musical} />
+        </div>}
     </section>
 }

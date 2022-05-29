@@ -96,10 +96,10 @@ export const PlaylistDetails = (props) => {
     const songSection = (playlist) ? <div>
         <PlayListFilter onChangeFilter={onChangeFilter} filterBy = {filterBy} />
         <div className='sorting-table flex'>
-            <span>#</span>
-            <span>TITLE</span>
-            <span>DATE ADDED</span>
-            <HiOutlineClock />
+            <span className="idx-label">#</span>
+            <span className="title-label">TITLE</span>
+            {/* <span className="date-label">DATE ADDED</span>
+            <HiOutlineClock className="duration-label" /> */}
         </div>
         {playlist.songs && getFilteredSongs().map((song, idx) => <SongPreview key={idx} song={({ ...song, idx })} playlistId={playlist._id} onSetMiniPlaylist = {onSetMiniPlaylist} />)}
     </div> : ''
@@ -115,6 +115,7 @@ export const PlaylistDetails = (props) => {
             <div className="flex-col">
                 <h5>playlist</h5>
                 <h1 onClick={toggleEdit}>{(playlist && playlist.name) || 'My Playlist'}</h1>
+                {playlist.description && <p>{playlist.description}</p>}
                 <h5>{(playlist && playlist.createdBy.fullname) || 'username'} • {(playlist && `${playlist.songs.length} songs`) || ''}</h5>
             </div>
         </div>

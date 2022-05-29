@@ -1,13 +1,12 @@
 import axios from "axios"
+import { API_KEY } from "../data/api-keys"
 import { storageService } from "./async-storage.service"
 import { syncStorageService } from "./sync-storage.service"
 import { utilService } from "./util.service"
 
 
 
-const API_KEY = 'AIzaSyDCjCb3C7AmF1P3HRbRvinplz_XGb5YHXM' //yotam api
-// const API_KEY = 'AIzaSyAgaDXhqHTgc9W3M_8UuXF5xBqz9Vos7OE' //ido api
-// const API_KEY = 'AIzaSyCe9RJzHRdgmNdI4Kb-YAny6Bhd36XGfmc' //ido 2nd api
+
 
 const BASE_URL = 'https://www.googleapis.com/youtube/v3/search?part=snippet&videoEmbeddable=true&type=video&key='
 

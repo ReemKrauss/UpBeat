@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 import YouTube from 'react-youtube';
 
-import { FaPlay, FaPause, FaForward, FaBackward, FaVolumeUp, FaVolumeMute } from 'react-icons/fa'
+import { FaPlay, FaPause, FaForward, FaBackward, FaVolumeUp, FaVolumeMute,FaHeart } from 'react-icons/fa'
 import { FiRepeat } from 'react-icons/fi'
 import { TiArrowShuffle } from 'react-icons/ti'
 
@@ -15,7 +15,7 @@ class _AudioPlayer extends React.Component {
     state = {
         isRepeat: false,
         isMute: false,
-        volume: 0,
+        volume: 100,
     }
 
     timerIntervalId
@@ -133,6 +133,7 @@ class _AudioPlayer extends React.Component {
                             <span className='playlist-name'>{playlistName}</span>
                         </div>
                     </Link>
+                    <FaHeart className='like-btn'/>
                 </section>
 
                 <section className='player-controlers'>
@@ -158,7 +159,7 @@ class _AudioPlayer extends React.Component {
                 <div className='volume flex'>
                     {!state.isMute && <FaVolumeUp className="volume-btn btn" onClick={this.onToggleMute} />}
                     {state.isMute && <FaVolumeMute className="volume-btn btn" onClick={this.onToggleMute} />}
-                    <div className='player-timer'>
+                    <div className='player-timer volume-control'>
                         <progress className='volume-progress' min="0" max="100" value={volume}></progress>
                         <input type="range" id="volume-slider" className="volume-slider" min="0" max="100" value={volume} onChange={this.onChangeVolume} />
                     </div>

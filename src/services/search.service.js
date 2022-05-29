@@ -7,7 +7,6 @@ import { utilService } from "./util.service"
 
 
 
-
 const BASE_URL = 'https://www.googleapis.com/youtube/v3/search?part=snippet&videoEmbeddable=true&type=video&key='
 
 export const searchService = {

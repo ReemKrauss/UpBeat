@@ -1,0 +1,58 @@
+.search {
+    .search-bar {
+        input {
+            background-color: $clr3;
+            color: $clr1;
+            height: 40px;
+            width: 400px;
+            border-radius: 50px;
+            padding-left: 20px;
+            margin-bottom: 40px;
+        }
+
+        .song-preview {
+            padding: 7px 10px;
+            border-radius: 5px;
+            
+    
+            div {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+    
+                img {
+                    height: 40px;
+                    width: 40px;
+                    object-fit: cover;
+                }
+    
+                h5{
+                    color: $clr7;
+                    
+                    
+                }
+    
+                .play-container {
+                    width: 20px;
+                    justify-content: center;
+                    position: initial;
+                }
+            }
+
+            &:hover {
+                background-color: rgba($color: #ffffff, $alpha: 0.1);
+            }
+    
+            &:hover > div > div > h5 {
+                display: none;
+            }
+    
+            &:hover > div > div > .play-btn {
+                display: block;
+                font-size: 20px; 
+                position: relative;
+                left: 1px;
+            }
+        }
+    }
+}

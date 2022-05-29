@@ -415,6 +415,50 @@ input, select {
   margin-bottom: 40px;
 }
 
+.search .search-bar input {
+  background-color: #ffffff;
+  color: #121212;
+  height: 40px;
+  width: 400px;
+  border-radius: 50px;
+  padding-left: 20px;
+  margin-bottom: 40px;
+}
+.search .search-bar .song-preview {
+  padding: 7px 10px;
+  border-radius: 5px;
+}
+.search .search-bar .song-preview div {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.search .search-bar .song-preview div img {
+  height: 40px;
+  width: 40px;
+  object-fit: cover;
+}
+.search .search-bar .song-preview div h5 {
+  color: #b3b3b3;
+}
+.search .search-bar .song-preview div .play-container {
+  width: 20px;
+  justify-content: center;
+  position: initial;
+}
+.search .search-bar .song-preview:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.search .search-bar .song-preview:hover > div > div > h5 {
+  display: none;
+}
+.search .search-bar .song-preview:hover > div > div > .play-btn {
+  display: block;
+  font-size: 20px;
+  position: relative;
+  left: 1px;
+}
+
 ::-webkit-scrollbar {
   width: 14px;
   height: 14px;

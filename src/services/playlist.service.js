@@ -14,7 +14,7 @@ export const playlistService = {
 window.ps = playlistService
 
 async function query(filterBy = null) {
-    const playlists = await storageService.query(STORAGE_KEY, 1200, filterBy)
+    const playlists = await storageService.query(STORAGE_KEY, 50, filterBy)
     return playlists
 }
 

@@ -548,6 +548,7 @@ input, select {
 .audio-player .btn {
   color: #b3b3b3;
   font-size: 1.2rem;
+  fill: currentcolor;
 }
 .audio-player .btn:hover {
   color: #ffffff;
@@ -563,9 +564,6 @@ input, select {
   border: 1px solid transparent;
   border-radius: 50%;
   font-size: 1rem;
-}
-.audio-player .play .play-svg {
-  padding-left: 2px;
 }
 .audio-player .play:hover {
   color: #181818;

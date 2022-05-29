@@ -80,16 +80,17 @@
         align-items: center;
         width: 200px;
     }
-
     .btn {
         color: $clr7;
         font-size: 1.2rem;
-
+        fill: currentcolor;
+    
+        
         &:hover {
             color: $clr3;
         }
     }
-
+    
     .play {
         height: 32px;
         width: 32px;
@@ -101,12 +102,6 @@
         border: 1px solid transparent;
         border-radius: 50%;
         font-size: 1rem;
-
-        .play-svg {
-            padding-left: 2px;
-        }
-
-
 
         &:hover {
             color: $clr8;

@@ -6,7 +6,6 @@ const STORAGE_KEY = 'playlistDB'
 export const playlistService = {
     query,
     getById,
-    getMiniPlaylist,
     save,
     makeDummy,
     addSong
@@ -23,11 +22,6 @@ async function getById(playlistId, filterBy) {
     return await storageService.get(STORAGE_KEY, playlistId, filterBy)
 }
 
-async function getMiniPlaylist(playlistId, songIdx) {
-    const playlist = await getById(playlistId)
-    playlist.songs.forEach((song, idx) => { song.initIdx = idx })
-    return { songs: playlist.songs, currSongIdx: songIdx, playlistName: playlist.name, playlistId: playlist._id }
-}
 
 async function save(playlist) {
     console.log(playlist)

@@ -9,8 +9,8 @@ import { useForm } from '../hooks/useForm'
 import { PlaylistEdit } from '../cmps/playlist-edit'
 import { useEffectUpdate } from '../hooks/useEffectUpdate'
 import { SearchBar } from '../cmps/search-bar'
-import { setMiniPlaylist } from "../store/actions/audio-player.action"
-import { useDispatch } from "react-redux"
+import { setMiniPlaylist, togglePlay } from "../store/actions/audio-player.action"
+import { useDispatch, useSelector } from "react-redux"
 
 
 export const PlaylistDetails = (props) => {
@@ -21,6 +21,7 @@ export const PlaylistDetails = (props) => {
     }
 
     const params = useParams()
+
     const dispatch = useDispatch()
     const [playlist, setPlaylist] = useState(null)
     const [isEditing, setisEditing] = useState(false)
@@ -29,6 +30,7 @@ export const PlaylistDetails = (props) => {
         title: '',
         order: 'date'
     })
+    const {isPlaying, isShuffled, miniPlaylist} = useSelector((storeState) => storeState.audioPlayerModule)
 
     useEffect(() => {
         loadPlaylist()
@@ -93,20 +95,34 @@ export const PlaylistDetails = (props) => {
         dispatch(setMiniPlaylist(playlist._id, songIdx, songs,playlist.name))
     }
 
+    const onTogglePlay = (ev) => {
+        ev.preventDefault()
+        if(miniPlaylist.playlistId === playlist._id) {
+            dispatch(togglePlay())
+            return
+        }
+        if (playlist.songs.length) dispatch(setMiniPlaylist(playlist._id, 0, playlist.songs, playlist.name))
+    }
+
+
     const songSection = (playlist) ? <div>
         <PlayListFilter onChangeFilter={onChangeFilter} filterBy = {filterBy} />
+        {<button className="play btn" onClick={onTogglePlay}>
+                            {!isPlaying && <svg role="img" height="16" width="16" className='play-svg' viewBox="0 0 16 16" ><path d="M3 1.713a.7.7 0 011.05-.607l10.89 6.288a.7.7 0 010 1.212L4.05 14.894A.7.7 0 013 14.288V1.713z"></path></svg>}
+                            {isPlaying && (playlist._id === miniPlaylist.playlistId) && <svg role="img" height="16" width="16" className='pause-svg' viewBox="0 0 16 16" ><path d="M2.7 1a.7.7 0 00-.7.7v12.6a.7.7 0 00.7.7h2.6a.7.7 0 00.7-.7V1.7a.7.7 0 00-.7-.7H2.7zm8 0a.7.7 0 00-.7.7v12.6a.7.7 0 00.7.7h2.6a.7.7 0 00.7-.7V1.7a.7.7 0 00-.7-.7h-2.6z"></path></svg>}
+                        </button>}
         <div className='sorting-table flex'>
             <span className="idx-label">#</span>
             <span className="title-label">TITLE</span>
             {/* <span className="date-label">DATE ADDED</span>
             <HiOutlineClock className="duration-label" /> */}
         </div>
-        {playlist.songs && getFilteredSongs().map((song, idx) => <SongPreview key={idx} song={({ ...song, idx })} playlistId={playlist._id} onSetMiniPlaylist = {onSetMiniPlaylist} />)}
+        {playlist.songs && getFilteredSongs().map((song, idx) => <SongPreview key={idx} song={({ ...song, idx })} playerId={playlist._id} onSetMiniPlaylist = {onSetMiniPlaylist} />)}
     </div> : ''
 
     if (!playlist && params.playlistId) return <h2>loading...</h2>
 
-    console.log(playlist)
+    
     return <section className="playlist-details main-layout">
         <div className="playlist-header flex full">
             <div onClick={toggleEdit} className="img-container flex">

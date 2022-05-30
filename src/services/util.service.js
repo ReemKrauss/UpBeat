@@ -3,7 +3,8 @@ export const utilService = {
     makeLorem,
     getRandomIntInclusive,
     formatISODate,
-    convertMsToTime
+    convertMsToTime,
+    proccessSpecialChars
 }
 
 function makeId(length = 6) {
@@ -46,6 +47,24 @@ function formatISODate(youtube_time) {
     return { total: +array[0], display }
 }
 
+function proccessSpecialChars(str){
+    const specialChars = [
+        {char:'&amp;', render: '&'},
+        {char:'&quot;', render: '"'},
+        {char:'&#39;', render: `'`},
+        {char:'&lt;', render: `<`},
+        {char:'&gt;', render: `>`}]
+    str = str.split(' ')
+    str = str.map((word) => {
+        for (let i = 0; i < specialChars.length; i++){
+            if(word.includes(specialChars[i].char)) word = word.replaceAll(specialChars[i].char, specialChars[i].render)
+        }
+        return word
+    })
+    return str.join(' ')
+
+}
+
 
 function convertMsToTime(milliseconds) {
     let seconds = Math.floor(milliseconds / 1000);
@@ -60,7 +79,11 @@ function convertMsToTime(milliseconds) {
     // commenting next line gets you `24:00:00` instead of `00:00:00`
     // or `36:15:31` instead of `12:15:31`, etc.
     hours = hours % 24;
-  
+
+    if (hours === 0) return minutes
+    if (minutes === 0 && hours === 0 ) return seconds
     return hours
   }
+
+
 

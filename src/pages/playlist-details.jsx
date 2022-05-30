@@ -115,7 +115,7 @@ export const PlaylistDetails = (props) => {
             <div className="flex-col">
                 <h5>playlist</h5>
                 <h1 onClick={toggleEdit}>{(playlist && playlist.name) || 'My Playlist'}</h1>
-                {playlist.description && <p>{playlist.description}</p>}
+                {playlist && playlist.description && <p>{playlist.description}</p>}
                 <h5>{(playlist && playlist.createdBy.fullname) || 'username'} • {(playlist && `${playlist.songs.length} songs`) || ''}</h5>
             </div>
         </div>

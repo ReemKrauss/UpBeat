@@ -20,6 +20,8 @@ export const Home = (props) => {
         setPlaylists({ rock, jazz, musical, newReleases, israeli, decades })
     }
 
+    
+
     return <section className="home main-layout">
         {/* <h1>Good Morning</h1> */}
         {playlists && <div className='playlists-container'>

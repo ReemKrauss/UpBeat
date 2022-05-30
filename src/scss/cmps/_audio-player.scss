@@ -23,18 +23,20 @@
     box-shadow: 1px -1px 0px 0px rgba(179, 179, 179, 0.2);
 
     .song-container {
-        width: 220px;
+        width: 251px;
+        width: 260px;
         justify-content: space-between;
         align-items: center;
 
         .like-btn {
-            position: relative;
+            // position: relative;
             // left: 5px;
             color: $clr7;
 
 
             &:hover {
                 color: $clr5;
+                filter: invert(62%) sepia(94%) saturate(616%) hue-rotate(84deg) brightness(96%) contrast(83%)
             }
         }
     }
@@ -43,7 +45,6 @@
         justify-content: center;
         align-items: center;
         gap: 5px;
-        margin-left: 5px;
 
         .song-img {
             height: 56px;
@@ -63,28 +64,31 @@
 
                 white-space: nowrap;
 
-                
+
             }
         }
-        &:hover  {
-            .song-txt{
-                animation: long-txt 14s ;
+
+        &:hover {
+            .song-txt {
+                animation: long-txt 14s;
                 animation-iteration-count: infinite;
             }
         }
-        
+
         @keyframes long-txt {
             0% {
                 transform: translate(0, 0);
             }
-            50%{
+
+            50% {
                 transform: translate(-135%, 0);
             }
-            
+
             100% {
                 transform: translate(0, 0);
             }
         }
+
         .playlist-name {
             font-size: 0.6875rem;
             line-height: 1rem;
@@ -145,9 +149,11 @@
 
     .true {
         color: darken($clr5, 8%);
+             // filter: invert(57%) sepia(67%) saturate(2816%) hue-rotate(101deg) brightness(93%) contrast(80%);
 
         &:hover {
             color: $clr5;
+            // filter: invert(62%) sepia(94%) saturate(616%) hue-rotate(84deg) brightness(96%) contrast(83%);
         }
     }
 
@@ -290,6 +296,8 @@
                 position: absolute;
                 bottom: 7px;
                 gap: 0;
+                margin-left: 5px;
+
 
                 img {
                     height: 40px;
@@ -312,14 +320,19 @@
                 }
             }
         }
-
+             
         .player-controlers {
             position: absolute;
             width: 100%;
 
             .player-btns {
                 width: 36%;
+
             }
+            .true:hover{
+                color:  darken($clr5, 8%);
+            }
+
 
             .time-container {
                 position: relative;
@@ -337,6 +350,16 @@
             .volume-control {
                 display: none;
             }
+
+            z-index: 10;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            @include thumb();
+        }
+
+        input[type=range]::-moz-range-thumb {
+            @include thumb();
         }
 
     }

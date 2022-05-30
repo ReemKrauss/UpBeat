@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 import YouTube from 'react-youtube';
 
-import { FaPlay, FaPause, FaForward, FaBackward, FaVolumeUp, FaVolumeMute, FaHeart } from 'react-icons/fa'
-import { FiRepeat } from 'react-icons/fi'
-import { TiArrowShuffle } from 'react-icons/ti'
+import { FaForward, FaBackward, FaHeart } from 'react-icons/fa'
+import pause from '../assets/img/pause.svg'
+
 
 import { setPlayer, togglePlay, changeSong, setCurrTimePass, toggleShuffle } from '../store/actions/audio-player.action';
 
@@ -59,12 +59,15 @@ class _AudioPlayer extends React.Component {
         if (this.state.isRepeat) {
             this.onToggleRepeat()
         }
+        this.props.setCurrTimePass(0)
+        if (this.props.currTimePass < 1) return
         const { songs, currSongIdx } = this.props.miniPlaylist
         const newSongIdx = (currSongIdx === songs.length - 1) ? 0 : currSongIdx + 1
         this.props.changeSong(newSongIdx)
     }
 
     onBackward = () => {
+
         const { songs, currSongIdx } = this.props.miniPlaylist
         if (this.props.currTimePass > 3) {
             this.props.player.seekTo(0)
@@ -73,6 +76,8 @@ class _AudioPlayer extends React.Component {
         if (this.state.isRepeat) {
             this.onToggleRepeat()
         }
+        this.props.setCurrTimePass(0)
+        if (this.props.currTimePass < 1) return
         const newSongIdx = (currSongIdx === 0) ? songs.length - 1 : currSongIdx - 1
         this.props.changeSong(newSongIdx)
     }
@@ -90,6 +95,7 @@ class _AudioPlayer extends React.Component {
     }
 
     onChangeVolume = (ev) => {
+        if (!this.props.player) return
         this.setState({ volume: +ev.target.value }, () => this.props.player.setVolume(+ev.target.value))
         if (this.state.isMute) {
             this.setState({ isMute: false })
@@ -127,9 +133,11 @@ class _AudioPlayer extends React.Component {
             <div className="audio-player">
                 <section className="song-container flex">
                     <Link to={`/playlist/${playlistId}`} className="song-preview flex">
-                        <img src={song.imgUrl} />
+                        <img className='song-img' src={song.imgUrl} />
                         <div>
-                            <h4 className='song-title'>{song.title}</h4>
+                            <div className='song-title'>
+                            <h4 className='song-txt'>{song.title}</h4>
+                            </div>
                             <span className='playlist-name'>{playlistName}</span>
                         </div>
                     </Link>
@@ -138,7 +146,7 @@ class _AudioPlayer extends React.Component {
 
                 <section className='player-controlers'>
                     <div className="player-btns">
-                        <TiArrowShuffle className={`shuffle btn ${props.isShuffled}`} onClick={props.toggleShuffle} />
+                        <svg role="img" height="16" width="16" viewBox="0 0 16 16" className={`shuffle btn ${props.isShuffled}`} onClick={props.toggleShuffle}><path d="M13.151.922a.75.75 0 10-1.06 1.06L13.109 3H11.16a3.75 3.75 0 00-2.873 1.34l-6.173 7.356A2.25 2.25 0 01.39 12.5H0V14h.391a3.75 3.75 0 002.873-1.34l6.173-7.356a2.25 2.25 0 011.724-.804h1.947l-1.017 1.018a.75.75 0 001.06 1.06L15.98 3.75 13.15.922zM.391 3.5H0V2h.391c1.109 0 2.16.49 2.873 1.34L4.89 5.277l-.979 1.167-1.796-2.14A2.25 2.25 0 00.39 3.5z"></path><path d="M7.5 10.723l.98-1.167.957 1.14a2.25 2.25 0 001.724.804h1.947l-1.017-1.018a.75.75 0 111.06-1.06l2.829 2.828-2.829 2.828a.75.75 0 11-1.06-1.06L13.109 13H11.16a3.75 3.75 0 01-2.873-1.34l-.787-.938z"></path></svg>
                         <FaBackward className="change-song btn" onClick={this.onBackward} />
                         <button className="play btn" onClick={this.onTogglePlay}>
                             {!props.isPlaying && <svg role="img" height="16" width="16" className='play-svg' viewBox="0 0 16 16" ><path d="M3 1.713a.7.7 0 011.05-.607l10.89 6.288a.7.7 0 010 1.212L4.05 14.894A.7.7 0 013 14.288V1.713z"></path></svg>}
@@ -151,17 +159,17 @@ class _AudioPlayer extends React.Component {
                         <span>{this.currTimePassStr}</span>
                         <div className='player-timer'>
                             <progress min="0" max={song.duration.total} value={this.props.currTimePass}></progress>
-                            <input type="range" id="duration" className="duration" min="0" max={song.duration.total} value={this.props.currTimePass} onChange={this.onChangeDuration} onMouseUp={(ev) => this.onChangeDuration(ev, true)} />
+                            <input type="range" id="duration" className="duration" min="0" max={song.duration.total} value={this.props.currTimePass} onChange={this.onChangeDuration} onTouchEnd={(ev) => this.onChangeDuration(ev, true)} onMouseUp={(ev) => this.onChangeDuration(ev, true)} />
                         </div>
                         <span>{song.duration.display}</span>
                     </div>
                 </section>
                 <div className='volume flex'>
-                    {state.isMute && <svg role="presentation" height="16" width="16" className="volume-btn btn" onClick={this.onToggleMute} aria-label="Volume off" id="volume-icon" viewBox="0 0 16 16" ><path d="M13.86 5.47a.75.75 0 00-1.061 0l-1.47 1.47-1.47-1.47A.75.75 0 008.8 6.53L10.269 8l-1.47 1.47a.75.75 0 101.06 1.06l1.47-1.47 1.47 1.47a.75.75 0 001.06-1.06L12.39 8l1.47-1.47a.75.75 0 000-1.06z"></path><path d="M10.116 1.5A.75.75 0 008.991.85l-6.925 4a3.642 3.642 0 00-1.33 4.967 3.639 3.639 0 001.33 1.332l6.925 4a.75.75 0 001.125-.649v-1.906a4.73 4.73 0 01-1.5-.694v1.3L2.817 9.852a2.141 2.141 0 01-.781-2.92c.187-.324.456-.594.78-.782l5.8-3.35v1.3c.45-.313.956-.55 1.5-.694V1.5z"></path></svg>}
+                    {state.isMute && <svg role="presentation" height="16" width="16" className="volume-btn btn"  onClick={this.onToggleMute} aria-label="Volume off" id="volume-icon" viewBox="0 0 16 16" ><path d="M13.86 5.47a.75.75 0 00-1.061 0l-1.47 1.47-1.47-1.47A.75.75 0 008.8 6.53L10.269 8l-1.47 1.47a.75.75 0 101.06 1.06l1.47-1.47 1.47 1.47a.75.75 0 001.06-1.06L12.39 8l1.47-1.47a.75.75 0 000-1.06z"></path><path d="M10.116 1.5A.75.75 0 008.991.85l-6.925 4a3.642 3.642 0 00-1.33 4.967 3.639 3.639 0 001.33 1.332l6.925 4a.75.75 0 001.125-.649v-1.906a4.73 4.73 0 01-1.5-.694v1.3L2.817 9.852a2.141 2.141 0 01-.781-2.92c.187-.324.456-.594.78-.782l5.8-3.35v1.3c.45-.313.956-.55 1.5-.694V1.5z"></path></svg>}
                     {!state.isMute && <svg role="presentation" width="16" height="16" className='volume-btn btn' onClick={this.onToggleMute} aria-label="Volume high" id="volume-icon" viewBox="0 0 16 16" ><path d="M9.741.85a.75.75 0 01.375.65v13a.75.75 0 01-1.125.65l-6.925-4a3.642 3.642 0 01-1.33-4.967 3.639 3.639 0 011.33-1.332l6.925-4a.75.75 0 01.75 0zm-6.924 5.3a2.139 2.139 0 000 3.7l5.8 3.35V2.8l-5.8 3.35zm8.683 4.29V5.56a2.75 2.75 0 010 4.88z"></path><path d="M11.5 13.614a5.752 5.752 0 000-11.228v1.55a4.252 4.252 0 010 8.127v1.55z"></path></svg>}
                     <div className='player-timer volume-control'>
                         <progress className='volume-progress' min="0" max="100" value={volume}></progress>
-                        <input type="range" id="volume-slider" className="volume-slider" min="0" max="100" value={volume} onChange={this.onChangeVolume} />
+                        <input type="range" id="volume-slider" className="volume-slider" min="0" max="100" value={volume} onTouchEnd={this.onChangeVolume} onChange={this.onChangeVolume} />
                     </div>
                 </div>
             </div>

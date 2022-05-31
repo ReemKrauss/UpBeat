@@ -35,30 +35,8 @@ export const PlaylistDetails = (props) => {
         order: 'date'
     })
 
-    const getAvgColor = (url) => {
-        getAverageColor(url).then(rgb => {
-            console.log(rgb)
-            const color = `rgb(${rgb.r},${rgb.g}, ${rgb.b})`
-            setColorAvg(color)
-        })
-    }
-
-     const setColorAvg = (color) => {
-        let element = document.getClassById('playlist-header');
-        element.style.backgroundColor = color;
-        console.log('setcolor');
-    }
     
 
-    useEffect(() => {
-        playlist?.imgUrl && getAverageColor(playlist.imgUrl).then(rgb => {
-            console.log(rgb)
-            const a = `rgb(${rgb.r},${rgb.g}, ${rgb.b})`
-            setColor(a)
-        })
-    }, [playlist?.imgUrl])
-
-    const { isPlaying, isShuffled, miniPlaylist } = useSelector((storeState) => storeState.audioPlayerModule)
 
     useEffect(() => {
         loadPlaylist()
@@ -69,6 +47,16 @@ export const PlaylistDetails = (props) => {
         if (playlist) setEditData(playlist)
 
     }, [playlist])
+
+    useEffect(() => {
+        playlist?.imgUrl && getAverageColor(playlist.imgUrl).then(rgb => {
+            console.log(rgb)
+            const a = `rgb(${rgb.r},${rgb.g}, ${rgb.b})`
+            setColor(a)
+        })
+    }, [playlist?.imgUrl])
+
+    const { isPlaying, isShuffled, miniPlaylist } = useSelector((storeState) => storeState.audioPlayerModule)
 
 
     const loadPlaylist = async () => {
@@ -93,7 +81,6 @@ export const PlaylistDetails = (props) => {
     const onUploaded = (imgUrl) => {
         setEditData({ ...editData, imgUrl });
         getAvgColor(imgUrl)
-        console.log('hi')
     }
 
     const toggleEdit = () => {
@@ -142,10 +129,24 @@ export const PlaylistDetails = (props) => {
         setPlaylist({...playlist, songs: songsCpy})
     }
 
+    const getAvgColor = (url) => {
+        getAverageColor(url).then(rgb => {
+            console.log(rgb)
+            const color = `rgb(${rgb.r},${rgb.g}, ${rgb.b})`
+            setColorAvg(color)
+        })
+    }
+
+     const setColorAvg = (color) => {
+        let element = document.getClassById('playlist-header');
+        element.style.backgroundColor = color;
+        console.log('setcolor');
+    }
+
 
     const songSection = (playlist) ? <div>
         <PlayListFilter onChangeFilter={onChangeFilter} filterBy={filterBy} />
-        {<button className="play btn" onClick={onTogglePlay}>
+        {<button className="play-all-btn" onClick={onTogglePlay}>
             {!isPlaying && <svg role="img" height="16" width="16" className='play-svg' viewBox="0 0 16 16" ><path d="M3 1.713a.7.7 0 011.05-.607l10.89 6.288a.7.7 0 010 1.212L4.05 14.894A.7.7 0 013 14.288V1.713z"></path></svg>}
             {isPlaying && (playlist._id === miniPlaylist.playlistId) && <svg role="img" height="16" width="16" className='pause-svg' viewBox="0 0 16 16" ><path d="M2.7 1a.7.7 0 00-.7.7v12.6a.7.7 0 00.7.7h2.6a.7.7 0 00.7-.7V1.7a.7.7 0 00-.7-.7H2.7zm8 0a.7.7 0 00-.7.7v12.6a.7.7 0 00.7.7h2.6a.7.7 0 00.7-.7V1.7a.7.7 0 00-.7-.7h-2.6z"></path></svg>}
         </button>}

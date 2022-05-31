@@ -651,12 +651,19 @@ input, select {
   width: 260px;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 .audio-player .song-container .like-btn {
   color: #b3b3b3;
 }
 .audio-player .song-container .like-btn:hover {
   color: #1ed760;
+}
+.audio-player .song-container .audio-svg {
+  height: 14px;
+  width: 14px;
+  position: absolute;
+  right: -50px;
 }
 .audio-player .song-preview {
   justify-content: center;

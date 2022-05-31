@@ -7,6 +7,9 @@ import YouTube from 'react-youtube';
 import { FaForward, FaBackward, FaHeart } from 'react-icons/fa'
 import pause from '../assets/img/pause.svg'
 
+import audioSvg from "../assets/img/audio.svg"
+
+
 
 import { setPlayer, togglePlay, changeSong, setCurrTimePass, toggleShuffle } from '../store/actions/audio-player.action';
 
@@ -26,9 +29,10 @@ class _AudioPlayer extends React.Component {
 
     onReady = (ev) => {
         this.props.setPlayer(ev.target)
-        if (!this.props.isPlaying) this.onTogglePlay()
+        if (!this.props.isPlaying) this.props.togglePlay()
         else ev.target.playVideo()
-        ev.target.setVolume(this.state.volume)
+        if(this.state.isMute)ev.target.setVolume(0)
+        else ev.target.setVolume(this.state.volume)
     }
 
     onEnd = () => {
@@ -49,10 +53,6 @@ class _AudioPlayer extends React.Component {
                 this.props.setCurrTimePass(currTimePass)
             }, 1000)
         }
-    }
-
-    onTogglePlay = () => {
-        this.props.togglePlay()
     }
 
     onForward = () => {
@@ -102,9 +102,9 @@ class _AudioPlayer extends React.Component {
         }
     }
 
-    onChangeDuration = (ev, boolean) => {
+    onChangeDuration = (ev, isTouchEnd) => {
         this.props.setCurrTimePass(+ev.target.value)
-        if (boolean) this.props.player.seekTo(+ev.target.value)
+        if (isTouchEnd) this.props.player.seekTo(+ev.target.value)
     }
 
     get currTimePassStr() {
@@ -142,13 +142,14 @@ class _AudioPlayer extends React.Component {
                         </div>
                     </Link>
                     <FaHeart className='like-btn' />
+                    {props.isPlaying&&<img className={`audio-svg ${props.isPlaying}`} src={audioSvg} alt="err" />}
                 </section>
 
                 <section className='player-controlers'>
                     <div className="player-btns">
                         <svg role="img" height="16" width="16" viewBox="0 0 16 16" className={`shuffle btn ${props.isShuffled}`} onClick={props.toggleShuffle}><path d="M13.151.922a.75.75 0 10-1.06 1.06L13.109 3H11.16a3.75 3.75 0 00-2.873 1.34l-6.173 7.356A2.25 2.25 0 01.39 12.5H0V14h.391a3.75 3.75 0 002.873-1.34l6.173-7.356a2.25 2.25 0 011.724-.804h1.947l-1.017 1.018a.75.75 0 001.06 1.06L15.98 3.75 13.15.922zM.391 3.5H0V2h.391c1.109 0 2.16.49 2.873 1.34L4.89 5.277l-.979 1.167-1.796-2.14A2.25 2.25 0 00.39 3.5z"></path><path d="M7.5 10.723l.98-1.167.957 1.14a2.25 2.25 0 001.724.804h1.947l-1.017-1.018a.75.75 0 111.06-1.06l2.829 2.828-2.829 2.828a.75.75 0 11-1.06-1.06L13.109 13H11.16a3.75 3.75 0 01-2.873-1.34l-.787-.938z"></path></svg>
                         <FaBackward className="change-song btn" onClick={this.onBackward} />
-                        <button className="play btn" onClick={this.onTogglePlay}>
+                        <button className="play btn" onClick={this.props.togglePlay}>
                             {!props.isPlaying && <svg role="img" height="16" width="16" className='play-svg' viewBox="0 0 16 16" ><path d="M3 1.713a.7.7 0 011.05-.607l10.89 6.288a.7.7 0 010 1.212L4.05 14.894A.7.7 0 013 14.288V1.713z"></path></svg>}
                             {props.isPlaying && <svg role="img" height="16" width="16" className='pause-svg' viewBox="0 0 16 16" ><path d="M2.7 1a.7.7 0 00-.7.7v12.6a.7.7 0 00.7.7h2.6a.7.7 0 00.7-.7V1.7a.7.7 0 00-.7-.7H2.7zm8 0a.7.7 0 00-.7.7v12.6a.7.7 0 00.7.7h2.6a.7.7 0 00.7-.7V1.7a.7.7 0 00-.7-.7h-2.6z"></path></svg>}
                         </button>

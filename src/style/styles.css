@@ -432,6 +432,32 @@ input, select {
   margin-bottom: 40px;
 }
 
+.search .tag-container {
+  display: grid;
+  margin-top: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+}
+.search .tag-container .tag-preview {
+  width: 200px;
+  height: 200px;
+  padding: 10px;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+.search .tag-container .tag-preview img {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  -webkit-transform: rotate(25deg) translate(18%, 2%);
+  transform: rotate(25deg) translate(18%, 2%);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  object-fit: cover;
+  object-position: center center;
+  height: 80px;
+  width: 80px;
+}
 .search .search-bar {
   display: grid;
   gap: 30px;
@@ -590,26 +616,6 @@ input, select {
   padding: 20px;
 }
 
-.browse-display {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-.browse-preview {
-  width: 200px;
-  height: 200px;
-  display: flex;
-  background-color: #b3b3b3;
-  cursor: pointer;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 10px;
-}
-.browse-preview .h2 {
-  padding: 15px;
-}
-
 ::-webkit-scrollbar {
   width: 14px;
   height: 14px;
@@ -663,7 +669,7 @@ input, select {
   height: 14px;
   width: 14px;
   position: absolute;
-  right: -50px;
+  right: 20px;
 }
 .audio-player .song-preview {
   justify-content: center;

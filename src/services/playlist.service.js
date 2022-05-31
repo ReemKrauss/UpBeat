@@ -11,7 +11,8 @@ export const playlistService = {
     getById,
     save,
     makeDummy,
-    addSong
+    addSong,
+    getTags
 }
 
 window.ps = playlistService
@@ -41,7 +42,7 @@ async function addSong(song, playlist) {
 }
 
 async function getTags() {
-    return ['Rock', 'New Releases', 'israeli', 'Jazz', 'Decades', 'Musical']
+    return [{title:'Rock',color:'#80433b',imgUrl:'https://i.scdn.co/image/ab67706f00000002fe6d8d1019d5b302213e3730'}, {title:'New Releases',color:'#1bd57f',imgUrl:'https://i.scdn.co/image/ab67706f000000027ea4d505212b9de1f72c5112'}, {title:'israeli',color:'#779dc3',imgUrl:'https://mosaic.scdn.co/300/ab67616d00001e0201f29cb95808086322951517ab67616d00001e023dcb38a80ce06d4f188d9868ab67616d00001e0243e92a45bb479211b796bf82ab67616d00001e02508b835b5dd68662ec44646a'}, {title:'Jazz',color:'#8d67ab',imgUrl:'https://i.scdn.co/image/ab67706f00000002d72ef75e14ca6f60ea2364c2'}, {title:'Decades',color:'#e8115b',imgUrl:'https://t.scdn.co/images/b611cf5145764c64b80e91ccd5f357c8'}, {title:'Musical',color:'#eec1c9',imgUrl:'https://mosaic.scdn.co/300/ab67616d00001e02170e79548d280867ef12742bab67616d00001e027546d458746cb21b825055ecab67616d00001e02d72fb5571087bca0a2fed008ab67616d00001e02ddc54feece71dda4290d0579'}]
 }
 
 

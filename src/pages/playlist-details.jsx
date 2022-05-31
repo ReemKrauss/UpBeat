@@ -34,20 +34,6 @@ export const PlaylistDetails = (props) => {
         title: '',
         order: 'date'
     })
-
-    const getAvgColor = (url) => {
-        getAverageColor(url).then(rgb => {
-            console.log(rgb)
-            const color = `rgb(${rgb.r},${rgb.g}, ${rgb.b})`
-            setColorAvg(color)
-        })
-    }
-
-     const setColorAvg = (color) => {
-        let element = document.getClassById('playlist-header');
-        element.style.backgroundColor = color;
-        console.log('setcolor');
-    }
     
 
     useEffect(() => {
@@ -92,7 +78,6 @@ export const PlaylistDetails = (props) => {
 
     const onUploaded = (imgUrl) => {
         setEditData({ ...editData, imgUrl });
-        getAvgColor(imgUrl)
         console.log('hi')
     }
 
@@ -193,6 +178,5 @@ export const PlaylistDetails = (props) => {
             <h3>Let's find something for your playlist</h3>
             <SearchBar onAddFromPlaylist={onAddFromPlaylist} />
         </div>
-
     </section>
 }

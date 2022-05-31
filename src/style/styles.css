@@ -1085,7 +1085,7 @@ input, select {
   display: flex;
   justify-content: space-between;
   flex-direction: row-reverse;
-  position: sticky;
+  position: fixed;
   top: 0;
   box-shadow: 0px 0px 15px 15px #121212;
 }

@@ -202,6 +202,10 @@ input, select {
   justify-content: center;
   position: initial;
 }
+.playlist-details .song-preview .audio-svg {
+  width: 20px;
+  height: 20px;
+}
 .playlist-details .song-preview:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
@@ -213,6 +217,12 @@ input, select {
   font-size: 20px;
   position: relative;
   left: 1px;
+}
+.playlist-details .song-preview:hover > div > .audio-svg {
+  display: none;
+}
+.playlist-details .song-preview .green {
+  color: #1ed760;
 }
 .playlist-details .search-container {
   margin-top: 40px;

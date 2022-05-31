@@ -24,7 +24,7 @@
 
         .new-playlist-icon {
             font-size: rem(70px);
-            
+
         }
 
         h5:nth-child(1) {
@@ -69,48 +69,58 @@
     .song-preview {
         padding: 7px 10px;
         border-radius: 5px;
-        
-
-        
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        width: 100%;
 
 
-            img {
-                height: 40px;
-                width: 40px;
-                object-fit: cover;
-            }
+        img {
+            height: 40px;
+            width: 40px;
+            object-fit: cover;
+        }
 
-            h5{
-                color: $clr7;
-                
-                
-            }
+        h5 {
+            color: $clr7;
 
-            .play-container {
-                width: 20px;
-                justify-content: center;
-                position: initial;
-            }
-        
 
-        
+        }
+
+        .play-container {
+            width: 20px;
+            justify-content: center;
+            position: initial;
+        }
+
+        .audio-svg{
+            width: 20px;
+            height:20px;
+        }
+
+
+
         &:hover {
             background-color: rgba($color: #ffffff, $alpha: 0.1);
         }
 
-        &:hover  > div > h5 {
+        &:hover>div>h5 {
             display: none;
         }
 
-        &:hover > div > .play-btn {
+        &:hover>div>.play-btn {
             display: block;
-            font-size: 20px; 
+            font-size: 20px;
             position: relative;
             left: 1px;
+        }
+
+        &:hover>div>.audio-svg {
+            display: none;
+        }
+
+        .green{
+            color: $clr5;
         }
     }
 
@@ -150,22 +160,24 @@
         }
     }
 
-    .sorting-table{
+    .sorting-table {
         color: $clr7;
         padding-bottom: 10px;
         box-shadow: 0px 1px 0px 0px rgba($color: $clr3, $alpha: 0.2);
         margin-bottom: 20px;
-        .idx-label{
+
+        .idx-label {
             margin-left: 16px;
         }
-        .title-label{
+
+        .title-label {
             margin-left: 24px;
         }
-        .date-label{
 
-       }
-       .duration-label{
-           float: right;
-       }
+        .date-label {}
+
+        .duration-label {
+            float: right;
+        }
     }
 }

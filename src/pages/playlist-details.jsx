@@ -34,7 +34,6 @@ export const PlaylistDetails = (props) => {
         title: '',
         order: 'date'
     })
-
     
 
 

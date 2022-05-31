@@ -1,14 +1,20 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { Link, NavLink } from 'react-router-dom'
-
+import { useDispatch, useSelector } from "react-redux"
 import routes from '../routes'
-
-
-import { onLogin, onLogout, onSignup, loadUsers, removeUser } from '../store/user.actions.js'
+import { onLogin, onLogout, onSignup, loadUsers, removeUser } from '../store/actions/user.actions.js'
 import { LoginSignup } from './login-signup.jsx'
 
-function _AppHeader({ onLogin, onSignup, onLogout, user }) {
+export const AppHeader = () => {
+
+    const { user } = useSelector((storeState) => storeState.userModule)
+    const dispatch = useDispatch()
+
+    const onOnLogin = (credentials) => {
+        console.log(credentials, "hi")
+        dispatch(onLogin(credentials))
+    }
+
 
     return (
         <header className="header">
@@ -22,13 +28,13 @@ function _AppHeader({ onLogin, onSignup, onLogout, user }) {
                             {user.fullname}
                         </Link>
                         <span className="score">{user.score?.toLocaleString()}</span>
-                        <button onClick={onLogout}>Logout</button>
+                        <button onClick={() => { dispatch(onLogout()) }}>Logout</button>
                     </span>
                 }
 
                 {!user &&
                     <section className="user-info">
-                        <LoginSignup onLogin={onLogin} onSignup={onSignup} />
+                        <LoginSignup onLogin={onOnLogin} onSignup={() => { dispatch(onSignup()) }} />
                     </section>
                 }
 
@@ -37,23 +43,3 @@ function _AppHeader({ onLogin, onSignup, onLogout, user }) {
         </header>
     )
 }
-
-function mapStateToProps(state) {
-    return {
-        users: state.userModule.users,
-        user: state.userModule.user,
-        count: state.userModule.count,
-        // isLoading: state.systemModule.isLoading
-    }
-}
-const mapDispatchToProps = {
-    onLogin,
-    onSignup,
-    onLogout,
-    loadUsers,
-    removeUser
-}
-
-
-
-export const AppHeader = connect(mapStateToProps, mapDispatchToProps)(_AppHeader)

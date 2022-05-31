@@ -193,6 +193,5 @@ export const PlaylistDetails = (props) => {
             <h3>Let's find something for your playlist</h3>
             <SearchBar onAddFromPlaylist={onAddFromPlaylist} />
         </div>
-
     </section>
 }

@@ -69,10 +69,12 @@
     .song-preview {
         padding: 7px 10px;
         border-radius: 5px;
-        display: flex;
+        display: grid;
+        grid-template-columns: auto auto 2fr 1fr auto;
         align-items: center;
         gap: 20px;
         width: 100%;
+        color: $clr7;
 
 
         img {
@@ -83,8 +85,15 @@
 
         h5 {
             color: $clr7;
+        }
 
-
+        .song-title {
+            font-weight: 200;
+            color: $clr3;
+            min-width: 320px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
 
         .play-container {
@@ -93,15 +102,16 @@
             position: initial;
         }
 
-        .audio-svg{
-            width: 20px;
-            height:20px;
+        .audio-svg {
+            width: 15px;
+            height: 15px;
         }
 
 
 
         &:hover {
             background-color: rgba($color: #ffffff, $alpha: 0.1);
+            cursor: default;
         }
 
         &:hover>div>h5 {
@@ -113,13 +123,14 @@
             font-size: 20px;
             position: relative;
             left: 1px;
+            cursor: pointer;
         }
 
         &:hover>div>.audio-svg {
             display: none;
         }
 
-        .green{
+        .green {
             color: $clr5;
         }
     }
@@ -139,6 +150,8 @@
         }
 
         .song-preview {
+            display: grid;
+            grid-template-columns: auto auto 2fr auto auto;
             .add-button {
                 background-color: transparent;
                 color: $clr3;
@@ -147,6 +160,7 @@
                 padding: 7px 14px;
                 border: 1px solid $clr7;
                 border-radius: 50px;
+                
             }
 
             .add-button:hover {
@@ -162,22 +176,29 @@
 
     .sorting-table {
         color: $clr7;
-        padding-bottom: 10px;
+        padding: 0 10px 10px 16px;
         box-shadow: 0px 1px 0px 0px rgba($color: $clr3, $alpha: 0.2);
         margin-bottom: 20px;
+        display: grid;
+        grid-template-columns: auto 2fr 1fr auto;
+        align-items: center;
+        gap: 20px;
+        
 
-        .idx-label {
-            margin-left: 16px;
+        // .idx-label {
+        //     margin-left: 16px;
+        // }
+
+        // .title-label {
+        //     margin-left: 24px;
+        // }
+
+        .date-label {
+            margin-left:10px;
         }
 
-        .title-label {
-            margin-left: 24px;
-        }
-
-        .date-label {}
-
-        .duration-label {
-            float: right;
-        }
+        // .duration-label {
+        //     float: right;
+        // }
     }
 }

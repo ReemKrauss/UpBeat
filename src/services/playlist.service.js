@@ -11,7 +11,8 @@ export const playlistService = {
     getById,
     save,
     makeDummy,
-    addSong
+    addSong,
+    getTags
 }
 
 window.ps = playlistService

@@ -144,7 +144,14 @@ export const PlaylistDetails = (props) => {
         console.log('setcolor');
     }
 
+    const getPlaylistLength = () => {
+        if(playlist && playlist.songs.length) {
+           const totalDuration = playlist.songs.reduce((prevSong, currSong) =>  prevSong + currSong.duration.total, 0)
+           
+        }
+    }
 
+    getPlaylistLength()
     const songSection = (playlist) ? <div>
         <PlaylistFilter onChangeFilter={onChangeFilter} filterBy={filterBy} />
         {<button className="play-all-btn" onClick={onTogglePlay}>

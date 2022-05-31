@@ -80,9 +80,9 @@ function convertMsToTime(milliseconds) {
     // or `36:15:31` instead of `12:15:31`, etc.
     hours = hours % 24;
 
-    if (hours === 0) return minutes
-    if (minutes === 0 && hours === 0 ) return seconds
-    return hours
+    if (minutes === 0 && hours === 0 ) return 'just now'
+    if (hours === 0) return `${minutes} minutes ago`
+    return `${hours} hours ago`
   }
 
 

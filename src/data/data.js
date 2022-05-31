@@ -829,7 +829,7 @@ export const PLAYLIST_DATA = [
         "addedBy": "Guest"
       }
     ],
-    "tags": ["Decades"],
+    "tags": ["decades"],
     "createdAt": 1653812000626,
     "createdBy": {
       "_id": "u100",
@@ -844,7 +844,7 @@ export const PLAYLIST_DATA = [
     "name": "80's greatest hits",
     "description": "",
     "imgUrl": "https://res.cloudinary.com/dc3nhq1gd/image/upload/v1653812458/cvzogsyyp5wjgmcs1kyq.jpg",
-    "tags": ["Decades"],
+    "tags": ["decades"],
     "createdAt": 1653812474166,
     "createdBy": {
       "_id": "u100",
@@ -860,7 +860,7 @@ export const PLAYLIST_DATA = [
     "name": "Super Hits of the 70's",
     "description": "",
     "imgUrl": "https://res.cloudinary.com/dc3nhq1gd/image/upload/v1653812605/mxoyivaia0suwgkfxtdx.jpg",
-    "tags": ["Decades"],
+    "tags": ["decades"],
     "createdAt": 1653812622987,
     "createdBy": {
       "_id": "u100",
@@ -877,7 +877,7 @@ export const PLAYLIST_DATA = [
     "name": "The Roaring 20's",
     "description": "",
     "imgUrl": "https://res.cloudinary.com/dc3nhq1gd/image/upload/v1653812717/hqlxplp1qovzflelwfpp.jpg",
-    "tags": ["Decades"],
+    "tags": ["decades"],
     "createdAt": 1653812737560,
     "createdBy": {
       "_id": "u100",
@@ -893,7 +893,7 @@ export const PLAYLIST_DATA = [
     "name": "60's Greatest Hits",
     "description": "",
     "imgUrl": "https://res.cloudinary.com/dc3nhq1gd/image/upload/v1653813064/ads4mt0egz6hxsfobu58.jpg",
-    "tags": ["Decades"],
+    "tags": ["decades"],
     "createdAt": 1653813084910,
     "createdBy": {
       "_id": "u100",
@@ -1098,57 +1098,5 @@ export const PLAYLIST_DATA = [
   },
   "songs": [],
   "_id": "RYPbgdds"
-},
-{
-  "name": "test2",
-  "description": "",
-  "imgUrl": "https://res.cloudinary.com/dc3nhq1gd/image/upload/v1653813243/bksznoyrdermbrn6sr6a.jpg",
-  "tags": ["Israeli"],
-  "createdAt": 1653813251349,
-  "createdBy": {
-      "_id": "u100",
-      "fullname": "Roe kafri"
-  },
-  "songs": [],
-  "_id": "RYPasdbgdds"
-},
-{
-  "name": "test12",
-  "description": "",
-  "imgUrl": "https://res.cloudinary.com/dc3nhq1gd/image/upload/v1653813243/bksznoyrdermbrn6sr6a.jpg",
-  "tags": ["Israeli"],
-  "createdAt": 1653813251349,
-  "createdBy": {
-      "_id": "u100",
-      "fullname": "Roe kafri"
-  },
-  "songs": [],
-  "_id": "RYPaergaerbgdds"
-},
-{
-  "name": "test123213",
-  "description": "",
-  "imgUrl": "https://res.cloudinary.com/dc3nhq1gd/image/upload/v1653813243/bksznoyrdermbrn6sr6a.jpg",
-  "tags": ["Israeli"],
-  "createdAt": 1653813251349,
-  "createdBy": {
-      "_id": "u100",
-      "fullname": "Roe kafri"
-  },
-  "songs": [],
-  "_id": "RYPbaergaergreagreagreadds"
-},
-{
-  "name": "t123est123213",
-  "description": "",
-  "imgUrl": "https://res.cloudinary.com/dc3nhq1gd/image/upload/v1653813243/bksznoyrdermbrn6sr6a.jpg",
-  "tags": ["Israeli"],
-  "createdAt": 1653813251349,
-  "createdBy": {
-      "_id": "u100",
-      "fullname": "Roe kafri"
-  },
-  "songs": [],
-  "_id": "RYPbaeraerggaergreagreagreadds"
 }
 ]

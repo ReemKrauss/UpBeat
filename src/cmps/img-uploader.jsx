@@ -1,5 +1,6 @@
 import { Component } from 'react'
 import { uploadService } from '../services/upload.service'
+import tailSpin from "../assets/img/tail-spin.svg"
 export class ImgUploader extends Component {
   state = {
     imgUrl: null,
@@ -22,11 +23,11 @@ export class ImgUploader extends Component {
 
 
   render() {
-    const { imgUrl} = this.state
+    const { imgUrl, isUploading} = this.state
 
     return (
       <div className="upload-preview"  >
-        <label htmlFor="imgUpload">{this.props.display}</label>
+        <label htmlFor="imgUpload">{isUploading && <img className = "tailspin" src={tailSpin} alt='cant load' /> || this.props.display}</label>
         <input type="file" onChange={ this.uploadImg } accept="img/*" id="imgUpload" className='hidden' />
       </div>
     )

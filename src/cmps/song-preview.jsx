@@ -11,6 +11,7 @@ export const SongPreview = ({ song, onAddFromPlaylist, onSetMiniPlaylist, player
     const dispatch = useDispatch()
 
     const getTime = () => {
+        if(!song.addedAt)return''
         const datecurr = new Date()
         const songDate = new Date(song.addedAt * 1000)
         const oneDay = 1000 * 60 * 60 * 24
@@ -40,7 +41,7 @@ export const SongPreview = ({ song, onAddFromPlaylist, onSetMiniPlaylist, player
 
 
     return <section className="song-preview flex">
-        <div className="song-container flex">
+        
             <div className='play-container flex'>
                 {!isCurrPlaying && <h5>{song.idx + 1}</h5>}
                 {isCurrPlaying && !isPlaying && <h5 className="green">{song.idx + 1}</h5>}
@@ -54,6 +55,6 @@ export const SongPreview = ({ song, onAddFromPlaylist, onSetMiniPlaylist, player
             {getTime()}
             <span className='song-duration'>{song.duration.display}</span>
             {onAddFromPlaylist && <button className="add-button" onClick={() => onAddFromPlaylist(song)}>Add</button>}
-        </div>
+        
     </section>
 }

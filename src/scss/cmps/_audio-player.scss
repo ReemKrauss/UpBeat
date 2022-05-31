@@ -36,7 +36,6 @@
 
             &:hover {
                 color: $clr5;
-                filter: invert(62%) sepia(94%) saturate(616%) hue-rotate(84deg) brightness(96%) contrast(83%)
             }
         }
     }
@@ -149,7 +148,7 @@
 
     .true {
         color: darken($clr5, 8%);
-             // filter: invert(57%) sepia(67%) saturate(2816%) hue-rotate(101deg) brightness(93%) contrast(80%);
+        // filter: invert(57%) sepia(67%) saturate(2816%) hue-rotate(101deg) brightness(93%) contrast(80%);
 
         &:hover {
             color: $clr5;
@@ -320,7 +319,7 @@
                 }
             }
         }
-             
+
         .player-controlers {
             position: absolute;
             width: 100%;
@@ -329,8 +328,9 @@
                 width: 36%;
 
             }
-            .true:hover{
-                color:  darken($clr5, 8%);
+
+            .true:hover {
+                color: darken($clr5, 8%);
             }
 
 

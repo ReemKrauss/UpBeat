@@ -1,0 +1,23 @@
+.browse-display{
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+}
+
+.browse-preview{
+    // flex-basis: 100%;
+    // max-width: 25%;
+    // min-width: 200px;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    background-color: $clr7;
+    cursor: pointer;
+
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+   .h2{
+       padding: 15px;
+   }
+}

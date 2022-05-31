@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom'
 import routes from './routes.js'
 import { NavBar } from './cmps/nav-bar.jsx'
 import { AudioPlayer } from './cmps/audio-player.jsx'
-import { Header } from './cmps/header.jsx'
+import { AppHeader } from './cmps/header.jsx'
 import { Hero } from './pages/hero.jsx'
 import { sessionService } from './services/session.service';
 import { useState } from 'react';
@@ -32,7 +32,7 @@ export const App = () => {
       <div className="app-container">
         <NavBar />
         <div className="content">
-          <Header />
+          <AppHeader />
           <Switch>
             {routes.map(route => <Route key={route.path} exact component={route.component} path={route.path} />)}
           </Switch>

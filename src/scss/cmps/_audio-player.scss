@@ -27,6 +27,7 @@
         width: 260px;
         justify-content: space-between;
         align-items: center;
+        position: relative;
 
         .like-btn {
             // position: relative;
@@ -37,6 +38,13 @@
             &:hover {
                 color: $clr5;
             }
+        }
+
+        .audio-svg {
+            height: 14px;
+            width: 14px;
+            position: absolute;
+            right: -50px;
         }
     }
 

@@ -46,7 +46,7 @@ function put(entityType, updatedEntity) {
       .then(entities => {
           const idx = entities.findIndex(entity => entity._id === updatedEntity._id)
           entities.splice(idx, 1, {...entities[idx], ...updatedEntity})
-          console.log(entities[idx])
+
           _save(entityType, entities)
           return entities[idx]
       })
@@ -63,7 +63,6 @@ function remove(entityType, entityId) {
 
 
 function _save(entityType, entities) {
-  // console.log('entityType FROM SAVE!', entityType)
   localStorage.setItem(entityType, JSON.stringify(entities))
 }
 

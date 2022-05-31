@@ -1,6 +1,14 @@
 .search {
     .search-bar {
+        display: grid;
+        gap: 30px;
+        grid-template-columns: minmax(350px, auto) 1fr;
+
+
         input {
+            z-index: 10;
+            position: fixed;
+            top: 11px;
             background-color: $clr3;
             color: $clr1;
             height: 40px;
@@ -10,48 +18,137 @@
             margin-bottom: 40px;
         }
 
-        .song-preview {
-            padding: 7px 10px;
-            border-radius: 5px;
-            
-    
-            div {
-                display: flex;
+        .top-result {
+            max-width: 450px;
+            display: grid;
+            grid-template-rows: (auto) 1fr;
+
+            .song-preview {
+                display: block;
+                padding: 20px;
+                background-color: rgba($color: #ffffff, $alpha: 0.03);
+                height: auto;
+                border-radius: 10px;
+                position: relative;
+                overflow: hidden;
+
+                .song-title {
+                    width: 100%;
+                    font-size: 2rem;
+                    line-height: 2.25rem;
+                    text-transform: none;
+                    letter-spacing: -0.04em;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    margin: 0;
+                }
+
+                .play-container {
+                    display: block;
+                    position: absolute;
+                    bottom: 20px;
+                    right: 20px;
+
+                    h5 {
+                        display: none;
+                    }
+
+
+
+                    .play-btn {
+                        display: none;
+                        box-sizing: content-box;
+                        padding: 8px;
+                        height: 23px;
+                        width: 23px;
+                        background-color: $clr5;
+                        color: $clr2;
+                        border-radius: 50%;
+                        cursor: pointer;
+
+                        path {
+                            transform: translate(1px);
+                        }
+                    }
+
+                }
+
+                img {
+                    height: 92px;
+                    width: 92px;
+                    object-fit: cover;
+                    border-radius: 5px;
+                    margin-bottom: 30px;
+                }
+
+                &:hover {
+                    .play-btn {
+                        display: block;
+                    }
+                }
+            }
+        }
+
+        .songs {
+            color: $clr3;
+            // flex-grow: 1;
+
+            .song-preview {
+                padding: 7px 10px;
+                border-radius: 5px;
+                display: grid;
+                grid-template-columns: auto auto 1fr auto;
                 align-items: center;
                 gap: 20px;
-    
+
                 img {
                     height: 40px;
                     width: 40px;
                     object-fit: cover;
                 }
-    
-                h5{
+
+                h5 {
                     color: $clr7;
-                    
-                    
+
+
                 }
-    
+
+                .song-title {
+
+                    min-width: 320px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+
+                .song-duration {
+                    // justify-content: flex-end;
+                    margin-left: auto;
+                    color: $clr7;
+                }
+
                 .play-container {
                     width: 20px;
                     justify-content: center;
                     position: initial;
                 }
-            }
 
-            &:hover {
-                background-color: rgba($color: #ffffff, $alpha: 0.1);
-            }
-    
-            &:hover > div > div > h5 {
-                display: none;
-            }
-    
-            &:hover > div > div > .play-btn {
-                display: block;
-                font-size: 20px; 
-                position: relative;
-                left: 1px;
+
+                &:hover {
+                    background-color: rgba($color: #ffffff, $alpha: 0.1);
+                }
+
+                &:hover>div>h5 {
+                    display: none;
+                }
+
+                &:hover>div>.play-btn {
+                    display: block;
+                    font-size: 20px;
+                    position: relative;
+                    left: 1px;
+                }
             }
         }
     }

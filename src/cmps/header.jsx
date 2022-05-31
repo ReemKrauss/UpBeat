@@ -11,7 +11,7 @@ import { LoginSignup } from './login-signup.jsx'
 function _AppHeader({ onLogin, onSignup, onLogout, user }) {
 
     return (
-        <header className="app-header">
+        <header className="header">
             <nav>
                 {routes.map(route => <NavLink key={route.path} to={route.path}>{route.label}</NavLink>)}
 
@@ -34,7 +34,6 @@ function _AppHeader({ onLogin, onSignup, onLogout, user }) {
 
             </nav>
 
-            <h1>My App</h1>
         </header>
     )
 }

@@ -51,10 +51,12 @@
         border-radius: 5px;
         
 
-        div {
+        
             display: flex;
             align-items: center;
             gap: 20px;
+            width: 100%;
+
 
             img {
                 height: 40px;
@@ -73,18 +75,18 @@
                 justify-content: center;
                 position: initial;
             }
-        }
+        
 
         
         &:hover {
             background-color: rgba($color: #ffffff, $alpha: 0.1);
         }
 
-        &:hover > div > div > h5 {
+        &:hover  > div > h5 {
             display: none;
         }
 
-        &:hover > div > div > .play-btn {
+        &:hover > div > .play-btn {
             display: block;
             font-size: 20px; 
             position: relative;

@@ -16,9 +16,11 @@ export const Home = (props) => {
         const musical = await playlistService.query({ tags: 'Musical' })
         const newReleases = await playlistService.query({ tags: 'New Releases' })
         const israeli = await playlistService.query({ tags: 'Israeli' })
-        const decades = await playlistService.query({ tags: 'decades' })
+        const decades = await playlistService.query({ tags: 'Decades' })
         setPlaylists({ rock, jazz, musical, newReleases, israeli, decades })
     }
+
+    
 
     return <section className="home main-layout">
         {/* <h1>Good Morning</h1> */}

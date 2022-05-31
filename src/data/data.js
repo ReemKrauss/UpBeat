@@ -87,7 +87,7 @@ export const PLAYLIST_DATA = [
       },
       {
         "id": "Cv9NSR-2DwM",
-        "title": "Art Blakey &amp; the Jazz Messengers - Moanin&#39;",
+        "title": "Art Blakey &amp; the Jazz Messengers - Moanin'",
         "imgUrl": "https://i.ytimg.com/vi/Cv9NSR-2DwM/hqdefault.jpg",
         "duration": {
           "total": 582,
@@ -315,7 +315,7 @@ export const PLAYLIST_DATA = [
       },
       {
         "id": "5lTwmK__TDo",
-        "title": "&#39;Heaven on Their Minds&#39; Tim Minchin | Jesus Christ Superstar",
+        "title": "'Heaven on Their Minds' Tim Minchin | Jesus Christ Superstar",
         "imgUrl": "https://i.ytimg.com/vi/5lTwmK__TDo/hqdefault.jpg",
         "duration": {
           "total": 325,
@@ -366,7 +366,7 @@ export const PLAYLIST_DATA = [
       },
       {
         "id": "cPAbx5kgCJo",
-        "title": "Auli&#39;i Cravalho - How Far I&#39;ll Go (from Moana/Official Video)",
+        "title": "Auli'i Cravalho - How Far I'll Go (from Moana/Official Video)",
         "imgUrl": "https://i.ytimg.com/vi/cPAbx5kgCJo/hqdefault.jpg",
         "duration": {
           "total": 156,
@@ -396,7 +396,7 @@ export const PLAYLIST_DATA = [
       },
       {
         "id": "TVcLIfSC4OE",
-        "title": "Mulan | I&#39;ll Make A Man Out Of You | Disney Sing-Along",
+        "title": "Mulan | I'll Make A Man Out Of You | Disney Sing-Along",
         "imgUrl": "https://i.ytimg.com/vi/TVcLIfSC4OE/hqdefault.jpg",
         "duration": {
           "total": 203,
@@ -760,7 +760,7 @@ export const PLAYLIST_DATA = [
     "songs": [
       {
         "id": "fPO76Jlnz6c",
-        "title": "Coolio - Gangsta&#39;s Paradise (feat. L.V.) [Official Music Video]",
+        "title": "Coolio - Gangsta's Paradise (feat. L.V.) [Official Music Video]",
         "imgUrl": "https://i.ytimg.com/vi/fPO76Jlnz6c/hqdefault.jpg",
         "duration": {
           "total": 257,
@@ -818,7 +818,7 @@ export const PLAYLIST_DATA = [
       },
       {
         "id": "6M6samPEMpM",
-        "title": "Backstreet Boys - Everybody (Backstreet&#39;s Back) (Official HD Video)",
+        "title": "Backstreet Boys - Everybody (Backstreet's Back) (Official HD Video)",
         "imgUrl": "https://i.ytimg.com/vi/6M6samPEMpM/hqdefault.jpg",
         "duration": {
           "total": 363,
@@ -919,7 +919,7 @@ export const PLAYLIST_DATA = [
         },
         {
             "id": "-BR3ziVDazM",
-            "title": "איך אפשר שלא - ג&#39;יין בורדו",
+            "title": "איך אפשר שלא - ג'יין בורדו",
             "imgUrl": "https://i.ytimg.com/vi/-BR3ziVDazM/hqdefault.jpg",
             "duration": {
                 "total": 247,
@@ -931,7 +931,7 @@ export const PLAYLIST_DATA = [
         },
         {
             "id": "OF-ThxuT9O0",
-            "title": "עינב - ג&#39;יין בורדו",
+            "title": "עינב - ג'יין בורדו",
             "imgUrl": "https://i.ytimg.com/vi/OF-ThxuT9O0/hqdefault.jpg",
             "duration": {
                 "total": 242,
@@ -1085,5 +1085,18 @@ export const PLAYLIST_DATA = [
     },
     "songs": [],
     "_id": "RYPNo"
+},
+{
+  "name": "test",
+  "description": "",
+  "imgUrl": "https://res.cloudinary.com/dc3nhq1gd/image/upload/v1653813243/bksznoyrdermbrn6sr6a.jpg",
+  "tags": ["Israeli"],
+  "createdAt": 1653813251349,
+  "createdBy": {
+      "_id": "u100",
+      "fullname": "Roe kafri"
+  },
+  "songs": [],
+  "_id": "RYPbgdds"
 }
 ]

@@ -1,43 +1,54 @@
-import React from 'react'
+import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux"
 import routes from '../routes'
 import { onLogin, onLogout, onSignup, loadUsers, removeUser } from '../store/actions/user.actions.js'
 import { LoginSignup } from './login-signup.jsx'
 import { red } from '@material-ui/core/colors'
+import { useEffectUpdate } from '../hooks/useEffectUpdate'
 
 export const AppHeader = () => {
-
-    const { user } = useSelector((storeState) => storeState.userModule)
     const dispatch = useDispatch()
 
-    const onOnLogin = (credentials) => {
-        console.log(credentials, "hi")
-        dispatch(onLogin(credentials))
+    const { user } = useSelector((storeState) => storeState.userModule)
+    const [isInSignup, setIsInSignup] = useState(false)
+
+    useEffectUpdate(()=>{
+        toggleIsInSignup(false)
+    },[user._id])
+
+    const toggleIsInSignup = (val) => {
+        setIsInSignup(val)
     }
-
-
+    const onOnLogin =(credentials) => {
+        console.log(credentials, "hi")
+          dispatch(onLogin(credentials))
+       
+    }
 
     return (
         <header className="header">
-            <nav>
-                {routes.map(route => <NavLink key={route.path} to={route.path}>{route.label}</NavLink>)}
-                <div className='user-container'>
-                    {user &&
-                        <div className="user-info">
-                                {user.imgUrl && <img src={user.imgUrl} />}
-                                <div className='user-full-name'>{user.fullname}</div>
-                            <button onClick={() => { dispatch(onLogout()) }}>Logout</button>
-                        </div>
-                    }
 
-                    {!user &&
-                        <section className="user-info">
-                            <LoginSignup onLogin={onOnLogin} onSignup={() => { dispatch(onSignup()) }} />
-                        </section>
-                    }
+
+            {user._id &&
+                <div className="user-info">
+                    {user.imgUrl && <img src={user.imgUrl} />}
+                    <div className='user-full-name'>{user.fullname}</div>
+                    <button onClick={() => { dispatch(onLogout()) }}>Logout</button>
                 </div>
-            </nav>
+            }
+
+            {!user._id &&
+                <div className="user-info">
+                    {user.imgUrl && <img src={user.imgUrl} />}
+                    <div className='user-full-name'>{user.fullname}</div>
+                    <div className='open-login-btn' onClick={()=>toggleIsInSignup(true)}>Log in</div>
+                </div>
+            }
+            {isInSignup&&
+                <LoginSignup toggleIsInSignup={toggleIsInSignup} onLogin={onOnLogin} onSignup={() => { dispatch(onSignup()) }} />
+
+            }
 
         </header>
     )

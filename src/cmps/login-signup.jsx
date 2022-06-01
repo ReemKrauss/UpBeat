@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { userService } from '../services/user.service'
 import { ImgUploader } from '../cmps/img-uploader'
+import { GrClose } from 'react-icons/gr'
 
 export function LoginSignup(props) {
     const [credentials, setCredentials] = useState({ username: '', password: '', fullname: '' })
@@ -14,7 +15,7 @@ export function LoginSignup(props) {
     const handleChange = ev => {
         const field = ev.target.name;
         const value = ev.target.value;
-        console.log('handle',field,value)
+        console.log('handle', field, value)
         setCredentials({ ...credentials, [field]: value });
     }
 
@@ -45,67 +46,65 @@ export function LoginSignup(props) {
 
     return (
 
-        <div className="login-page">
-            <div className='bg-blur'>
-                {!isSignup && <form className="login-form" onSubmit={onLogin}>
-                    <input
-                        autoComplete="off"
-                        type="text"
-                        name="username"
-                        value={credentials.username}
-                        placeholder="Username"
-                        // onChange={(e) => setUser(e.target.value)}
-                        onChange={handleChange}
-                        required
-                        autoFocus
-                    />
-                    <input
-                        type="password"
-                        name="password"
-                        value={credentials.password}
-                        placeholder="Password"
-                        // onChange={(e) => setPwd(e.target.value)}
-                        onChange={handleChange}
-                        required
-                    />
-                    <button>Login!</button>
-                </form>
+        <div className="login-signup">
+        <GrClose className='close-btn' onClick={()=>props.toggleIsInSignup(false)}/>
+            {!isSignup && <form className="login-form" onSubmit={onLogin}>
+                <h1>Log In to continue</h1>
+                <input
+                    autoComplete="off"
+                    type="text"
+                    name="username"
+                    value={credentials.username}
+                    placeholder="Username"
+                    onChange={handleChange}
+                    required
+                    autoFocus
+                />
+                <input
+                    type="password"
+                    name="password"
+                    value={credentials.password}
+                    placeholder="Password"
+                    onChange={handleChange}
+                    required
+                />
+                <button>Log in</button>
+            </form>
+            }
+            {isSignup && <form className="signup-form" onSubmit={onSignup}>
+            <h1>Sign up to UpBeat</h1>
 
-                }
-                <p>
-                    <button className="btn-link" onClick={toggleSignup}>{!isSignup ? 'Signup' : 'Login'}</button>
-                </p>
-                <div className="signup-section">
-                    {isSignup && <form className="signup-form" onSubmit={onSignup}>
-                        <input
-                            type="text"
-                            name="fullname"
-                            value={credentials.fullname}
-                            placeholder="Fullname"
-                            onChange={handleChange}
-                            required
-                        />
-                        <input
-                            type="text"
-                            name="username"
-                            value={credentials.username}
-                            placeholder="Username"
-                            onChange={handleChange}
-                            required
-                        />
-                        <input
-                            type="password"
-                            name="password"
-                            value={credentials.password}
-                            placeholder="Password"
-                            onChange={handleChange}
-                            required
-                        />
-                        <ImgUploader onUploaded={onUploaded} />
-                        <button >Signup!</button>
-                    </form>}
-                </div>
-            </div>
-        </div>
+                <input
+                    type="text"
+                    name="fullname"
+                    value={credentials.fullname}
+                    placeholder="Fullname"
+                    onChange={handleChange}
+                    required
+                />
+                <input
+                    type="text"
+                    name="username"
+                    value={credentials.username}
+                    placeholder="Username"
+                    onChange={handleChange}
+                    required
+                />
+                <input
+                    type="password"
+                    name="password"
+                    value={credentials.password}
+                    placeholder="Password"
+                    onChange={handleChange}
+                    required
+                />
+                {credentials.imgUrl&&<img src={credentials.imgUrl}></img>}
+                <ImgUploader display={'Upload profile picture'} onUploaded={onUploaded} />
+                <button >Sign up</button>
+            </form>
+            }
+            <p className='splitter'>OR</p>
+            <button className="btn-link" onClick={toggleSignup}>{!isSignup ? 'Sign up' : 'Log in'}</button>
+        </div >
     )
 }

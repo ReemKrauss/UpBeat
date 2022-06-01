@@ -1,85 +1,106 @@
-.user-info{
+.login-signup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 450px;
+  background: $clr6;
+  border-radius: 10px;
   text-align: center;
-    z-index: 15;
+  padding: 40px;
+  box-shadow: 0 0 7px hsl(0deg 0% 68% / 24%);
+
+  .close-btn{
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    cursor: pointer;
+    path{
+      color: $clr3;
+      stroke: currentcolor ; 
+    }
+  }
+
+  button {
+    margin-bottom: 20px;
     color: $clr3;
+    width: 80%;
+    height: 2.8125rem;
+    border-radius: 200px;
+    background-color: $clr5;
+    font-size: 1.25rem;
+    text-transform: capitalize;
+    border: none;
+    cursor: pointer;
+
+  }
+
+  .splitter {
     position: relative;
-    top: 0px;
-    right: 20px;
+    margin-bottom: 20px;
+
+    &:before,
+    &:after {
+      content: '';
+      background: $clr3;
+      top: 50%;
+      left: 0;
+      right: 60%;
+      height: 1px;
+      position: absolute;
+
+    }
+
+    &:after {
+
+      left: 60%;
+      right: 0;
+
+    }
+  }
+
+  input {
+    border-radius: 0.4375rem;
+    width: 90%;
+    height: inherit;
+    background-color: #3a3a3a;
+    border: none;
+    outline: none;
+    padding: 0 10px;
+    height: 35px;
+  }
+
+  .login-form {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    row-gap: 10px;
-    
-    a{
-      margin-left: 30px;
-      display:flex;
-      flex-direction: row;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+
+    img {
+      height: 100px;
+      width: 100px;
+    }
+
+    .upload-preview {
+      color: $clr2;
+      width: 60%;
+      height: 2rem;
+      border-radius: 1.25rem;
+      background-color: $clr3;
+      display: flex;
+      justify-content: center;
       align-items: center;
-    
-    }
-
-    .user-full-name{
-display: flex;
-flex-wrap: nowrap;
-float: left;
- white-space: nowrap;
-    }
-
-
-    .login-form{
-      button {
-        width: 100%;
-        background-color: $clr2;
-        color: $clr3;
-        border-radius: 30px;
-        padding: 14px 20px;
-        margin: 8px 0;
-        border: none;
+      cursor: pointer;
+      label{
         cursor: pointer;
       }
     }
-
-    img{
-      border-radius: 50%;
-      height: 40px;
-    }
-
-    input, select {
-        width: 100%;
-        padding: 12px 20px;
-        margin: 8px 0;
-        display: inline-block;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-      }
-      
-      button {
-        width: 100%;
-        background-color: black;
-        color: white;
-        border-radius: 30px;
-        padding: 14px 20px;
-        margin: 8px 0;
-        border: none;
-        cursor: pointer;
-      }
-      
-      button:hover {
-        background-color: #45a049;
-      }
-      
-      div {
-        border-radius: 5px;
-        background-color: $clr1;
-        padding: 20px;
-      }
+  }
 }
-
-// .bg-blur{
-//     filter: blur(8px);
-//     background-color: red;
-//     position: absolute;
-//     height: 200%;
-//     width: 200%;
-// }

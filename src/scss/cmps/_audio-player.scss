@@ -80,6 +80,7 @@
             .song-txt {
                 animation: long-txt 14s;
                 animation-iteration-count: infinite;
+                display: inline-block;
             }
         }
 
@@ -89,7 +90,7 @@
             }
 
             50% {
-                transform: translate(-135%, 0);
+                transform: translate(-101%, 0);
             }
 
             100% {
@@ -334,7 +335,8 @@
             width: 100%;
 
             .player-btns {
-                width: 36%;
+                width: 220px;
+
 
             }
 
@@ -373,3 +375,4 @@
 
     }
 }
+

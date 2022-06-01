@@ -5,21 +5,6 @@ import { ImgUploader } from '../cmps/img-uploader'
 export function LoginSignup(props) {
     const [credentials, setCredentials] = useState({ username: '', password: '', fullname: '' })
     const [isSignup, setIsSignup] = useState(false)
-    const [users, setUsers] = useState([])
-    const [user, setUser] = useState('');
-    const [pwd, setPwd] = useState('');
-
-    useEffect(() => {
-        loadUser()
-    }, [])
-
-    const loadUser = async () => {
-        const user = await userService.getLoggedinUser()
-        // catcherror
-        if(!user) return
-        setUsers(user)
-    }
-
 
     const clearState = () => {
         setCredentials({ username: '', password: '', fullname: '', imgUrl: '' })

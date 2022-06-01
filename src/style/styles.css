@@ -299,6 +299,7 @@ input, select {
   margin-left: 0px;
 }
 .hero {
+  filter: drop-shadow(0px 0px 1px);
   z-index: 20;
   display: flex;
   position: absolute;
@@ -311,12 +312,15 @@ input, select {
   top: 0%;
 }
 .hero h1 {
+  margin: 5px;
   font-size: 17vh;
 }
 .hero h3 {
+  margin: 5px;
   font-size: 5vh;
 }
 .hero p {
+  margin: 5px;
   font-size: 3vh;
 }
 .hero .hero-txt-container {
@@ -330,6 +334,7 @@ input, select {
   z-index: 5;
 }
 .hero button {
+  margin: 20px;
   cursor: pointer;
   align-self: center;
   background-color: #1ed760;
@@ -473,6 +478,9 @@ input, select {
   margin-bottom: 40px;
 }
 
+.search {
+  margin-bottom: 130px;
+}
 .search .tag-container {
   display: grid;
   margin-top: 15px;
@@ -480,6 +488,7 @@ input, select {
   gap: 30px;
 }
 .search .tag-container .tag-preview {
+  justify-self: center;
   width: 200px;
   height: 200px;
   padding: 10px;
@@ -766,13 +775,14 @@ input, select {
 .audio-player .song-preview:hover .song-txt {
   animation: long-txt 14s;
   animation-iteration-count: infinite;
+  display: inline-block;
 }
 @keyframes long-txt {
   0% {
     transform: translate(0, 0);
   }
   50% {
-    transform: translate(-135%, 0);
+    transform: translate(-101%, 0);
   }
   100% {
     transform: translate(0, 0);
@@ -989,7 +999,7 @@ input, select {
     width: 100%;
   }
   .audio-player .player-controlers .player-btns {
-    width: 36%;
+    width: 220px;
   }
   .audio-player .player-controlers .true:hover {
     color: #19b350;

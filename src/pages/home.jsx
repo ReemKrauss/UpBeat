@@ -15,9 +15,9 @@ export const Home = (props) => {
         const jazz = await playlistService.query({ tags: 'Jazz' })
         const musical = await playlistService.query({ tags: 'Musical' })
         const newReleases = await playlistService.query({ tags: 'New Releases' })
-        const israeli = await playlistService.query({ tags: 'Israeli' })
+        const Israeli = await playlistService.query({ tags: 'Israeli' })
         const decades = await playlistService.query({ tags: 'Decades' })
-        setPlaylists({ rock, jazz, musical, newReleases, israeli, decades })
+        setPlaylists({ rock, jazz, musical, newReleases, Israeli, decades })
     }
 
     
@@ -38,7 +38,7 @@ export const Home = (props) => {
         </div>}
         {playlists && <div className='playlists-container'>
             <h2>Israeli</h2>
-            <PlaylistList playlists={playlists.israeli} />
+            <PlaylistList playlists={playlists.Israeli} />
         </div>}
         {playlists && <div className='playlists-container'>
             <h2>Decades</h2>

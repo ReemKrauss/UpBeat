@@ -1,10 +1,48 @@
 .user-info{
-    box-shadow: 0px 0px 5px 3px rgba($color: $clr3, $alpha: 0.1);    
+  text-align: center;
     z-index: 15;
     color: $clr3;
     position: relative;
     top: 0px;
     right: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    row-gap: 10px;
+    
+    a{
+      margin-left: 30px;
+      display:flex;
+      flex-direction: row;
+      align-items: center;
+    
+    }
+
+    .user-full-name{
+display: flex;
+flex-wrap: nowrap;
+float: left;
+ white-space: nowrap;
+    }
+
+
+    .login-form{
+      button {
+        width: 100%;
+        background-color: $clr2;
+        color: $clr3;
+        border-radius: 30px;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+      }
+    }
+
+    img{
+      border-radius: 50%;
+      height: 40px;
+    }
 
     input, select {
         width: 100%;
@@ -18,12 +56,12 @@
       
       button {
         width: 100%;
-        background-color: #4CAF50;
+        background-color: black;
         color: white;
+        border-radius: 30px;
         padding: 14px 20px;
         margin: 8px 0;
         border: none;
-        border-radius: 4px;
         cursor: pointer;
       }
       

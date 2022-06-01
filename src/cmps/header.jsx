@@ -23,10 +23,8 @@ export const AppHeader = () => {
                 <div className='user-container'>
                     {user &&
                         <span className="user-info">
-                            <Link to={`user/${user._id}`}>
                                 {user.imgUrl && <img src={user.imgUrl} />}
                                 <div className='user-full-name'>{user.fullname}</div>
-                            </Link>
                             {/* <span className="score">{user.score?.toLocaleString()}</span> */}
                             <button onClick={() => { dispatch(onLogout()) }}>Logout</button>
                         </span>

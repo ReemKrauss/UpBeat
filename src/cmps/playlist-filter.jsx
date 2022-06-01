@@ -13,8 +13,8 @@ export const PlaylistFilter = React.memo(({onChangeFilter, filterBy}) => {
     return (
         <section {...sectionProps}>
             <div className="filter-container flex">
-                <label htmlFor="toggle"><FiSearch className="search-label" /></label>
                 <input className="hidden" type="checkbox" id="toggle" />
+                <label htmlFor="toggle"><FiSearch className="search-label" /></label>
                 <input autoFocus={true} className="filter-name hidden" {...register('title')} />
             </div>
             <div>

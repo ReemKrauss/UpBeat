@@ -27,6 +27,10 @@
   display: none;
 }
 
+.relative {
+  position: relative;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -132,6 +136,7 @@ input, select {
   background: linear-gradient(transparent 0, rgba(0, 0, 0, 0.5) 100%);
   padding: 30px;
   margin-bottom: 40px;
+  position: relative;
 }
 .playlist-details .playlist-header .img-container {
   height: 233px;
@@ -161,6 +166,16 @@ input, select {
 }
 .playlist-details .playlist-header div {
   justify-content: flex-end;
+}
+.playlist-details .playlist-header:after {
+  content: "";
+  height: 300px;
+  background: linear-gradient(180deg, rgba(18, 18, 18, 0.6810925054) 3%, rgb(18, 18, 18) 80%);
+  background-color: inherit;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
 }
 .playlist-details .play-all-btn {
   position: relative;
@@ -214,6 +229,10 @@ input, select {
 .playlist-details .song-preview .audio-svg {
   width: 15px;
   height: 15px;
+}
+.playlist-details .song-preview .song-duration {
+  width: 41px;
+  text-align: right;
 }
 .playlist-details .song-preview:hover {
   background-color: rgba(255, 255, 255, 0.1);
@@ -272,14 +291,13 @@ input, select {
   box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.2);
   margin-bottom: 20px;
   display: grid;
-  grid-template-columns: auto 2fr 1fr auto;
+  grid-template-columns: auto 14fr 7.4fr auto;
   align-items: center;
   gap: 20px;
 }
 .playlist-details .sorting-table .date-label {
-  margin-left: 10px;
+  margin-left: 0px;
 }
-
 .hero {
   filter: drop-shadow(0px 0px 1px);
   z-index: 20;
@@ -1278,7 +1296,7 @@ input, select {
   height: 123px;
   border-radius: 4px;
   outline: none;
-  padding: 0 12px;
+  padding: 10px 12px;
   font-size: 0.875rem;
   font-family: inherit;
   color: #ffffff;
@@ -1343,15 +1361,22 @@ input, select {
 }
 .playlist-filter .filter-container {
   align-items: center;
+  position: relative;
 }
 .playlist-filter .filter-container .filter-name {
   padding: 9px;
+  padding-left: 24px;
 }
 .playlist-filter .filter-container #toggle:checked ~ .filter-name {
   display: block;
 }
+.playlist-filter .filter-container #toggle:checked ~ label {
+  position: absolute;
+  top: 8px;
+  left: 3px;
+}
 .playlist-filter select {
-  padding: 8px 10px;
+  padding: 9px 10px;
 }
 
 /*# sourceMappingURL=styles.css.map */

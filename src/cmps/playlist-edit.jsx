@@ -37,7 +37,7 @@ export const PlaylistEdit = ({ handleChange, onUploaded, editData, toggleEdit, o
                 }}
             /> */}
             {/* <input onChange={handleChange} value={editData.description} type="text" name="description" id="description" placeholder="playlist name" /> */}
-            <textarea name="description" id="description" cols="30" rows="10" onChange={handleChange} value={editData.description}></textarea>
+            <textarea name="description" id="description" cols="30" rows="10" onChange={handleChange} value={editData.description} placeholder="write a description for your playlist"></textarea>
             <button className='save-btn'>Save</button>
         </form>
     </section>

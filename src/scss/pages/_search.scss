@@ -1,4 +1,33 @@
 .search {
+
+    .tag-container {
+        display: grid;
+        margin-top: 15px;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+
+        .tag-preview {
+            width: 200px;
+            height: 200px;
+            padding: 10px;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            img{
+                box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%);
+                -webkit-transform: rotate(25deg) translate(18%,2%);
+                transform: rotate(25deg) translate(18%,2%);
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                object-fit: cover;
+                object-position: center center;
+                height: 80px;
+                width: 80px;
+            }
+        }
+    }
+
     .search-bar {
         display: grid;
         gap: 30px;

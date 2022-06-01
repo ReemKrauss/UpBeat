@@ -1,7 +1,6 @@
 import { searchService } from "../services/search.service"
 import { useState, useEffect, useRef } from 'react'
 import { SongPreview } from "../cmps/song-preview"
-import { BrowseDisplay } from "./browse-display"
 
 import tailSpin from "../assets/img/tail-spin.svg"
 

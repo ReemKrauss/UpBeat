@@ -1,29 +1,37 @@
-.playlist-filter{
+.playlist-filter {
     justify-content: flex-end;
     align-items: center;
     gap: 20px;
 
-    .filter-container{
+    .filter-container {
         align-items: center;
-        .filter-name{
+        position: relative;
+
+        .filter-name {
             padding: 9px;
-    
-        }
-    
-        #toggle:checked ~ {
-            .filter-name{
-                display: block;
-            }
-          }
-        
-        .search-label{
-            // position: relative;
-            // top:1px;
-            // left:20px;
+            padding-left: 24px;
+
         }
 
+        #toggle:checked ~ {
+            .filter-name {
+                display: block;
+            }
+
+            label {
+                position: absolute;
+                top: 8px;
+                left: 3px;
+            }
+        }
+        // .search-label{
+        //     background-color: aqua;
+        // }
+
+
     }
-    select{
-        padding: 8px 10px;
+
+    select {
+        padding: 9px 10px;
     }
 }

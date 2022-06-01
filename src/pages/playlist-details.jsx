@@ -130,32 +130,26 @@ export const PlaylistDetails = (props) => {
         setPlaylist({...playlist, songs: songsCpy})
     }
 
-    const getAvgColor = (url) => {
-        getAverageColor(url).then(rgb => {
-            console.log(rgb)
-            const color = `rgb(${rgb.r},${rgb.g}, ${rgb.b})`
-            setColorAvg(color)
-        })
+    const getAvgColor = async (url) => {
+        const rgb = getAverageColor(url)
+        setColor(`rgb(${rgb.r},${rgb.g}, ${rgb.b})`)
     }
 
-     const setColorAvg = (color) => {
-        let element = document.getClassById('playlist-header');
-        element.style.backgroundColor = color;
-        console.log('setcolor');
-    }
 
     const getPlaylistLength = () => {
         if(playlist && playlist.songs.length) {
            const totalDuration = playlist.songs.reduce((prevSong, currSong) =>  prevSong + currSong.duration.total, 0)
-           
+           const hours = Math.floor(totalDuration / 60)
+           const minutes = Math.floor((totalDuration / 60 - hours) * 60)
+           return <span>{hours > 0 && `${hours} hr`} {minutes} min</span>      
         }
     }
 
     getPlaylistLength()
-    const songSection = (playlist) ? <div>
+    const songSection = (playlist) ? <div className='relative'>
         <PlaylistFilter onChangeFilter={onChangeFilter} filterBy={filterBy} />
         {<button className="play-all-btn" onClick={onTogglePlay}>
-            {!isPlaying && <svg role="img" height="16" width="16" className='play-svg' viewBox="0 0 16 16" ><path d="M3 1.713a.7.7 0 011.05-.607l10.89 6.288a.7.7 0 010 1.212L4.05 14.894A.7.7 0 013 14.288V1.713z"></path></svg>}
+            {(!isPlaying || isPlaying && playlist._id !== miniPlaylist.playlistId) && <svg role="img" height="16" width="16" className='play-svg' viewBox="0 0 16 16" ><path d="M3 1.713a.7.7 0 011.05-.607l10.89 6.288a.7.7 0 010 1.212L4.05 14.894A.7.7 0 013 14.288V1.713z"></path></svg>}
             {isPlaying && (playlist._id === miniPlaylist.playlistId) && <svg role="img" height="16" width="16" className='pause-svg' viewBox="0 0 16 16" ><path d="M2.7 1a.7.7 0 00-.7.7v12.6a.7.7 0 00.7.7h2.6a.7.7 0 00.7-.7V1.7a.7.7 0 00-.7-.7H2.7zm8 0a.7.7 0 00-.7.7v12.6a.7.7 0 00.7.7h2.6a.7.7 0 00.7-.7V1.7a.7.7 0 00-.7-.7h-2.6z"></path></svg>}
         </button>}
         <div className="sorting-table flex">
@@ -192,10 +186,12 @@ export const PlaylistDetails = (props) => {
                 <h5>playlist</h5>
                 <h1 onClick={toggleEdit}>{(playlist && playlist.name) || 'My Playlist'}</h1>
                 {playlist && playlist.description && <p>{playlist.description}</p>}
-                <h5>{(playlist && playlist.createdBy.fullname) || 'username'} • {(playlist && `${playlist.songs.length} songs`) || ''}</h5>
+                <h5>{(playlist && playlist.createdBy.fullname) || 'username'} • {(playlist && `${playlist.songs.length} songs,`) || ''}</h5>
+                
             </div>
         </div>
 
+        
         {playlist && songSection}
         {isEditing && <PlaylistEdit handleChange={handleChange} onUploaded={onUploaded} editData={editData} toggleEdit={toggleEdit} onSaveEdit={onSaveEdit} />}
         <div className="search-container">

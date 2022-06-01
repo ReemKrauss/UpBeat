@@ -7,6 +7,7 @@
         background: linear-gradient(transparent 0, rgba(0, 0, 0, .5) 100%);
         padding: 30px;
         margin-bottom: 40px;
+        position: relative;
 
         .img-container {
             height: 233px;
@@ -43,6 +44,18 @@
 
         div {
             justify-content: flex-end;
+        }
+
+        &:after {
+            content: '';
+            // background-color: inherit;
+            height: 300px;
+            background: linear-gradient(180deg, rgba(18,18,18,0.6810925053615196) 3%, rgba(18,18,18,1) 80%);
+            background-color: inherit;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
         }
     }
 
@@ -107,6 +120,11 @@
             height: 15px;
         }
 
+        .song-duration {
+            width: 41px;
+            text-align: right;
+        }
+
 
 
         &:hover {
@@ -152,6 +170,7 @@
         .song-preview {
             display: grid;
             grid-template-columns: auto auto 2fr auto auto auto;
+
             .add-button {
                 background-color: transparent;
                 color: $clr3;
@@ -160,7 +179,7 @@
                 padding: 7px 14px;
                 border: 1px solid $clr7;
                 border-radius: 50px;
-                
+
             }
 
             .add-button:hover {
@@ -180,10 +199,10 @@
         box-shadow: 0px 1px 0px 0px rgba($color: $clr3, $alpha: 0.2);
         margin-bottom: 20px;
         display: grid;
-        grid-template-columns: auto 2fr 1fr auto;
+        grid-template-columns: auto 14fr 7.4fr  auto;
         align-items: center;
         gap: 20px;
-        
+
 
         // .idx-label {
         //     margin-left: 16px;
@@ -194,11 +213,13 @@
         // }
 
         .date-label {
-            margin-left:10px;
+            margin-left: 0px;
         }
 
-        // .duration-label {
-        //     float: right;
-        // }
+        .duration-label {
+            // background-color: aqua;
+        }
     }
+
+
 }

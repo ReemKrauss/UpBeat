@@ -59,6 +59,7 @@
         background-color: $clr5;
         border: 1px solid transparent;
         border-radius: 50%;
+        box-shadow: 0px 8px 24px 0px rgba($color: $clr1, $alpha: 0.9);
 
         &:hover {
             color: $clr8;

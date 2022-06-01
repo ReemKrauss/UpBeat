@@ -58,7 +58,7 @@ async function toggleLike(song) {
 
 
 function _createGuest() {
-  const guest = {fullName:'Guest', likedSongs: [], likedPlaylists: []}
+  const guest = {fullname:'Guest', likedSongs: [], likedPlaylists: []}
   sessionStorage.setItem(STORAGE_KEY_GUEST, JSON.stringify(guest))
   return guest
 }

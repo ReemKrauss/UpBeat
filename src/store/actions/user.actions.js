@@ -1,5 +1,5 @@
 import { userService } from "../../services/user.service"
-import { showErrorMsg} from "../../services/event-bus.service"
+import { showErrorMsg } from "../../services/event-bus.service"
 
 
 export function onLogin(credentials) {
@@ -37,10 +37,11 @@ export function onSignup(credentials) {
 export function onLogout() {
     return async (dispatch) => {
         try {
-            await userService.logout()
+            const guest = await userService.logout()
+
             dispatch({
                 type: 'SET_USER',
-                user: null
+                user: guest
             })
         } catch (err) {
             showErrorMsg('Cannot logout')
@@ -51,4 +52,18 @@ export function onLogout() {
 
 export function onGetLoggedinUser() {
 
+}
+
+export function toggleLike(song) {
+    return async (dispatch) => {
+        try {
+            const user = await userService.toggleLike(song)
+            dispatch({
+                type: 'TOGGLE_LIKE',
+                likedSongs: user.likedSongs
+            })
+        } catch (err) {
+            console.log('could not like', err)
+        }
+    }
 }

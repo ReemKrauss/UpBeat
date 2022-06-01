@@ -70,7 +70,7 @@
         padding: 7px 10px;
         border-radius: 5px;
         display: grid;
-        grid-template-columns: auto auto 2fr 1fr auto;
+        grid-template-columns: auto auto 2fr 1fr auto auto;
         align-items: center;
         gap: 20px;
         width: 100%;
@@ -151,7 +151,7 @@
 
         .song-preview {
             display: grid;
-            grid-template-columns: auto auto 2fr auto auto;
+            grid-template-columns: auto auto 2fr auto auto auto;
             .add-button {
                 background-color: transparent;
                 color: $clr3;

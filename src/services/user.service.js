@@ -7,56 +7,64 @@ export const userService = {
   logout,
   signup,
   getLoggedinUser,
-  updateBalance,
+  toggleLike
 }
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
+const STORAGE_KEY_GUEST = 'guest'
 
 
 window.us = userService
 
 async function login(credentials) {
 
-  try{
+  try {
     const user = await httpService.post('auth/login', credentials)
-    if (user) return saveLocalUser(user)
-  }catch(err){
+    if (user) return saveLocalUser(user, STORAGE_KEY_LOGGEDIN_USER)
+  } catch (err) {
     console.log('cannot login', err)
   }
 }
 async function signup(user) {
   return httpService.post('auth/signup', user)
 }
-function updateBalance(diff) {
-  //   const user = userService.getLoggedinUser()
-  //   user.balance += diff
-  //   return storageService.put(STORAGE_KEY, user).then((user) => {
-  //     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN, JSON.stringify(user))
-  //     return user.balance
-  //   })
-}
+
 async function logout() {
-    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, null)
-    return Promise.resolve()
+  sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
+  return _createGuest()
 }
 
-function getLoggedinUser() {
-  return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
+function getLoggedinUser() { // check logged in user key
+  return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER)) || JSON.parse(sessionStorage.getItem(STORAGE_KEY_GUEST)) || _createGuest()
 }
 
-function saveLocalUser(user) {
-  sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
+function saveLocalUser(user, userType) { //can get which key to save as argument
+  sessionStorage.setItem(userType, JSON.stringify(user))
   return user
 }
-function addLikedSong(song) {
-  if(!song)return
-  const user = JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
-  if(user){
-    user.likedSongs.push(song)
-    httpService.put(`user/${user._id}`,user)
-    return saveLocalUser(user)
+async function toggleLike(song) {
+  song = {...song}
+  song.addedAt = Date.now()
+  const entity = getLoggedinUser() || JSON.parse(sessionStorage.getItem(STORAGE_KEY_GUEST))
+  const songIdx = entity.likedSongs.findIndex((currsong) => currsong.id === song.id)
+  if (songIdx === -1) entity.likedSongs.unshift(song)
+  else entity.likedSongs.splice(songIdx, 1)
+  if (entity._id) {
+    httpService.put(`user/${entity._id}`, entity)
+    return saveLocalUser(entity, STORAGE_KEY_LOGGEDIN_USER)
   }
-  return user
+  return saveLocalUser(entity, STORAGE_KEY_GUEST)
+}
+
+
+function _createGuest() {
+  const guest = {fullName:'Guest', likedSongs: [], likedPlaylists: []}
+  sessionStorage.setItem(STORAGE_KEY_GUEST, JSON.stringify(guest))
+  return guest
+}
+
+function getUserPlaylists(userId) {
+
 }
 
 // Test Data
@@ -116,9 +124,9 @@ function addLikedSong(song) {
 //     // return saveLocalUser(user)
 //     const user = await httpService.post('auth/login', userCred)
 //     if (user) {
-//         socketService.login(user._id)  
+//         socketService.login(user._id)
 //         return saveLocalUser(user)
-//     } 
+//     }
 // }
 
 // async function signup(userCred) {

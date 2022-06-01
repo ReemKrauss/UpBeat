@@ -20,24 +20,24 @@ export const AppHeader = () => {
         <header className="header">
             <nav>
                 {routes.map(route => <NavLink key={route.path} to={route.path}>{route.label}</NavLink>)}
+                <div className='user-container'>
+                    {user &&
+                        <span className="user-info">
+                            <Link to={`user/${user._id}`}>
+                                {user.imgUrl && <img src={user.imgUrl} />}
+                                <div className='user-full-name'>{user.fullname}</div>
+                            </Link>
+                            {/* <span className="score">{user.score?.toLocaleString()}</span> */}
+                            <button onClick={() => { dispatch(onLogout()) }}>Logout</button>
+                        </span>
+                    }
 
-                {user &&
-                    <span className="user-info">
-                        <Link to={`user/${user._id}`}>
-                            {user.imgUrl && <img src={user.imgUrl} />}
-                            {user.fullname}
-                        </Link>
-                        <span className="score">{user.score?.toLocaleString()}</span>
-                        <button onClick={() => { dispatch(onLogout()) }}>Logout</button>
-                    </span>
-                }
-
-                {!user &&
-                    <section className="user-info">
-                        <LoginSignup onLogin={onOnLogin} onSignup={() => { dispatch(onSignup()) }} />
-                    </section>
-                }
-
+                    {!user &&
+                        <section className="user-info">
+                            <LoginSignup onLogin={onOnLogin} onSignup={() => { dispatch(onSignup()) }} />
+                        </section>
+                    }
+                </div>
             </nav>
 
         </header>

@@ -1,4 +1,5 @@
 .header{
+    z-index: 15;
     height: 40px;
     margin-bottom: 20px;
     background-color: $clr1;
@@ -12,6 +13,17 @@
      .header{
          height: 60px;
      }
+        }
+
+        .user-container{
+            box-shadow: 0px 0px 5px 3px rgba($color: $clr3, $alpha: 0.1);    
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            width: 500px;
+            width: auto;
+        background-color: $clr2;
+        border-radius: 30px;
         }
     
 }

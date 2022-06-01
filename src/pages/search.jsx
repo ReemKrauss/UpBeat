@@ -2,6 +2,8 @@ import { map } from "lodash"
 import { useEffect, useState } from "react"
 import { SearchBar } from "../cmps/search-bar"
 import { playlistService } from '../services/playlist.service'
+import { Link } from "react-router-dom"
+
 
 
 
@@ -21,14 +23,23 @@ export const Search = () => {
             <h2>Songs</h2>
         </SearchBar>
         <h2>Browse all</h2>
+
+        
+        
         <div className="tag-container">
             {tags.map((tag, idx) => {
                 const mystyle = { backgroundColor: tag.color }
-                return (<div key={idx} className="tag-preview" style={mystyle}>
+                return (
+                    <Link to={`/genre/${tag.title}`}>
+                <div key={idx} className="tag-preview" style={mystyle}>
                     <h1>{tag.title}</h1>
                     <img src={tag.imgUrl} />
-                </div>)
+                </div>
+                </Link>
+                )
             })}
         </div>
+
+
     </section>
 }

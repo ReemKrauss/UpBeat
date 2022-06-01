@@ -92,7 +92,6 @@ input, select {
 .header {
   grid-area: header;
   flex-direction: column;
-  background-color: #121212;
 }
 
 .content {
@@ -185,7 +184,7 @@ input, select {
   padding: 7px 10px;
   border-radius: 5px;
   display: grid;
-  grid-template-columns: auto auto 2fr 1fr auto;
+  grid-template-columns: auto auto 2fr 1fr auto auto;
   align-items: center;
   gap: 20px;
   width: 100%;
@@ -248,7 +247,7 @@ input, select {
 }
 .playlist-details .search-container .song-preview {
   display: grid;
-  grid-template-columns: auto auto 2fr auto auto;
+  grid-template-columns: auto auto 2fr auto auto auto;
 }
 .playlist-details .search-container .song-preview .add-button {
   background-color: transparent;
@@ -282,7 +281,7 @@ input, select {
 }
 
 .hero {
-  z-index: 5;
+  z-index: 20;
   display: flex;
   position: absolute;
   flex-direction: column;
@@ -609,12 +608,42 @@ input, select {
 }
 
 .user-info {
-  box-shadow: 0px 0px 5px 3px rgba(255, 255, 255, 0.1);
+  text-align: center;
   z-index: 15;
   color: #ffffff;
   position: relative;
   top: 0px;
   right: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  row-gap: 10px;
+}
+.user-info a {
+  margin-left: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.user-info .user-full-name {
+  display: flex;
+  flex-wrap: nowrap;
+  float: left;
+  white-space: nowrap;
+}
+.user-info .login-form button {
+  width: 100%;
+  background-color: #000000;
+  color: #ffffff;
+  border-radius: 30px;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+}
+.user-info img {
+  border-radius: 50%;
+  height: 40px;
 }
 .user-info input, .user-info select {
   width: 100%;
@@ -627,12 +656,12 @@ input, select {
 }
 .user-info button {
   width: 100%;
-  background-color: #4CAF50;
+  background-color: black;
   color: white;
+  border-radius: 30px;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
-  border-radius: 4px;
   cursor: pointer;
 }
 .user-info button:hover {
@@ -995,6 +1024,7 @@ input, select {
   padding: 24px;
 }
 .nav-bar .nav-list {
+  z-index: 15;
   width: 100%;
   background-color: #121212;
   display: flex;
@@ -1034,7 +1064,7 @@ input, select {
 }
 .nav-bar .logo-container {
   position: fixed;
-  z-index: 5;
+  z-index: 16;
   top: 5px;
   left: 5px;
   display: flex;
@@ -1141,6 +1171,7 @@ input, select {
   background-color: #1ed760;
   border: 1px solid transparent;
   border-radius: 50%;
+  box-shadow: 0px 8px 24px 0px rgba(18, 18, 18, 0.9);
 }
 .playlist-preview .play-btn:hover {
   color: #181818;
@@ -1161,6 +1192,7 @@ input, select {
 }
 
 .header {
+  z-index: 15;
   height: 40px;
   margin-bottom: 20px;
   background-color: #121212;
@@ -1175,6 +1207,16 @@ input, select {
   .header .header {
     height: 60px;
   }
+}
+.header .user-container {
+  box-shadow: 0px 0px 5px 3px rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 500px;
+  width: auto;
+  background-color: #000000;
+  border-radius: 30px;
 }
 
 .playlist-edit {

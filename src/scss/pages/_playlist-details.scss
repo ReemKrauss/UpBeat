@@ -57,6 +57,16 @@
             left: 0;
             right: 0;
         }
+
+        .playlist-length{
+            font-weight: 200;
+            color: $clr7;
+            &::before{
+                content: ', ';
+                font-weight: bold;
+                color: $clr3;
+            }
+        }
     }
 
     .play-all-btn {
@@ -155,6 +165,8 @@
 
     .search-container {
         margin-top: 40px;
+        position: relative;
+        z-index: 2;
 
         h3 {
             margin-bottom: 20px;

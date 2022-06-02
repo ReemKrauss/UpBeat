@@ -139,9 +139,11 @@ export const PlaylistDetails = (props) => {
     const getPlaylistLength = () => {
         if(playlist && playlist.songs.length) {
            const totalDuration = playlist.songs.reduce((prevSong, currSong) =>  prevSong + currSong.duration.total, 0)
-           const hours = Math.floor(totalDuration / 60)
-           const minutes = Math.floor((totalDuration / 60 - hours) * 60)
-           return <span>{hours > 0 && `${hours} hr`} {minutes} min</span>      
+           console.log(totalDuration)
+           const hours = (totalDuration / 3600)
+           const rhours = Math.floor(hours)
+           const minutes = Math.floor((hours - rhours) * 60)
+           return <span className='playlist-length'>{rhours > 0 && `${rhours} hr`} {minutes} min</span>      
         }
     }
 
@@ -186,8 +188,7 @@ export const PlaylistDetails = (props) => {
                 <h5>playlist</h5>
                 <h1 onClick={toggleEdit}>{(playlist && playlist.name) || 'My Playlist'}</h1>
                 {playlist && playlist.description && <p>{playlist.description}</p>}
-                <h5>{(playlist && playlist.createdBy.fullname) || 'username'} • {(playlist && `${playlist.songs.length} songs,`) || ''}</h5>
-                
+                <h5>{(playlist && playlist.createdBy.fullname) || 'username'} • {(playlist && `${playlist.songs.length} songs`) || ''}{getPlaylistLength()}</h5>
             </div>
         </div>
 

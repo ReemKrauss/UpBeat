@@ -43,7 +43,7 @@ function saveLocalUser(user, userType) { //can get which key to save as argument
   return user
 }
 async function toggleLike(song) {
-  song = {...song}
+  song = { ...song }
   song.addedAt = Date.now()
   const entity = getLoggedinUser() || JSON.parse(sessionStorage.getItem(STORAGE_KEY_GUEST))
   const songIdx = entity.likedSongs.findIndex((currsong) => currsong.id === song.id)
@@ -58,7 +58,7 @@ async function toggleLike(song) {
 
 
 function _createGuest() {
-  const guest = {fullname:'Guest', likedSongs: [], likedPlaylists: []}
+  const guest = { fullname: 'Guest', likedSongs: [], likedPlaylists: [], imgUrl: 'https://pbs.twimg.com/profile_images/746460305396371456/4QYRblQD.jpg' }
   sessionStorage.setItem(STORAGE_KEY_GUEST, JSON.stringify(guest))
   return guest
 }

@@ -57,7 +57,7 @@ export const AppHeader = ({ opacity }) => {
                 <div className="user-info">
                     {user.imgUrl && <img src={user.imgUrl} />}
                     <div className='user-full-name'>{user.fullname}</div>
-                    <div className='open-login-btn' onClick={() => toggleIsInSignup(true)}>Log in</div>
+                    <div className='login-btn' onClick={() => toggleIsInSignup(true)}>Log in</div>
                 </div>
             }
             {isInSignup &&

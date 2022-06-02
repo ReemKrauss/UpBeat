@@ -1,30 +1,58 @@
-.header{
+.header {
     z-index: 15;
     right: 0px;
     left: 220px;
     height: 40px;
-    // background-color:rgba($color: $clr3, $alpha: 0);
     display: flex;
     justify-content: space-between;
     flex-direction: row-reverse;
     position: fixed;
     top: 0;
-        // box-shadow: 0px 0px 15px 15px $clr1;
-        @media screen and (min-width: 680px) {
-     .header{
-        //  left: 220;
-         height: 60px;
-     }
+
+    @media screen and (min-width: 680px) {
+        .header {
+            //  left: 220;
+            height: 60px;
         }
-   .headerBG{
-       z-index: 5;
-       width: 100%;
-       height: 100%;
-       position: absolute;
-       transition: 0.3s;
-   }
-   .user-info{
-       z-index: 6;
-   }
+    }
+
+    .headerBG {
+        z-index: 5;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        transition: 0.3s;
+    }
+
+    .user-info {
+        position: relative;
+        z-index: 6;
+        margin-right: 80px;
+        margin-top: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        background-color: $clr6;
+        border-radius: 500px;
+
+        img {
+            height: 28px;
+            width: 28px;
+            border-radius: 50%;
+            margin-left: 10px;
+        }
+
+        .user-full-name {
+            margin-right: 10px;
+            font-size: 0.875rem;
+            line-height: 1rem;
+        }
+
+        .login-btn {
+            position: absolute;
+            right: -55px;
+        }
+    }
 
 }

@@ -139,7 +139,6 @@ export const PlaylistDetails = (props) => {
     const getPlaylistLength = () => {
         if(playlist && playlist.songs.length) {
            const totalDuration = playlist.songs.reduce((prevSong, currSong) =>  prevSong + currSong.duration.total, 0)
-           console.log(totalDuration)
            const hours = (totalDuration / 3600)
            const rhours = Math.floor(hours)
            const minutes = Math.floor((hours - rhours) * 60)

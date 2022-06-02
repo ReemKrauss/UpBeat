@@ -493,6 +493,7 @@ input, select {
 
 .search {
   margin-bottom: 130px;
+  margin-top: 100px;
 }
 .search .tag-container {
   display: grid;
@@ -539,7 +540,7 @@ input, select {
   margin-bottom: 40px;
 }
 .search .search-bar .top-result {
-  max-width: 450px;
+  max-width: 430px;
   display: grid;
   grid-template-rows: auto 1fr;
 }
@@ -551,6 +552,12 @@ input, select {
   border-radius: 10px;
   position: relative;
   overflow: hidden;
+}
+.search .search-bar .top-result .song-preview:hover {
+  background-color: rgba(255, 255, 255, 0.07);
+}
+.search .search-bar .top-result .song-preview .like {
+  display: none;
 }
 .search .search-bar .top-result .song-preview .song-title {
   width: 100%;
@@ -603,7 +610,7 @@ input, select {
   padding: 7px 10px;
   border-radius: 5px;
   display: grid;
-  grid-template-columns: auto auto 1fr auto;
+  grid-template-columns: auto auto 1fr auto auto;
   align-items: center;
   gap: 20px;
 }
@@ -616,14 +623,14 @@ input, select {
   color: #b3b3b3;
 }
 .search .search-bar .songs .song-preview .song-title {
-  min-width: 320px;
+  min-width: 180px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 .search .search-bar .songs .song-preview .song-duration {
-  margin-left: auto;
   color: #b3b3b3;
+  width: 42px;
 }
 .search .search-bar .songs .song-preview .play-container {
   width: 20px;
@@ -828,7 +835,7 @@ input, select {
   white-space: nowrap;
 }
 .audio-player .song-preview:hover .song-txt {
-  animation: long-txt 14s;
+  animation: long-txt 17s;
   animation-iteration-count: infinite;
   display: inline-block;
 }
@@ -1293,7 +1300,31 @@ input, select {
   transition: 0.3s;
 }
 .header .user-info {
+  position: relative;
   z-index: 6;
+  margin-right: 80px;
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  background-color: #282828;
+  border-radius: 500px;
+}
+.header .user-info img {
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+.header .user-info .user-full-name {
+  margin-right: 10px;
+  font-size: 0.875rem;
+  line-height: 1rem;
+}
+.header .user-info .login-btn {
+  position: absolute;
+  right: -55px;
 }
 
 .playlist-edit {

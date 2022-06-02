@@ -57,18 +57,18 @@ class _AudioPlayer extends React.Component {
     }
 
     onForward = () => {
+        const { songs, currSongIdx } = this.props.miniPlaylist
         if (this.state.isRepeat) {
             this.onToggleRepeat()
         }
-        this.props.setCurrTimePass(0)
+        if (songs.length === 1) return
         if (this.props.currTimePass < 1) return
-        const { songs, currSongIdx } = this.props.miniPlaylist
+        this.props.setCurrTimePass(0)
         const newSongIdx = (currSongIdx === songs.length - 1) ? 0 : currSongIdx + 1
         this.props.changeSong(newSongIdx)
     }
 
     onBackward = () => {
-
         const { songs, currSongIdx } = this.props.miniPlaylist
         if (this.props.currTimePass > 3) {
             this.props.player.seekTo(0)
@@ -77,8 +77,9 @@ class _AudioPlayer extends React.Component {
         if (this.state.isRepeat) {
             this.onToggleRepeat()
         }
-        this.props.setCurrTimePass(0)
+        if (songs.length === 1) return
         if (this.props.currTimePass < 1) return
+        this.props.setCurrTimePass(0)
         const newSongIdx = (currSongIdx === 0) ? songs.length - 1 : currSongIdx - 1
         this.props.changeSong(newSongIdx)
     }
@@ -106,11 +107,11 @@ class _AudioPlayer extends React.Component {
     onChangeDuration = (ev, isTouchEnd) => {
         if (this.timerIntervalId) clearInterval(this.timerIntervalId)
         this.props.setCurrTimePass(+ev.target.value)
-        if (isTouchEnd){
+        if (isTouchEnd) {
             this.props.player.seekTo(+ev.target.value)
             this.timerIntervalId = setInterval(this.intervalCb, 1000)
-        } 
-            
+        }
+
     }
 
     get currTimePassStr() {
@@ -121,6 +122,11 @@ class _AudioPlayer extends React.Component {
         ret += '' + mins + ':' + (secs < 10 ? '0' : '')
         ret += '' + secs
         return ret
+    }
+    get link() {
+        const { playlistId } = this.props.miniPlaylist
+        if (playlistId === 'singal song') return '/'
+        return `/playlist/${playlistId}`
     }
 
     render() {
@@ -138,7 +144,7 @@ class _AudioPlayer extends React.Component {
             }} onReady={this.onReady} onStateChange={this.onStateChange} onEnd={this.onEnd} />
             <div className="audio-player">
                 <section className="song-container flex">
-                    <Link to={`/playlist/${playlistId}`} className="song-preview flex">
+                    <Link to={this.link} className="song-preview flex">
                         <img className='song-img' src={song.imgUrl} />
                         <div>
                             <div className='song-title'>
@@ -148,7 +154,7 @@ class _AudioPlayer extends React.Component {
                         </div>
                     </Link>
                     <FaHeart className='like-btn' />
-                    {props.isPlaying && <img className={`audio-svg ${props.isPlaying}`} src={audioSvg} alt="err" />}
+                    {/* {props.isPlaying && <img className={`audio-svg ${props.isPlaying}`} src={audioSvg} alt="err" />} */}
                 </section>
 
                 <section className='player-controlers'>

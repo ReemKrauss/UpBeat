@@ -26,7 +26,6 @@ export const Home = (props) => {
     if (!tags.length) return null;
     return <section className="home main-layout">
         {tags.map((tag) => {
-            if(tag.playlists===undefined)console.log('what the hell');
             if (!tag.playlists?.length) return null;
             return (
                 <div key={tag.title} className='playlists-container'>

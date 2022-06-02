@@ -3,6 +3,9 @@ import { useState, useEffect, useRef } from 'react'
 import { SongPreview } from "../cmps/song-preview"
 
 import tailSpin from "../assets/img/tail-spin.svg"
+import { useDispatch } from "react-redux"
+import { setMiniPlaylist } from "../store/actions/audio-player.action"
+
 
 
 
@@ -11,6 +14,7 @@ import tailSpin from "../assets/img/tail-spin.svg"
 export const SearchBar = ({ onAddFromPlaylist, children }) => {
     const [params, setParams] = useState('')
     const [songs, setSongs] = useState(null)
+    const dispatch = useDispatch()
     let topSong
     useEffect(() => {
         loadSongs()
@@ -27,10 +31,11 @@ export const SearchBar = ({ onAddFromPlaylist, children }) => {
                 setSongs(results)
                 timeOutId.current = null
             }, 400)
-
         } //switch to debounce hook
     }
-
+    const onSetMiniPlaylist = (songIdx) => {
+        dispatch(setMiniPlaylist('singal song', 0,[songs[songIdx]], 'Song from search'))
+    }
     const onHandleChange = ({ target }) => {
         setParams(target.value)
     }
@@ -43,8 +48,8 @@ export const SearchBar = ({ onAddFromPlaylist, children }) => {
             <SongPreview song={({ ...topSong, idx: 0 })} onAddFromPlaylist={onAddFromPlaylist || ''} />
         </div>}
         <div className="songs">
-        {songs && children}
-        {songs && songs.map((song, idx) => <SongPreview key={idx} song={({ ...song, idx })} onAddFromPlaylist={onAddFromPlaylist || ''} />)}
+            {songs && children}
+            {songs && songs.map((song, idx) => <SongPreview key={idx} song={({ ...song, idx })} onAddFromPlaylist={onAddFromPlaylist || ''} onSetMiniPlaylist={onSetMiniPlaylist} />)}
         </div>
 
     </section>

@@ -25,7 +25,7 @@ export const GenrePage = (props) => {
 
     
 
-    return <section className="home main-layout">
+    return <section className="genre main-layout">
         {/* <h1>Good Morning</h1> */}
         {playlists && <div className='playlists-container'>
             <h2>Browse {params.genreTag}</h2>

@@ -1,0 +1,15 @@
+.genre{
+    h2{
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+    .playlist-container{
+        margin-bottom: 40px;
+    }
+
+    .playlist-list{
+        display:grid;
+        grid-template-columns: repeat(auto-fit, 220px);        // grid-template-rows: 256.433px;
+        
+    }
+}

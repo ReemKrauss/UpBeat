@@ -525,7 +525,7 @@ input, select {
   grid-template-columns: minmax(350px, auto) 1fr;
 }
 .search .search-bar input {
-  z-index: 10;
+  z-index: 20;
   position: fixed;
   top: 11px;
   background-color: #ffffff;
@@ -639,6 +639,18 @@ input, select {
   font-size: 20px;
   position: relative;
   left: 1px;
+}
+
+.genre h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+.genre .playlist-container {
+  margin-bottom: 40px;
+}
+.genre .playlist-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 220px);
 }
 
 .login-signup {
@@ -756,6 +768,10 @@ input, select {
   background: #555;
 }
 
+::-webkit-scrollbar-corner {
+  display: none;
+}
+
 .audio-player {
   align-items: center;
   justify-content: space-between;
@@ -763,7 +779,7 @@ input, select {
   width: 100%;
   padding: 0 16px;
   display: flex;
-  z-index: 5;
+  z-index: 100;
   position: fixed;
   bottom: 0px;
   background-color: #181818;

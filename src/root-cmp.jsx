@@ -18,8 +18,6 @@ export const App = () => {
   const [opacity,setOpacity] = useState(0)
   const params = useParams()
 
-  console.log(params)
-
   const onInitialEntry = () => {
     window.scrollTo(0, 0);
     setIsInitial(true)

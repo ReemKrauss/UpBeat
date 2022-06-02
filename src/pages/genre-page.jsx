@@ -10,7 +10,7 @@ export const GenrePage = (props) => {
     const params = useParams()
     const genreName = params.genreTag
 
-    console.log(params.genreTag)
+    // console.log(params.genreTag)
 
     useEffect(() => {
         loadPlaylists()

@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback, useRef } from 'react'
 import { playlistService } from '../services/playlist.service'
 import { SongPreview } from '../cmps/song-preview'
 import { PlaylistFilter } from '../cmps/playlist-filter'
@@ -13,6 +13,7 @@ import { setMiniPlaylist, togglePlay } from "../store/actions/audio-player.actio
 import { useDispatch, useSelector } from "react-redux"
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import getAverageColor from 'get-average-color'
+import { useHeaderBGContext } from '../context/useBackgroundColor'
 
 
 
@@ -25,7 +26,8 @@ export const PlaylistDetails = (props) => {
     
     
     const params = useParams()
-
+    
+    const ref = useRef()
     const dispatch = useDispatch()
     const [playlist, setPlaylist] = useState(null)
     const [isEditing, setisEditing] = useState(false)
@@ -34,9 +36,8 @@ export const PlaylistDetails = (props) => {
         title: '',
         order: 'date'
     })
-    const [color ,setColor] = useState(null)
 
-    
+    const {updateColor, color} = useHeaderBGContext()
 
 
     useEffect(() => {
@@ -51,9 +52,8 @@ export const PlaylistDetails = (props) => {
 
     useEffect(() => {
         playlist?.imgUrl && getAverageColor(playlist.imgUrl).then(rgb => {
-            console.log(rgb)
             const a = `rgb(${rgb.r},${rgb.g}, ${rgb.b})`
-            setColor(a)
+            updateColor(a)
         })
     }, [playlist?.imgUrl])
 
@@ -132,7 +132,7 @@ export const PlaylistDetails = (props) => {
 
     const getAvgColor = async (url) => {
         const rgb = getAverageColor(url)
-        setColor(`rgb(${rgb.r},${rgb.g}, ${rgb.b})`)
+        updateColor(`rgb(${rgb.r},${rgb.g}, ${rgb.b})`)
     }
 
 
@@ -178,9 +178,9 @@ export const PlaylistDetails = (props) => {
     </div> : ''
 
     if (!playlist && params.playlistId) return <h2>loading...</h2>
-
+    // console.log(playlist)
     return <section className="playlist-details main-layout">
-        <div className="playlist-header flex full" style = {{backgroundColor: color}}>
+        <div className="playlist-header flex full" style = {{backgroundColor: color}} >
             <div onClick={toggleEdit} className="img-container flex">
                 {(playlist && playlist.imgUrl && <img src={playlist.imgUrl} />) || <BsMusicNoteBeamed className="new-playlist-icon" />}
             </div>

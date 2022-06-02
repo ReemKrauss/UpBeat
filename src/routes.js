@@ -8,20 +8,20 @@ import { GenrePage } from './pages/genre-page.jsx'
 export default [
     {
         path: '/search',
-        component: Search,
+        component: <Search/>,
     },
 
     {
         path: '/',
-        component: Home,
+        component: <Home/>,
     },
     {
         path: '/playlist/:playlistId?',
-        component: PlaylistDetails,
+        component: <PlaylistDetails/>,
     },
     {
         path: '/genre/:genreTag?',
-        component: GenrePage,
+        component: <GenrePage/>,
     },
 
 

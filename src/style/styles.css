@@ -263,6 +263,8 @@ input, select {
 .playlist-details .search-container .search-bar input {
   padding: 10px 178px 10px 10px;
   margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
 }
 .playlist-details .search-container .song-preview {
   display: grid;

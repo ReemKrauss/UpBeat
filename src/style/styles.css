@@ -484,6 +484,7 @@ input, select {
 }
 
 .home h2 {
+  margin-top: 62px;
   font-size: 2rem;
   margin-bottom: 20px;
 }
@@ -527,14 +528,33 @@ input, select {
   gap: 30px;
   grid-template-columns: minmax(350px, auto) 1fr;
 }
-.search .search-bar input {
+.search .search-bar .input-container {
+  display: flex;
+  flex-direction: row;
   z-index: 20;
   position: fixed;
   top: 11px;
+  width: 100%;
+  right: 0;
+  padding-left: 3px;
+}
+@media (min-width: 680px) {
+  .search .search-bar .input-container {
+    width: calc(100% - 220px);
+    padding-left: 30px;
+  }
+}
+.search .search-bar .input-spacer {
+  z-index: -1;
+  width: 180px;
+}
+.search .search-bar input {
+  max-width: 400px;
+  display: flex;
   background-color: #ffffff;
   color: #121212;
   height: 40px;
-  width: 400px;
+  flex-grow: 1;
   border-radius: 50px;
   padding-left: 20px;
   margin-bottom: 40px;
@@ -755,7 +775,7 @@ input, select {
 }
 
 ::-webkit-scrollbar {
-  width: 14px;
+  width: 12px;
   height: 14px;
 }
 
@@ -1150,7 +1170,7 @@ input, select {
 .nav-bar .logo-container {
   position: fixed;
   z-index: 16;
-  top: 5px;
+  top: 11px;
   left: 5px;
   display: flex;
   flex-direction: row;
@@ -1279,17 +1299,18 @@ input, select {
 .header {
   z-index: 15;
   right: 0px;
-  left: 220px;
-  height: 40px;
+  left: 0;
+  height: 64px;
   display: flex;
   justify-content: space-between;
   flex-direction: row-reverse;
   position: fixed;
+  padding-bottom: 5px;
   top: 0;
 }
-@media screen and (min-width: 680px) {
-  .header .header {
-    height: 60px;
+@media (min-width: 680px) {
+  .header {
+    left: 220px;
   }
 }
 .header .headerBG {
@@ -1301,7 +1322,7 @@ input, select {
 }
 .header .user-info {
   position: relative;
-  z-index: 6;
+  z-index: 30;
   margin-right: 80px;
   margin-top: 5px;
   display: flex;

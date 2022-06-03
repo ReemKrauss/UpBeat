@@ -1,19 +1,17 @@
 .header {
     z-index: 15;
     right: 0px;
-    left: 220px;
-    height: 40px;
+    left: 0;
+    height: 64px;
     display: flex;
     justify-content: space-between;
     flex-direction: row-reverse;
     position: fixed;
+    padding-bottom: 5px;
     top: 0;
 
-    @media screen and (min-width: 680px) {
-        .header {
-            //  left: 220;
-            height: 60px;
-        }
+    @include for-wide-layout {
+        left: 220px;
     }
 
     .headerBG {
@@ -26,7 +24,7 @@
 
     .user-info {
         position: relative;
-        z-index: 6;
+        z-index: 30;
         margin-right: 80px;
         margin-top: 5px;
         display: flex;

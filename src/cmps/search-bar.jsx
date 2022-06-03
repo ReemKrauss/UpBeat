@@ -41,7 +41,10 @@ export const SearchBar = ({ onAddFromPlaylist, children }) => {
     }
     if (songs) topSong = songs[0]
     return <section className="search-bar">
+        <div className="input-container">
         <input type="text" value={params} placeholder="Search for songs" onChange={onHandleChange} />
+        <div className="input-spacer"></div>
+        </div>
         {!songs && params && <img className="tailspin" src={tailSpin} alt='cant load' />}
         {songs && children && <div className="top-result">
             <h2>Top result</h2>

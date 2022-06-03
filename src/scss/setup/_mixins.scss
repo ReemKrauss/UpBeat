@@ -19,7 +19,7 @@
   }
   
   @mixin for-wide-layout {
-    @media (min-width: $break-wide) {
+    @media (min-width: 680px) { //$break-wide add as variable
       @content;
     }
   }

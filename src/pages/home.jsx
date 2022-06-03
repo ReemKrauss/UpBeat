@@ -4,49 +4,35 @@ import { playlistService } from "../services/playlist.service"
 
 
 export const Home = (props) => {
-    const [playlists, setPlaylists] = useState(null) //temporary hard coded values
+    const [tags, setTags] = useState([])
 
     useEffect(() => {
-        loadPlaylists()
+        loadTags()
     }, [])
 
-    const loadPlaylists = async () => {
-        const rock = await playlistService.query({ tags: 'Rock' })
-        const jazz = await playlistService.query({ tags: 'Jazz' })
-        const musical = await playlistService.query({ tags: 'Musical' })
-        const newReleases = await playlistService.query({ tags: 'New Releases' })
-        const Israeli = await playlistService.query({ tags: 'Israeli' })
-        const decades = await playlistService.query({ tags: 'Decades' })
-        setPlaylists({ rock, jazz, musical, newReleases, Israeli, decades })
+
+    const loadTags = async () => {
+        const tags = await playlistService.getTags()
+        tags.forEach(async (tag,idx) => {
+            tag.playlists = await playlistService.query({ tags: tag.title })
+            // only set tags after fetching all playlists
+            if(idx===tags.length-1)setTags(tags)
+        })
+        
     }
 
-    
 
+
+    if (!tags.length) return null;
     return <section className="home main-layout">
-        {/* <h1>Good Morning</h1> */}
-        {playlists && <div className='playlists-container'>
-            <h2>New Releases</h2>
-            <PlaylistList playlists={playlists.newReleases} />
-        </div>}
-        {playlists && <div className='playlists-container'>
-            <h2>Rock</h2>
-            <PlaylistList playlists={playlists.rock} />
-        </div>}
-        {playlists && <div className='playlists-container'>
-            <h2>Jazz</h2>
-            <PlaylistList playlists={playlists.jazz} />
-        </div>}
-        {playlists && <div className='playlists-container'>
-            <h2>Israeli</h2>
-            <PlaylistList playlists={playlists.Israeli} />
-        </div>}
-        {playlists && <div className='playlists-container'>
-            <h2>Decades</h2>
-            <PlaylistList playlists={playlists.decades} />
-        </div>}
-        {playlists && <div className='playlists-container'>
-            <h2>Musicals</h2>
-            <PlaylistList playlists={playlists.musical} />
-        </div>}
+        {tags.map((tag) => {
+            if (!tag.playlists?.length) return null;
+            return (
+                <div key={tag.title} className='playlists-container'>
+                    <h2>{tag.title}</h2>
+                    <PlaylistList playlists={tag.playlists} />
+                </div>
+            )
+        })}
     </section>
 }

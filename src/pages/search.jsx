@@ -24,18 +24,18 @@ export const Search = () => {
         </SearchBar>
         <h2>Browse all</h2>
 
-        
-        
+
+
         <div className="tag-container">
             {tags.map((tag, idx) => {
                 const mystyle = { backgroundColor: tag.color }
                 return (
-                    <Link to={`/genre/${tag.title}`}>
-                <div key={idx} className="tag-preview" style={mystyle}>
-                    <h1>{tag.title}</h1>
-                    <img src={tag.imgUrl} />
-                </div>
-                </Link>
+                    <Link key={idx} to={`/genre/${tag.title}`}>
+                        <div className="tag-preview" style={mystyle}>
+                            <h1>{tag.title}</h1>
+                            <img src={tag.imgUrl} />
+                        </div>
+                    </Link>
                 )
             })}
         </div>

@@ -274,6 +274,8 @@ input, select {
 .playlist-details .search-container .search-bar input {
   padding: 10px 178px 10px 10px;
   margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
 }
 .playlist-details .search-container .song-preview {
   display: grid;
@@ -482,6 +484,7 @@ input, select {
 }
 
 .home h2 {
+  margin-top: 62px;
   font-size: 2rem;
   margin-bottom: 20px;
 }
@@ -491,6 +494,7 @@ input, select {
 
 .search {
   margin-bottom: 130px;
+  margin-top: 100px;
 }
 .search .tag-container {
   display: grid;
@@ -524,20 +528,39 @@ input, select {
   gap: 30px;
   grid-template-columns: minmax(350px, auto) 1fr;
 }
-.search .search-bar input {
+.search .search-bar .input-container {
+  display: flex;
+  flex-direction: row;
   z-index: 20;
   position: fixed;
   top: 11px;
+  width: 100%;
+  right: 0;
+  padding-left: 3px;
+}
+@media (min-width: 680px) {
+  .search .search-bar .input-container {
+    width: calc(100% - 220px);
+    padding-left: 30px;
+  }
+}
+.search .search-bar .input-spacer {
+  z-index: -1;
+  width: 180px;
+}
+.search .search-bar input {
+  max-width: 400px;
+  display: flex;
   background-color: #ffffff;
   color: #121212;
   height: 40px;
-  width: 400px;
+  flex-grow: 1;
   border-radius: 50px;
   padding-left: 20px;
   margin-bottom: 40px;
 }
 .search .search-bar .top-result {
-  max-width: 450px;
+  max-width: 430px;
   display: grid;
   grid-template-rows: auto 1fr;
 }
@@ -549,6 +572,12 @@ input, select {
   border-radius: 10px;
   position: relative;
   overflow: hidden;
+}
+.search .search-bar .top-result .song-preview:hover {
+  background-color: rgba(255, 255, 255, 0.07);
+}
+.search .search-bar .top-result .song-preview .like {
+  display: none;
 }
 .search .search-bar .top-result .song-preview .song-title {
   width: 100%;
@@ -601,7 +630,7 @@ input, select {
   padding: 7px 10px;
   border-radius: 5px;
   display: grid;
-  grid-template-columns: auto auto 1fr auto;
+  grid-template-columns: auto auto 1fr auto auto;
   align-items: center;
   gap: 20px;
 }
@@ -614,14 +643,14 @@ input, select {
   color: #b3b3b3;
 }
 .search .search-bar .songs .song-preview .song-title {
-  min-width: 320px;
+  min-width: 180px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 .search .search-bar .songs .song-preview .song-duration {
-  margin-left: auto;
   color: #b3b3b3;
+  width: 42px;
 }
 .search .search-bar .songs .song-preview .play-container {
   width: 20px;
@@ -639,6 +668,18 @@ input, select {
   font-size: 20px;
   position: relative;
   left: 1px;
+}
+
+.genre h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+.genre .playlist-container {
+  margin-bottom: 40px;
+}
+.genre .playlist-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 220px);
 }
 
 .login-signup {
@@ -734,7 +775,7 @@ input, select {
 }
 
 ::-webkit-scrollbar {
-  width: 14px;
+  width: 12px;
   height: 14px;
 }
 
@@ -756,6 +797,10 @@ input, select {
   background: #555;
 }
 
+::-webkit-scrollbar-corner {
+  display: none;
+}
+
 .audio-player {
   align-items: center;
   justify-content: space-between;
@@ -763,7 +808,7 @@ input, select {
   width: 100%;
   padding: 0 16px;
   display: flex;
-  z-index: 5;
+  z-index: 100;
   position: fixed;
   bottom: 0px;
   background-color: #181818;
@@ -810,7 +855,7 @@ input, select {
   white-space: nowrap;
 }
 .audio-player .song-preview:hover .song-txt {
-  animation: long-txt 14s;
+  animation: long-txt 17s;
   animation-iteration-count: infinite;
   display: inline-block;
 }
@@ -1135,7 +1180,7 @@ input, select {
 .nav-bar .logo-container {
   position: fixed;
   z-index: 16;
-  top: 5px;
+  top: 11px;
   left: 5px;
   display: flex;
   flex-direction: row;
@@ -1269,20 +1314,54 @@ input, select {
 
 .header {
   z-index: 15;
-  height: 40px;
-  margin-bottom: 20px;
-  background-color: #121212;
+  right: 0px;
+  left: 0;
+  height: 64px;
   display: flex;
   justify-content: space-between;
   flex-direction: row-reverse;
-  position: sticky;
+  position: fixed;
+  padding-bottom: 5px;
   top: 0;
-  box-shadow: 0px 0px 15px 15px #121212;
 }
-@media screen and (min-width: 680px) {
-  .header .header {
-    height: 60px;
+@media (min-width: 680px) {
+  .header {
+    left: 220px;
   }
+}
+.header .headerBG {
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transition: 0.3s;
+}
+.header .user-info {
+  position: relative;
+  z-index: 30;
+  margin-right: 80px;
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  background-color: #282828;
+  border-radius: 500px;
+}
+.header .user-info img {
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+.header .user-info .user-full-name {
+  margin-right: 10px;
+  font-size: 0.875rem;
+  line-height: 1rem;
+}
+.header .user-info .login-btn {
+  position: absolute;
+  right: -55px;
 }
 
 .playlist-edit {

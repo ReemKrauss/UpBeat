@@ -16,7 +16,7 @@
     width: 100%;
     padding: 0 16px;
     display: flex;
-    z-index: 5;
+    z-index: 100;
     position: fixed;
     bottom: 0px;
     background-color: $clr8;
@@ -78,7 +78,7 @@
 
         &:hover {
             .song-txt {
-                animation: long-txt 14s;
+                animation: long-txt 17s;
                 animation-iteration-count: infinite;
                 display: inline-block;
             }

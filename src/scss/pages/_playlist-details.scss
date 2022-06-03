@@ -50,7 +50,7 @@
             content: '';
             // background-color: inherit;
             height: 300px;
-            background: linear-gradient(180deg, rgba(18,18,18,0.6810925053615196) 3%, rgba(18,18,18,1) 80%);
+            background: linear-gradient(180deg, rgba(18, 18, 18, 0.6810925053615196) 3%, rgba(18, 18, 18, 1) 80%);
             background-color: inherit;
             position: absolute;
             top: 100%;
@@ -176,6 +176,8 @@
             input {
                 padding: 10px 178px 10px 10px;
                 margin-bottom: 20px;
+                position: relative;
+                z-index: 2;
             }
         }
 
@@ -211,7 +213,7 @@
         box-shadow: 0px 1px 0px 0px rgba($color: $clr3, $alpha: 0.2);
         margin-bottom: 20px;
         display: grid;
-        grid-template-columns: auto 14fr 7.4fr  auto;
+        grid-template-columns: auto 14fr 7.4fr auto;
         align-items: center;
         gap: 20px;
 

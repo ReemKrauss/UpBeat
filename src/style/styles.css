@@ -525,7 +525,7 @@ input, select {
   grid-template-columns: minmax(350px, auto) 1fr;
 }
 .search .search-bar input {
-  z-index: 10;
+  z-index: 20;
   position: fixed;
   top: 11px;
   background-color: #ffffff;
@@ -1108,6 +1108,16 @@ input, select {
   display: flex;
   flex-direction: column;
 }
+.nav-bar .nav-list .svg-container {
+  align-items: center;
+  border-radius: 2px;
+  background: linear-gradient(135deg, #450af5, #c4efd9);
+  height: 24px;
+  opacity: 0.7;
+}
+.nav-bar .nav-list .svg-container .like {
+  height: 11px;
+}
 .nav-bar .text {
   font-weight: bold;
   height: 40px;
@@ -1148,8 +1158,14 @@ input, select {
 .nav-bar .text:hover {
   color: #ffffff;
 }
+.nav-bar .text:hover > .svg-container {
+  opacity: 1;
+}
 .nav-bar .chosen .text {
   color: #ffffff;
+}
+.nav-bar .chosen .text > .svg-container {
+  opacity: 1;
 }
 .nav-bar .navbar-playlists {
   display: none;
@@ -1281,6 +1297,7 @@ input, select {
   grid-template-areas: "edit . close" "image form form" "image form form" ". form form";
   grid-template-rows: 20%;
   position: absolute;
+  z-index: 5;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

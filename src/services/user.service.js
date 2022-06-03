@@ -7,7 +7,8 @@ export const userService = {
   logout,
   signup,
   getLoggedinUser,
-  toggleLike
+  toggleLike,
+  getLikedSongsPlaylist
 }
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
@@ -54,6 +55,18 @@ async function toggleLike(song) {
     return saveLocalUser(entity, STORAGE_KEY_LOGGEDIN_USER)
   }
   return saveLocalUser(entity, STORAGE_KEY_GUEST)
+}
+
+function getLikedSongsPlaylist() {
+  const user = getLoggedinUser() || JSON.parse(sessionStorage.getItem(STORAGE_KEY_GUEST))
+  return {name:'Liked Songs',
+            imgUrl: 'https://t.scdn.co/images/3099b3803ad9496896c43f22fe9be8c4.png',
+            createdBy:{
+                fullname: user.fullname,
+                _id: user._id || ''
+            },
+            songs: user.likedSongs
+          }
 }
 
 

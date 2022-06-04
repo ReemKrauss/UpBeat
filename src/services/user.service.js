@@ -65,7 +65,8 @@ function getLikedSongsPlaylist() {
                 fullname: user.fullname,
                 _id: user._id || ''
             },
-            songs: user.likedSongs
+            songs: user.likedSongs,
+            _id: 'liked'
           }
 }
 

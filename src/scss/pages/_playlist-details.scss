@@ -235,5 +235,20 @@
         }
     }
 
+    .header-element{
+        position: fixed;
+        z-index: 20;
+        top: 7px;
+        justify-content: center;
+        gap: 20px;
+        .play-all-btn{
+            position: static;
+            height: 50px;
+        }
+        h2{
+            display: flex;
+            align-items: center;
+        }
+    }
 
 }

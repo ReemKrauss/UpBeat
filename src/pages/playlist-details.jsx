@@ -13,6 +13,7 @@ import { setMiniPlaylist, togglePlay } from "../store/actions/audio-player.actio
 import { useDispatch, useSelector } from "react-redux"
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import getAverageColor from 'get-average-color'
+import { userService } from '../services/user.service'
 import { useHeaderBGContext } from '../context/useBackgroundColor'
 
 
@@ -36,14 +37,17 @@ export const PlaylistDetails = (props) => {
         title: '',
         order: 'date'
     })
-
+    const { isPlaying, isShuffled, miniPlaylist } = useSelector((storeState) => storeState.audioPlayerModule)
+    const { user } = useSelector((storeState) => storeState.userModule)
     const {updateColor, color} = useHeaderBGContext()
+    
+
 
 
     useEffect(() => {
         loadPlaylist()
         setEditData(initialValueEdit)
-    }, [params.playlistId])
+    }, [params.playlistId, user.likedSongs])
 
     useEffectUpdate(() => {
         if (playlist) setEditData(playlist)
@@ -57,11 +61,10 @@ export const PlaylistDetails = (props) => {
         })
     }, [playlist?.imgUrl])
 
-    const { isPlaying, isShuffled, miniPlaylist } = useSelector((storeState) => storeState.audioPlayerModule)
-
-
     const loadPlaylist = async () => {
-        setPlaylist(await playlistService.getById(params.playlistId))
+        if (params.playlistId === 'liked') setPlaylist(userService.getLikedSongsPlaylist())
+        else setPlaylist(await playlistService.getById(params.playlistId))
+        
     }
 
     const onChangeFilter = useCallback(async (filterBy) => {
@@ -85,7 +88,7 @@ export const PlaylistDetails = (props) => {
     }
 
     const toggleEdit = () => {
-        setisEditing(!isEditing)
+        if (params.playlistId !== 'liked') setisEditing(!isEditing)
     }
 
     const onSaveEdit = async (ev) => {
@@ -146,8 +149,8 @@ export const PlaylistDetails = (props) => {
         }
     }
 
-    getPlaylistLength()
-    const songSection = (playlist) ? <div className='relative'>
+
+    const songSection = (playlist && playlist.songs.length) ? <div className='relative'>
         <PlaylistFilter onChangeFilter={onChangeFilter} filterBy={filterBy} />
         {<button className="play-all-btn" onClick={onTogglePlay}>
             {(!isPlaying || isPlaying && playlist._id !== miniPlaylist.playlistId) && <svg role="img" height="16" width="16" className='play-svg' viewBox="0 0 16 16" ><path d="M3 1.713a.7.7 0 011.05-.607l10.89 6.288a.7.7 0 010 1.212L4.05 14.894A.7.7 0 013 14.288V1.713z"></path></svg>}
@@ -176,8 +179,9 @@ export const PlaylistDetails = (props) => {
         </DragDropContext>
     </div> : ''
 
-    if (!playlist && params.playlistId) return <h2>loading...</h2>
-    // console.log(playlist)
+    if (!playlist && params.playlistId) return <h2></h2>
+
+    console.log(playlist)
     return <section className="playlist-details main-layout">
         <div className="playlist-header flex full" style = {{backgroundColor: color}} >
             <div onClick={toggleEdit} className="img-container flex">
@@ -194,9 +198,9 @@ export const PlaylistDetails = (props) => {
         
         {playlist && songSection}
         {isEditing && <PlaylistEdit handleChange={handleChange} onUploaded={onUploaded} editData={editData} toggleEdit={toggleEdit} onSaveEdit={onSaveEdit} />}
-        <div className="search-container">
+        {params.playlistId !== 'liked' && <div className="search-container">
             <h3>Let's find something for your playlist</h3>
             <SearchBar onAddFromPlaylist={onAddFromPlaylist} />
-        </div>
+        </div>}
     </section>
 }

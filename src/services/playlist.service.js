@@ -41,6 +41,7 @@ async function addSong(song, playlist) {
     return await httpService.put(`playlist/${playlist._id}`, playlist)
 }
 
+
 async function getTags() {
     return [
         { title: 'New Releases', color: '#1bd57f', imgUrl: 'https://i.scdn.co/image/ab67706f000000027ea4d505212b9de1f72c5112' },

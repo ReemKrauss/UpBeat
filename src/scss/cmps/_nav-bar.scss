@@ -26,6 +26,17 @@
                 flex-direction: column;
             }
         }
+        .svg-container{
+            align-items: center;
+            border-radius: 2px;
+            background: linear-gradient(135deg,#450af5,#c4efd9);
+            height: 24px;
+            opacity: 0.7;
+            .like{
+                height: 11px;
+            }
+        }
+        
     }
 
     .text {
@@ -47,16 +58,17 @@
     .logo-container {
         position: fixed;
         z-index: 16;
-        top: 5px;
+        top: 11px;
         left: 5px;
         display: flex;
         flex-direction: row;
         align-items: center;
         gap: 5px;
 
+
         img {
             border-radius: 50%;
-            height: 40px;
+            height: 40px
         }
 
         h1 {
@@ -70,15 +82,22 @@
             align-items: center;
             gap: 10px;
         }
+
     }
 
     .text:hover {
         color: $clr3;
+        & > .svg-container{
+            opacity: 1;
+        }
     }
 
     .chosen {
         .text {
             color: $clr3;
+            & > .svg-container{
+                opacity: 1;
+            }
         }
 
     }

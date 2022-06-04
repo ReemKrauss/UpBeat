@@ -5,6 +5,8 @@ import { togglePlay } from '../store/actions/audio-player.action'
 import { useState, useEffect } from 'react'
 import audioSvg from '../assets/img/audio.svg'
 import { toggleLike } from '../store/actions/user.actions'
+import { useParams } from 'react-router-dom/cjs/react-router-dom.min'
+
 
 
 export const SongPreview = ({ song, onAddFromPlaylist, onSetMiniPlaylist, playerId, provided }) => {
@@ -13,8 +15,10 @@ export const SongPreview = ({ song, onAddFromPlaylist, onSetMiniPlaylist, player
     const { user } = useSelector((storeState) => storeState.userModule)
     const [isLiked, setIsLiked] = useState(false)
     const dispatch = useDispatch()
+    const params = useParams()
 
     useEffect(() => {
+        if( params.playlistId === 'liked') setIsLiked(true)
         if ( user.likedSongs.some((currsong) => currsong.id === song.id)) setIsLiked(true)
         else setIsLiked(false)
     }, [user.likedSongs])
@@ -52,7 +56,7 @@ export const SongPreview = ({ song, onAddFromPlaylist, onSetMiniPlaylist, player
     }
     const draggable = provided ? provided : { draggableProps: {}, dragHandleProps: {}, innerRef: () => { } }
 
-
+    console.log('rendered')
     return (<section className="song-preview flex" {...draggable.draggableProps} {...draggable.dragHandleProps} ref={draggable.innerRef} >
         <div className='play-container flex'>
             {!isCurrPlaying && <h5>{song.idx + 1}</h5>}

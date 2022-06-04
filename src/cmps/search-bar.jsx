@@ -45,7 +45,7 @@ export const SearchBar = ({ onAddFromPlaylist, children }) => {
         {!songs && params && <img className="tailspin" src={tailSpin} alt='cant load' />}
         {songs && children && <div className="top-result">
             <h2>Top result</h2>
-            <SongPreview song={({ ...topSong, idx: 0 })} onAddFromPlaylist={onAddFromPlaylist || ''} />
+            <SongPreview song={({ ...topSong, idx: 0 })}onSetMiniPlaylist={onSetMiniPlaylist} onAddFromPlaylist={onAddFromPlaylist || ''} />
         </div>}
         <div className="songs">
             {songs && children}

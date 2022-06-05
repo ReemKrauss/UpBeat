@@ -3,9 +3,12 @@ import { userService } from '../services/user.service'
 import { ImgUploader } from '../cmps/img-uploader'
 import { GrClose } from 'react-icons/gr'
 
+
+
 export function LoginSignup(props) {
     const [credentials, setCredentials] = useState({ username: '', password: '', fullname: '' })
     const [isSignup, setIsSignup] = useState(false)
+
 
     const clearState = () => {
         setCredentials({ username: '', password: '', fullname: '', imgUrl: '' })

@@ -45,6 +45,8 @@ export const App = () => {
   }
 
 
+
+
   return (
     <main >
       {!isInitial && <Hero onInitialEntry={onInitialEntry} />}

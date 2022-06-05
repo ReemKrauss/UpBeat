@@ -135,6 +135,7 @@ input, select {
   background-color: rgb(83, 83, 83);
   background: linear-gradient(transparent 0, rgba(0, 0, 0, 0.5) 100%);
   padding: 30px;
+  padding-top: 62px;
   margin-bottom: 40px;
   position: relative;
 }
@@ -673,6 +674,7 @@ input, select {
 .genre h2 {
   font-size: 2rem;
   margin-bottom: 20px;
+  margin-top: 62px;
 }
 .genre .playlist-container {
   margin-bottom: 40px;

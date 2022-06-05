@@ -63,6 +63,7 @@ export const PlaylistDetails = (props) => {
         if (playlist) {
             setIsLiked(user.likedPlaylists.some((userPlaylist) => userPlaylist._id === playlist._id))
             setEditData(playlist)
+            if (!params.playlistId) history.push(`/playlist/${playlist._id}`)
         }
         else setEditData(initialValueEdit)
     }, [playlist, params.playlistId])

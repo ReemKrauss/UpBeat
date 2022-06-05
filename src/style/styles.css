@@ -547,10 +547,25 @@ input, select {
   }
 }
 
-.home h2 {
+.home .title-container {
   margin-top: 62px;
-  font-size: 2rem;
+  display: flex;
   margin-bottom: 20px;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.home h2 {
+  font-size: 2rem;
+}
+.home .see-all {
+  color: #a7a7a7;
+  font-weight: 700;
+  display: none;
+}
+@media (min-width: 680px) {
+  .home .see-all {
+    display: block;
+  }
 }
 .home .playlist-container {
   margin-bottom: 40px;
@@ -568,12 +583,17 @@ input, select {
 }
 .search .tag-container .tag-preview {
   justify-self: center;
-  width: 200px;
+  width: auto;
   height: 200px;
   padding: 10px;
   border-radius: 10px;
   position: relative;
   overflow: hidden;
+}
+@media (min-width: 500px) {
+  .search .tag-container .tag-preview {
+    width: 200px;
+  }
 }
 .search .tag-container .tag-preview img {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
@@ -590,7 +610,11 @@ input, select {
 .search .search-bar {
   display: grid;
   gap: 30px;
-  grid-template-columns: minmax(350px, auto) 1fr;
+}
+@media (min-width: 1200px) {
+  .search .search-bar {
+    grid-template-columns: minmax(350px, auto) 1fr;
+  }
 }
 .search .search-bar .input-container {
   display: flex;
@@ -601,6 +625,7 @@ input, select {
   width: 100%;
   right: 0;
   padding-left: 3px;
+  pointer-events: none;
 }
 @media (min-width: 680px) {
   .search .search-bar .input-container {
@@ -610,7 +635,7 @@ input, select {
 }
 .search .search-bar .input-spacer {
   z-index: -1;
-  width: 180px;
+  width: 230px;
 }
 .search .search-bar input {
   max-width: 400px;
@@ -622,6 +647,7 @@ input, select {
   border-radius: 50px;
   padding-left: 20px;
   margin-bottom: 40px;
+  pointer-events: all;
 }
 .search .search-bar .top-result {
   max-width: 430px;
@@ -653,6 +679,9 @@ input, select {
   white-space: nowrap;
   overflow: hidden;
   margin: 0;
+}
+.search .search-bar .top-result .song-preview .options-btn {
+  display: none;
 }
 .search .search-bar .top-result .song-preview .play-container {
   display: block;
@@ -698,6 +727,9 @@ input, select {
   align-items: center;
   gap: 20px;
 }
+.search .search-bar .songs .song-preview .options-btn {
+  display: none;
+}
 .search .search-bar .songs .song-preview img {
   height: 40px;
   width: 40px;
@@ -707,10 +739,15 @@ input, select {
   color: #b3b3b3;
 }
 .search .search-bar .songs .song-preview .song-title {
-  min-width: 180px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  min-width: 120px;
+}
+@media (min-width: 450px) {
+  .search .search-bar .songs .song-preview .song-title {
+    min-width: 180px;
+  }
 }
 .search .search-bar .songs .song-preview .song-duration {
   color: #b3b3b3;
@@ -747,6 +784,42 @@ input, select {
   grid-template-columns: repeat(auto-fit, 220px);
 }
 
+.library {
+  margin-top: 65px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 190px);
+  gap: 20px;
+  overflow: hidden;
+}
+.library .liked-songs {
+  height: 260px;
+  grid-column: span 2;
+  background: linear-gradient(149.46deg, #450af5, #8e8ee5 99.16%);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  padding: 20px;
+  padding-top: 70px;
+  justify-content: space-between;
+}
+.library .liked-songs:hover {
+  background: linear-gradient(149.46deg, #5a26f5, #8e8ee5 99.16%);
+}
+.library .liked-songs .songs-count {
+  margin-bottom: 18px;
+}
+.library .liked-songs .songs-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+@media (max-width: 680px) {
+  .library {
+    justify-content: center;
+  }
+}
 .login-signup {
   position: fixed;
   top: 50%;
@@ -842,6 +915,12 @@ input, select {
 ::-webkit-scrollbar {
   width: 12px;
   height: 14px;
+  display: none;
+}
+@media (min-width: 680px) {
+  ::-webkit-scrollbar {
+    display: block;
+  }
 }
 
 /* Track */
@@ -1186,8 +1265,18 @@ input, select {
   }
 }
 .playlist-list {
-  display: grid;
-  grid-template-columns: repeat(6, 210px);
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  max-width: 100vw;
+}
+.playlist-list::-webkit-scrollbar {
+  display: none;
+}
+@media (min-width: 680px) {
+  .playlist-list {
+    display: grid;
+  }
 }
 
 .nav-bar {
@@ -1241,6 +1330,7 @@ input, select {
 .nav-bar .text svg {
   height: 24px;
   width: 24px;
+  fill: currentColor;
 }
 .nav-bar .logo-container {
   position: fixed;
@@ -1306,8 +1396,8 @@ input, select {
   border-radius: 5px;
   width: 188.433px;
   height: 266.433px;
-  background-color: rgba(255, 255, 255, 0.01);
-  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.03);
+  padding: 16px;
   margin: 5px;
   transition: 0.3s;
 }
@@ -1327,6 +1417,7 @@ input, select {
   text-overflow: ellipsis;
 }
 .playlist-preview .img-container {
+  align-self: center;
   height: 156px;
   width: 156px;
   border-radius: 3px;
@@ -1402,31 +1493,56 @@ input, select {
   transition: 0.3s;
 }
 .header .user-info {
+  align-self: center;
   position: relative;
   z-index: 30;
-  margin-right: 80px;
-  margin-top: 5px;
+  margin-right: 50px;
+  height: 35px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 5px;
-  background-color: #282828;
+  background-color: #000000;
   border-radius: 500px;
+  padding-right: 10px;
+  cursor: pointer;
+}
+.header .user-info.open {
+  background-color: #282828;
 }
 .header .user-info img {
   height: 28px;
   width: 28px;
   border-radius: 50%;
-  margin-left: 10px;
+  margin-left: 3px;
 }
 .header .user-info .user-full-name {
-  margin-right: 10px;
+  margin-right: 2px;
   font-size: 0.875rem;
   line-height: 1rem;
 }
-.header .user-info .login-btn {
+.header .user-info .menu-arrow {
+  fill: currentColor;
+}
+.header .user-info .menu-arrow.open {
+  transform: rotate(180deg);
+}
+.header .user-info .user-menu {
   position: absolute;
-  right: -55px;
+  right: 0;
+  top: 45px;
+  background-color: #282828;
+  color: #a7a7a7;
+  padding: 10px;
+  width: 150%;
+  display: none;
+}
+.header .user-info .user-menu.open {
+  display: block;
+}
+.header .user-info .user-menu:hover {
+  color: #ffffff;
+  background-color: #282828;
 }
 
 .playlist-edit {

@@ -1,6 +1,14 @@
 .playlist-list{
-    display:grid;
-    grid-template-columns: repeat(6,(210px));
+    display:flex;
+    // grid-template-columns: repeat((210px));
     // grid-template-rows: 256.433px;
-    
+    flex-wrap: nowrap;   
+    overflow-x: scroll;
+    max-width: 100vw;
+    &::-webkit-scrollbar{
+        display: none;
+    }
+    @media (min-width: 680px) {
+        display: grid;
+    }
 }

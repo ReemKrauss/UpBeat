@@ -3,7 +3,7 @@ import { userService } from "../../services/user.service";
 
 const initialState = {
     user: userService.getLoggedinUser(),
-    userMsg:{msg:'im testing',type:'err'}
+    userMsg:{msg:'',type:''}
 }
 export function userReducer(state = initialState, action) {
     let newState = state;

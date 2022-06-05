@@ -2,8 +2,8 @@
     border-radius: 5px;
     width: 188.433px;
     height: 266.433px;
-    background-color: rgba($color: #ffffff, $alpha: 0.01);
-    padding: 10px;
+    background-color: rgba($color: #ffffff, $alpha: 0.03);
+    padding: 16px;
     margin: 5px;
     transition: 0.3s;
 
@@ -26,6 +26,7 @@
     }
 
     .img-container {
+        align-self: center;
         height: 156px;
         width: 156px;
         border-radius: 3px;

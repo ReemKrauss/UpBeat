@@ -8,9 +8,6 @@ import { useParams } from 'react-router-dom'
 export const GenrePage = (props) => {
     const [playlists, setPlaylists] = useState(null) //temporary hard coded values
     const params = useParams()
-    const genreName = params.genreTag
-
-    // console.log(params.genreTag)
 
     useEffect(() => {
         loadPlaylists()

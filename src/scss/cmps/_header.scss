@@ -23,34 +23,72 @@
     }
 
     .user-info {
+        align-self: center;
         position: relative;
         z-index: 30;
-        margin-right: 80px;
-        margin-top: 5px;
+        margin-right: 50px;
+        // margin-top: 10px;
+        height: 35px;
         display: flex;
         justify-content: center;
         align-items: center;
         gap: 5px;
-        background-color: $clr6;
+        background-color: $clr2;
+        &.open{
+            background-color: $clr6;
+        }
         border-radius: 500px;
+        padding-right: 10px;
+        cursor: pointer;
 
         img {
             height: 28px;
             width: 28px;
             border-radius: 50%;
-            margin-left: 10px;
+            margin-left: 3px;
         }
 
         .user-full-name {
-            margin-right: 10px;
+            margin-right: 2px;
             font-size: 0.875rem;
             line-height: 1rem;
         }
-
-        .login-btn {
-            position: absolute;
-            right: -55px;
+        .menu-arrow{
+            fill: currentColor;
+            &.open{
+                transform: rotate(180deg);
+            }
         }
+        .user-menu{
+            position: absolute;
+            right: 0;
+            top: 45px;
+            background-color:$clr6 ;
+            color: $clr4;
+            padding: 10px;
+            width: 150%;
+            display: none;
+            &.open{
+                display: block;
+            }
+            &:hover{
+                color: $clr3;
+                background-color:$clr6 ;
+            }
+        }
+
+        // .login-btn {
+        //     position: absolute;
+        //     padding: 3px 5px;
+        //     right: -75px;
+        //     color: $clr2;
+        //     background-color: $clr3;
+        //     font-size: 1rem;
+        //     border-radius: 200px;
+        //     font-weight: bold;
+        //     z-index: 35;
+        //     cursor: pointer;
+        // }
     }
 
 }

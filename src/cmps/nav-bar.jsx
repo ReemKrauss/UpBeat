@@ -1,10 +1,12 @@
-import { NavLink } from "react-router-dom/cjs/react-router-dom.min"
+import { NavLink, useParams } from "react-router-dom/cjs/react-router-dom.min"
 import Logo from "../assets/img/upbeatinvertedsquare.svg"
 import { MdHomeFilled } from "react-icons/md";
 import { RiSearchLine, RiSearchFill } from "react-icons/ri";
 import { BsFillPlusSquareFill } from "react-icons/bs";
 import { playlistService } from "../services/playlist.service";
 import { NavBarPlayLists } from '../cmps/navbar-playlists.jsx';
+import useWindowDimensions from "../hooks/useWindowDimentions";
+
 
 export const NavBar = (props) => {
 

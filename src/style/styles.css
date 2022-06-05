@@ -144,15 +144,17 @@ input, select {
   position: relative;
 }
 .playlist-details .playlist-header .img-container {
-  height: 233px;
-  width: 233px;
+  min-height: 233px;
+  min-width: 233px;
+  max-height: 233px;
+  max-width: 233px;
   text-align: center;
   background: #282828;
   align-items: center;
   justify-content: center;
 }
 .playlist-details .playlist-header img {
-  height: 100%;
+  height: 233px;
   width: 100%;
 }
 .playlist-details .playlist-header .new-playlist-icon {
@@ -350,9 +352,6 @@ input, select {
   align-items: center;
   gap: 20px;
 }
-.playlist-details .sorting-table .date-label {
-  margin-left: 0px;
-}
 .playlist-details .header-element {
   position: fixed;
   z-index: 20;
@@ -375,6 +374,125 @@ input, select {
   align-items: center;
 }
 
+@media screen and (max-width: 1880px) {
+  .playlist-details .playlist-header h1 {
+    font-size: 5rem;
+  }
+}
+@media screen and (max-width: 1280px) {
+  .playlist-details .playlist-header .img-container {
+    min-width: 190px;
+    min-height: 190px;
+    max-width: 190px;
+    max-height: 190px;
+  }
+  .playlist-details .playlist-header img {
+    height: 190px;
+  }
+  .playlist-details .playlist-header h1 {
+    font-size: 3rem;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .playlist-details .playlist-header {
+    padding: 64px 15px 15px 15px;
+  }
+  .playlist-details .song-preview .song-title {
+    min-width: 150px;
+  }
+
+  .main-layout {
+    grid-template-columns: 15px 1fr 15px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .playlist-details .playlist-header h1 {
+    font-size: 2.5rem;
+  }
+  .playlist-details .song-preview {
+    grid-template-columns: auto auto 2fr auto auto auto;
+  }
+  .playlist-details .song-preview .date {
+    display: none;
+  }
+  .playlist-details .sorting-table {
+    grid-template-columns: auto 14fr auto 0.35fr;
+  }
+  .playlist-details .sorting-table .date-label {
+    display: none;
+  }
+}
+@media screen and (max-width: 680px) {
+  .playlist-details .playlist-header {
+    padding-top: 150px;
+    flex-direction: column;
+  }
+  .playlist-details .playlist-header .img-container {
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 350px;
+    min-height: 350px;
+  }
+  .playlist-details .playlist-header img {
+    height: 100%;
+  }
+  .playlist-details .song-preview {
+    grid-template-columns: auto 2fr auto auto;
+  }
+  .playlist-details .song-preview .play-container {
+    display: none;
+  }
+  .playlist-details .song-preview .song-duration {
+    display: none;
+  }
+  .playlist-details .song-preview .options-btn {
+    opacity: 1;
+  }
+  .playlist-details .sorting-table {
+    display: none;
+  }
+  .playlist-details .playlist-filter {
+    position: absolute;
+    top: -640px;
+    width: 100%;
+  }
+  .playlist-details .playlist-filter .filter-container {
+    flex-grow: 1;
+  }
+  .playlist-details .playlist-filter .filter-container .filter-name {
+    display: block;
+    flex-grow: 1;
+  }
+  .playlist-details .playlist-filter .filter-container label {
+    position: absolute;
+    top: 8px;
+    left: 3px;
+  }
+  .playlist-details .playlist-controls {
+    margin-top: 15px;
+  }
+  .playlist-details .playlist-controls .play-all-btn {
+    position: absolute;
+    right: 0;
+    top: -12px;
+    width: 70px;
+    height: 70px;
+  }
+  .playlist-details .playlist-controls .play-all-btn svg {
+    width: 25px;
+    height: 25px;
+  }
+  .playlist-details .header-element {
+    margin-top: 10px;
+    display: none;
+  }
+  .playlist-details .header-element .play-all-btn {
+    display: none;
+  }
+  .playlist-details .search-container .song-preview {
+    grid-template-columns: auto 1fr auto auto;
+  }
+}
 .hero {
   filter: drop-shadow(0px 0px 1px);
   z-index: 20;
@@ -1566,6 +1684,10 @@ input, select {
   grid-area: edit;
   align-self: center;
 }
+.playlist-edit .img-container img {
+  height: 180px;
+  width: 180px;
+}
 .playlist-edit form {
   grid-area: form;
   display: flex;
@@ -1642,7 +1764,63 @@ input, select {
   transition-property: all;
 }
 
+@media screen and (max-width: 680px) {
+  .playlist-edit {
+    width: 100vw;
+    height: 100%;
+    grid-template-areas: "close edit ." ". image ." ". . . " "form form form";
+    grid-template-rows: 10% 30% 10%;
+    z-index: 200;
+    grid-template-columns: 10% auto 10%;
+  }
+  .playlist-edit .close-btn {
+    align-self: flex-start;
+    justify-self: start;
+  }
+  .playlist-edit h3 {
+    align-self: flex-start;
+    justify-self: center;
+    margin-top: 10px;
+  }
+  .playlist-edit .img-container {
+    width: 180px;
+    height: 247px;
+    justify-self: center;
+    align-self: baseline;
+  }
+  .playlist-edit .img-container img {
+    height: 240px;
+    width: 240px;
+  }
+  .playlist-edit form input {
+    margin-bottom: 44px;
+    background-color: transparent;
+    box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.2);
+    border-radius: 0px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 2.4rem;
+  }
+  .playlist-edit form textarea {
+    height: 31px;
+    background-color: transparent;
+    box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.2);
+    border-radius: 0px;
+    text-align: center;
+  }
+  .playlist-edit form .save-btn {
+    background-color: transparent;
+    padding: 8px;
+    align-self: end;
+    position: absolute;
+    top: 0px;
+    color: #ffffff;
+    font-size: 1.1rem;
+  }
+}
 .playlist-filter {
+  position: relative;
+  z-index: 2;
   justify-content: flex-end;
   align-items: center;
   gap: 20px;

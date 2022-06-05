@@ -20,7 +20,7 @@ export const PlaylistFilter = React.memo(({onChangeFilter, filterBy}) => {
             <div className="filter-container flex">
                 <input className="hidden" type="checkbox" id="toggle" />
                 <label htmlFor="toggle"><FiSearch className="search-label" /></label>
-                <input autoFocus={true} className="filter-name hidden" {...register('title')} />
+                <input className="filter-name hidden" {...register('title')} />
             </div>
             <div>
                 <select {...register('order')} value={filterBy.order}>

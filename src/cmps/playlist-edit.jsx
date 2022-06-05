@@ -12,7 +12,7 @@ export const PlaylistEdit = ({ handleChange, onUploaded, editData, toggleEdit, o
         <h3>Edit Details</h3>
         <button className="close-btn" onClick={toggleEdit}><CgClose /></button>
         <div className="img-container flex">
-            <ImgUploader onUploaded={onUploaded} display={(editData.imgUrl && <img src={editData.imgUrl} style={{ width: '180px', height: '180px' }} />)
+            <ImgUploader onUploaded={onUploaded} display={(editData.imgUrl && <img src={editData.imgUrl} />)
                 || <BsMusicNoteBeamed className='new-playlist-icon' />} />
         </div>
         <form onSubmit={onSaveEdit}>

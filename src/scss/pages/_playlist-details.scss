@@ -395,12 +395,12 @@
             .img-container {
                 margin-left: auto;
                 margin-right: auto;
-                min-width: 400px;
-                min-height: 400px;
+                min-width: 350px;
+                min-height: 350px;
             }
 
             img {
-                height: 400px;
+                height: 100%;
             }
         }
 
@@ -426,7 +426,7 @@
 
         .playlist-filter {
             position: absolute;
-            top: -690px;
+            top: -640px;
             width: 100%;
 
             .filter-container {
@@ -464,23 +464,18 @@
         }
 
         .header-element {
+            margin-top: 10px;
+            display: none; // until we decide on keeping the logo or not
             .play-all-btn {
                 display: none;
+            }
+        }
+
+        .search-container{
+            .song-preview{
+                grid-template-columns: auto 1fr auto auto;
             }
         }
     }
 }
 
-
-@media screen and (max-width: 450px) {
-    .playlist-header {
-        .img-container {
-            min-width: 320px;
-            min-height: 320px;
-        }
-
-        img {
-            height: 320px;
-        }
-    }
-}

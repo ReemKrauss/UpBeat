@@ -430,11 +430,11 @@ input, select {
   .playlist-details .playlist-header .img-container {
     margin-left: auto;
     margin-right: auto;
-    min-width: 400px;
-    min-height: 400px;
+    min-width: 350px;
+    min-height: 350px;
   }
   .playlist-details .playlist-header img {
-    height: 400px;
+    height: 100%;
   }
   .playlist-details .song-preview {
     grid-template-columns: auto 2fr auto auto;
@@ -453,7 +453,7 @@ input, select {
   }
   .playlist-details .playlist-filter {
     position: absolute;
-    top: -690px;
+    top: -640px;
     width: 100%;
   }
   .playlist-details .playlist-filter .filter-container {
@@ -482,17 +482,15 @@ input, select {
     width: 25px;
     height: 25px;
   }
+  .playlist-details .header-element {
+    margin-top: 10px;
+    display: none;
+  }
   .playlist-details .header-element .play-all-btn {
     display: none;
   }
-}
-@media screen and (max-width: 450px) {
-  .playlist-header .img-container {
-    min-width: 320px;
-    min-height: 320px;
-  }
-  .playlist-header img {
-    height: 320px;
+  .playlist-details .search-container .song-preview {
+    grid-template-columns: auto 1fr auto auto;
   }
 }
 .hero {
@@ -1570,6 +1568,10 @@ input, select {
   grid-area: edit;
   align-self: center;
 }
+.playlist-edit .img-container img {
+  height: 180px;
+  width: 180px;
+}
 .playlist-edit form {
   grid-area: form;
   display: flex;
@@ -1646,6 +1648,60 @@ input, select {
   transition-property: all;
 }
 
+@media screen and (max-width: 680px) {
+  .playlist-edit {
+    width: 100vw;
+    height: 100%;
+    grid-template-areas: "close edit ." ". image ." ". . . " "form form form";
+    grid-template-rows: 10% 30% 10%;
+    z-index: 200;
+    grid-template-columns: 10% auto 10%;
+  }
+  .playlist-edit .close-btn {
+    align-self: flex-start;
+    justify-self: start;
+  }
+  .playlist-edit h3 {
+    align-self: flex-start;
+    justify-self: center;
+    margin-top: 10px;
+  }
+  .playlist-edit .img-container {
+    width: 180px;
+    height: 247px;
+    justify-self: center;
+    align-self: baseline;
+  }
+  .playlist-edit .img-container img {
+    height: 240px;
+    width: 240px;
+  }
+  .playlist-edit form input {
+    margin-bottom: 44px;
+    background-color: transparent;
+    box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.2);
+    border-radius: 0px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 2.4rem;
+  }
+  .playlist-edit form textarea {
+    height: 31px;
+    background-color: transparent;
+    box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.2);
+    border-radius: 0px;
+    text-align: center;
+  }
+  .playlist-edit form .save-btn {
+    background-color: transparent;
+    padding: 8px;
+    align-self: end;
+    position: absolute;
+    top: 0px;
+    color: #ffffff;
+    font-size: 1.1rem;
+  }
+}
 .playlist-filter {
   position: relative;
   z-index: 2;

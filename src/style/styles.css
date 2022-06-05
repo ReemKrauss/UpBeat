@@ -312,6 +312,22 @@ input, select {
 .playlist-details .sorting-table .date-label {
   margin-left: 0px;
 }
+.playlist-details .header-element {
+  position: fixed;
+  z-index: 20;
+  top: 7px;
+  justify-content: center;
+  gap: 20px;
+}
+.playlist-details .header-element .play-all-btn {
+  position: static;
+  height: 50px;
+}
+.playlist-details .header-element h2 {
+  display: flex;
+  align-items: center;
+}
+
 .hero {
   filter: drop-shadow(0px 0px 1px);
   z-index: 20;

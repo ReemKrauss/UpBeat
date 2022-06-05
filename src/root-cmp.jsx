@@ -66,6 +66,8 @@ const onScroll = (e) => {
 }
 
 
+
+
   return (
     <main >
       {!isInitial && <Hero onInitialEntry={onInitialEntry} />}

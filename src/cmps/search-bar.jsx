@@ -25,7 +25,7 @@ export const SearchBar = ({ onAddFromPlaylist, children }) => {
 
     const loadSongs = async () => {
         if (params) {
-            if (timeOutId) clearTimeout(timeOutId.current)
+            if (timeOutId.current) clearTimeout(timeOutId.current)
             timeOutId.current = setTimeout(async () => {
                 const results = await searchService.search(params)
                 setSongs(results)

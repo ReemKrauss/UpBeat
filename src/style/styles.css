@@ -1486,4 +1486,38 @@ input, select {
   padding: 9px 10px;
 }
 
+.user-msg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  bottom: 150px;
+  font-size: 1.2rem;
+  min-width: 100px;
+  z-index: 50;
+  padding: 20px;
+  border-radius: 10px;
+  transform: translate(-50%);
+}
+.user-msg span {
+  filter: drop-shadow(0px 0px 1px #000);
+  text-align: center;
+}
+
+.user-msg.err {
+  background-color: red;
+}
+
+.user-msg.success {
+  background-color: #1ed760;
+}
+
+@media screen and (min-width: 680px) {
+  .user-msg {
+    bottom: 100px;
+    transform: translate(calc(-50% + 100px));
+  }
+}
+
 /*# sourceMappingURL=styles.css.map */

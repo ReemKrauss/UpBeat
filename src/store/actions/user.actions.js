@@ -68,3 +68,13 @@ export function toggleLike(song) {
     }
 }
 
+export function setUserMsg(msg, type) {
+    let userMsg = { msg, type }
+
+    return (dispatch) => {
+        dispatch({
+            type: 'SET_MSG',
+            userMsg,
+        })
+    }
+}

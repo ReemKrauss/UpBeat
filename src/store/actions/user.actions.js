@@ -54,13 +54,14 @@ export function onGetLoggedinUser() {
 
 }
 
-export function toggleLike(song) {
+export function toggleLike(value, field) {
     return async (dispatch) => {
         try {
-            const user = await userService.toggleLike(song)
+            const user = await userService.toggleLike(value, field)
             dispatch({
                 type: 'TOGGLE_LIKE',
-                likedSongs: user.likedSongs
+                [field]: user[field],
+                field
             })
         } catch (err) {
             console.log('could not like', err)

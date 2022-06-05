@@ -27,6 +27,7 @@ async function login(credentials) {
   }
 }
 async function signup(user) {
+  console.log(user)
   return httpService.post('auth/signup', user)
 }
 
@@ -43,13 +44,17 @@ function saveLocalUser(user, userType) { //can get which key to save as argument
   sessionStorage.setItem(userType, JSON.stringify(user))
   return user
 }
-async function toggleLike(song) {
-  song = { ...song }
-  song.addedAt = Date.now()
+async function toggleLike(value, field) {
+  value = { ...value }
+  if (field === 'likedSongs')value.addedAt = Date.now()
   const entity = getLoggedinUser() || JSON.parse(sessionStorage.getItem(STORAGE_KEY_GUEST))
-  const songIdx = entity.likedSongs.findIndex((currsong) => currsong.id === song.id)
-  if (songIdx === -1) entity.likedSongs.unshift(song)
-  else entity.likedSongs.splice(songIdx, 1)
+  const valueIdx = entity[field].findIndex((currvalue) => {
+    if (currvalue.id) return currvalue.id === value.id  
+    if (currvalue._id) return currvalue._id === value._id
+  })
+  console.log(valueIdx)
+  if (valueIdx === -1) entity[field].unshift(value)
+  else entity[field].splice(valueIdx, 1)
   if (entity._id) {
     httpService.put(`user/${entity._id}`, entity)
     return saveLocalUser(entity, STORAGE_KEY_LOGGEDIN_USER)
@@ -59,15 +64,16 @@ async function toggleLike(song) {
 
 function getLikedSongsPlaylist() {
   const user = getLoggedinUser() || JSON.parse(sessionStorage.getItem(STORAGE_KEY_GUEST))
-  return {name:'Liked Songs',
-            imgUrl: 'https://t.scdn.co/images/3099b3803ad9496896c43f22fe9be8c4.png',
-            createdBy:{
-                fullname: user.fullname,
-                _id: user._id || ''
-            },
-            songs: user.likedSongs,
-            _id: 'liked'
-          }
+  return {
+    name: 'Liked Songs',
+    imgUrl: 'https://t.scdn.co/images/3099b3803ad9496896c43f22fe9be8c4.png',
+    createdBy: {
+      fullname: user.fullname,
+      _id: user._id || ''
+    },
+    songs: user.likedSongs,
+    _id: 'liked'
+  }
 }
 
 

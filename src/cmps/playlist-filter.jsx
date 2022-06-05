@@ -9,7 +9,12 @@ export const PlaylistFilter = React.memo(({onChangeFilter, filterBy}) => {
         order: filterBy.order,
     }, onChangeFilter)
 
+    const checkSelected = (value) => {
+        if (filterBy.order === value) return 'selected'
+    }
+
     const sectionProps = { className: "playlist-filter flex" }
+
     return (
         <section {...sectionProps}>
             <div className="filter-container flex">
@@ -18,7 +23,8 @@ export const PlaylistFilter = React.memo(({onChangeFilter, filterBy}) => {
                 <input autoFocus={true} className="filter-name hidden" {...register('title')} />
             </div>
             <div>
-                <select {...register('order')}>
+                <select {...register('order')} value={filterBy.order}>
+                    <option value="custom" {...checkSelected()}>Custom order</option>
                     <option value="addedAt">Date added</option>
                     <option value="title">Title</option>
                 </select>

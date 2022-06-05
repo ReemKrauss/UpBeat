@@ -6,10 +6,11 @@ import { useState, useEffect } from 'react'
 import audioSvg from '../assets/img/audio.svg'
 import { toggleLike } from '../store/actions/user.actions'
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min'
+import { OptionsMenu } from './options-menu'
 
 
 
-export const SongPreview = ({ song, onAddFromPlaylist, onSetMiniPlaylist, playerId, provided }) => {
+export const SongPreview = ({ song, onAddFromPlaylist, onSetMiniPlaylist, playerId, provided, removeSong }) => {
 
     const { isPlaying, isShuffled, miniPlaylist } = useSelector((storeState) => storeState.audioPlayerModule)
     const { user } = useSelector((storeState) => storeState.userModule)
@@ -18,8 +19,7 @@ export const SongPreview = ({ song, onAddFromPlaylist, onSetMiniPlaylist, player
     const params = useParams()
 
     useEffect(() => {
-        if ( user.likedSongs.some((currsong) => currsong.id === song.id)) setIsLiked(true)
-        else setIsLiked(false)
+        setIsLiked(user.likedSongs.some((currsong) => currsong.id === song.id))
     }, [user.likedSongs])
 
     const getTime = () => {
@@ -35,12 +35,10 @@ export const SongPreview = ({ song, onAddFromPlaylist, onSetMiniPlaylist, player
     const getCurrPlaying = () => {
         if (!miniPlaylist.songs.length) return
         if (playerId !== miniPlaylist.playlistId) return false
-        if (!isShuffled && miniPlaylist.currSongIdx === song.idx && miniPlaylist.songs[miniPlaylist.currSongIdx].id === song.id) {
-            return true
-        }
-        if (miniPlaylist.songs[miniPlaylist.currSongIdx].initIdx === song.idx) {
-            return true
-        }
+        if (!isShuffled && miniPlaylist.songs[miniPlaylist.currSongIdx].id === song.id) return true
+        // if (miniPlaylist.songs[miniPlaylist.currSongIdx].initIdx === song.idx) {
+        //     return true
+        // }
         return false
     }
     const isCurrPlaying = getCurrPlaying()
@@ -51,7 +49,7 @@ export const SongPreview = ({ song, onAddFromPlaylist, onSetMiniPlaylist, player
     }
 
     const onToggleLike = () => {
-        dispatch(toggleLike(song))
+        dispatch(toggleLike(song,'likedSongs'))
     }
     const draggable = provided ? provided : { draggableProps: {}, dragHandleProps: {}, innerRef: () => { } }
 
@@ -69,10 +67,10 @@ export const SongPreview = ({ song, onAddFromPlaylist, onSetMiniPlaylist, player
         <h4 className={`song-title ${isCurrPlaying && 'green'}`}>{song.title}</h4>
         {getTime()}
         {isLiked && <svg role="img" onClick={onToggleLike} className="like" height="16" width="16" viewBox="0 0 16 16" fill="#1ed760" ><path d="M15.724 4.22A4.313 4.313 0 0012.192.814a4.269 4.269 0 00-3.622 1.13.837.837 0 01-1.14 0 4.272 4.272 0 00-6.21 5.855l5.916 7.05a1.128 1.128 0 001.727 0l5.916-7.05a4.228 4.228 0 00.945-3.577z"></path></svg> ||
-        <svg role="img" onClick={onToggleLike} height="16" width="16" viewBox="0 0 16 16" className="like" fill="#c2bfbe"><path d="M1.69 2A4.582 4.582 0 018 2.023 4.583 4.583 0 0111.88.817h.002a4.618 4.618 0 013.782 3.65v.003a4.543 4.543 0 01-1.011 3.84L9.35 14.629a1.765 1.765 0 01-2.093.464 1.762 1.762 0 01-.605-.463L1.348 8.309A4.582 4.582 0 011.689 2zm3.158.252A3.082 3.082 0 002.49 7.337l.005.005L7.8 13.664a.264.264 0 00.311.069.262.262 0 00.09-.069l5.312-6.33a3.043 3.043 0 00.68-2.573 3.118 3.118 0 00-2.551-2.463 3.079 3.079 0 00-2.612.816l-.007.007a1.501 1.501 0 01-2.045 0l-.009-.008a3.082 3.082 0 00-2.121-.861z"></path></svg>}
+        <svg role="img" onClick={onToggleLike} height="16" width="16" viewBox="0 0 16 16" className="like opacity-zero" fill="#c2bfbe"><path d="M1.69 2A4.582 4.582 0 018 2.023 4.583 4.583 0 0111.88.817h.002a4.618 4.618 0 013.782 3.65v.003a4.543 4.543 0 01-1.011 3.84L9.35 14.629a1.765 1.765 0 01-2.093.464 1.762 1.762 0 01-.605-.463L1.348 8.309A4.582 4.582 0 011.689 2zm3.158.252A3.082 3.082 0 002.49 7.337l.005.005L7.8 13.664a.264.264 0 00.311.069.262.262 0 00.09-.069l5.312-6.33a3.043 3.043 0 00.68-2.573 3.118 3.118 0 00-2.551-2.463 3.079 3.079 0 00-2.612.816l-.007.007a1.501 1.501 0 01-2.045 0l-.009-.008a3.082 3.082 0 00-2.121-.861z"></path></svg>}
         
         <span className='song-duration'>{song.duration.display}</span>
-        {onAddFromPlaylist && <button className="add-button" onClick={() => onAddFromPlaylist(song)}>Add</button>}
+        {onAddFromPlaylist && <button className="add-button" onClick={() => onAddFromPlaylist(song)}>Add</button> || <OptionsMenu song={song} removeSong={removeSong}/>}
     </section>)
 
 

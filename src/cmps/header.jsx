@@ -61,7 +61,7 @@ export const AppHeader = ({ opacity }) => {
                 </div>
             }
             {isInSignup &&
-                <LoginSignup toggleIsInSignup={toggleIsInSignup} onLogin={onOnLogin} onSignup={() => { dispatch(onSignup()) }} />
+                <LoginSignup toggleIsInSignup={toggleIsInSignup} onLogin={onOnLogin} onSignup={(credentials) => { dispatch(onSignup(credentials)) }} />
 
             }
         </header>

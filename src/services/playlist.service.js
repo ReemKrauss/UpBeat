@@ -12,7 +12,9 @@ export const playlistService = {
     save,
     makeDummy,
     addSong,
-    getTags
+    removeSong,
+    getTags,
+    removePlaylist,
 }
 
 window.ps = playlistService
@@ -36,9 +38,22 @@ async function save(playlist) {
     return await httpService.post(`playlist/`, playlist)
 }
 
-async function addSong(song, playlist) {
-    playlist.songs.push({ ...song, addedAt: Date.now(), addedBy: 'Guest' }) //needs user service to know who added, set as guest for now
+async function addSong(song, playlist, user) {
+    if ( !playlist.songs.some((currsong) => currsong.id === song.id)){
+        playlist.songs.push({ ...song, addedAt: Date.now(), addedBy: {fullname:user.fullname, _id: user._id || ''} }) 
+        return await httpService.put(`playlist/${playlist._id}`, playlist)
+    }
+    return playlist
+}
+
+async function removeSong(song, playlist) {
+    const idx = playlist.songs.findIndex(currsong => currsong.id === song.id)
+    playlist.songs.splice(idx, 1)
     return await httpService.put(`playlist/${playlist._id}`, playlist)
+}
+
+async function removePlaylist(playlistId) {
+    return httpService.delete(`playlist/${playlistId}`)
 }
 
 

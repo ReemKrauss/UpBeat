@@ -17,7 +17,8 @@ export function userReducer(state = initialState, action) {
             }
             break;
         case 'TOGGLE_LIKE':
-            newState = {...state, user: {...newState.user, likedSongs : action.likedSongs}}
+            console.log(action.field , action[action.field])
+            newState = {...state, user: {...newState.user, [action.field]: action[action.field]}}
             break
         default:
     }

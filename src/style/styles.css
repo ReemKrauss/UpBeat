@@ -692,6 +692,9 @@ input, select {
   }
 }
 
+.home {
+  margin-bottom: 150px;
+}
 .home .title-container {
   margin-top: 62px;
   display: flex;
@@ -1128,7 +1131,7 @@ input, select {
 .audio-player .song-preview {
   justify-content: center;
   align-items: center;
-  gap: 5px;
+  gap: 15px;
 }
 .audio-player .song-preview .song-img {
   height: 56px;
@@ -1414,6 +1417,15 @@ input, select {
     -webkit-appearance: none;
   }
 }
+@media screen and (max-width: 450px) {
+  .audio-player .player-controlers {
+    position: absolute;
+    width: 105vw;
+  }
+  .audio-player .player-controlers .player-btns {
+    width: 200px;
+  }
+}
 .playlist-list {
   display: flex;
   flex-wrap: nowrap;
@@ -1429,7 +1441,7 @@ input, select {
 }
 @media (max-width: 679px) {
   .playlist-list {
-    max-width: 97vw;
+    max-width: calc(100vw - 31px);
   }
 }
 
@@ -1484,6 +1496,7 @@ input, select {
 }
 .nav-bar .text.liked {
   display: none;
+  margin-bottom: 7px;
 }
 .nav-bar .text svg {
   height: 24px;
@@ -1527,7 +1540,7 @@ input, select {
 }
 .nav-bar .navbar-playlists {
   display: none;
-  box-shadow: 0px -9px 0px -8px rgba(255, 255, 255, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 @media screen and (min-width: 680px) {
   .nav-bar .text {
@@ -1541,6 +1554,9 @@ input, select {
   }
   .nav-bar .navbar-playlists {
     display: block;
+  }
+  .nav-bar .navbar-playlists .nav-list {
+    margin-top: 0;
   }
   .nav-bar .nav-list {
     background-color: rgba(255, 255, 255, 0);
@@ -1660,7 +1676,7 @@ input, select {
   align-self: center;
   position: relative;
   z-index: 30;
-  margin-right: 50px;
+  margin-right: 15px;
   height: 35px;
   display: flex;
   justify-content: center;

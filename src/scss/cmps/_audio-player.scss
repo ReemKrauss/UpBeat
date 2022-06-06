@@ -52,7 +52,7 @@
     .song-preview {
         justify-content: center;
         align-items: center;
-        gap: 5px;
+        gap: 15px;
 
         .song-img {
             height: 56px;
@@ -276,6 +276,7 @@
 
 }
 
+
 @media screen and(max-width: 680px) {
     .audio-player {
         //needs to stay
@@ -378,3 +379,17 @@
     }
 }
 
+@media screen and(max-width: 450px) {
+    .audio-player {
+        .player-controlers {
+            position: absolute;
+            width: 105vw;
+
+            .player-btns {
+                width: 200px;
+
+
+            }
+        }
+    }
+}

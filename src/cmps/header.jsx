@@ -15,7 +15,6 @@ export const AppHeader = ({ opacity }) => {
     const { color, updateColor } = useHeaderBGContext()
     const dispatch = useDispatch()
 
-    // console.log(color, "hello")
 
     const { user } = useSelector((storeState) => storeState.userModule)
     const [isInSignup, setIsInSignup] = useState(false)
@@ -53,7 +52,6 @@ export const AppHeader = ({ opacity }) => {
     }
 
     const onOnLogin = (credentials) => {
-        console.log(credentials, "hi")
         dispatch(onLogin(credentials))
 
     }
@@ -73,7 +71,7 @@ export const AppHeader = ({ opacity }) => {
 
 
             <div onClick={toggleUserMenu} className={`user-info ${userMenuOpen ? 'open' : ''}`}>
-                {user.imgUrl && <img src={user.imgUrl} />}
+                {user.imgUrl ? <img src={user.imgUrl} />:<img src='https://pbs.twimg.com/profile_images/746460305396371456/4QYRblQD.jpg' />}
                 <div className='user-full-name'>{user.fullname}</div>
                 <svg role="img" height="16" width="16" className={`menu-arrow ${userMenuOpen ? 'open' : ''}`} viewBox="0 0 16 16"><path d="M14 6l-6 6-6-6h12z"></path></svg>
                 <div className={`user-menu ${userMenuOpen ? 'open' : ''}`}>

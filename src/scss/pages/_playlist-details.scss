@@ -418,6 +418,9 @@
             .options-btn {
                 opacity: 1;
             }
+            .like {
+               opacity: 1;
+            }
         }
 
         .sorting-table {
@@ -449,6 +452,7 @@
         .playlist-controls {
             margin-top: 15px;
 
+            
             .play-all-btn {
                 position: absolute;
                 right: 0;

@@ -290,8 +290,10 @@
         padding: 0 10px 0 0;
 
         .song-container {
+            position: relative;
             height: 65px;
             width: 50px;
+            z-index: 3000;
 
             .like-btn {
                 position: relative;

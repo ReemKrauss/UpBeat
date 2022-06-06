@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
+import { Link } from "react-router-dom"
+
 
 import { playlistService } from "../services/playlist.service"
 
@@ -20,35 +22,37 @@ export const Library = (props) => {
     }, [user])
 
 
-    const loadPlaylists =  () => {
-        if(!user.likedPlaylists?.length)return
+    const loadPlaylists = () => {
+        if (!user.likedPlaylists?.length) return
         const likedPlaylists = [...user.likedPlaylists]
-        likedPlaylists.forEach(async (currPlaylist,idx) => {
+        likedPlaylists.forEach(async (currPlaylist, idx) => {
             currPlaylist = await playlistService.getById(currPlaylist._id)
             // only set tags after fetching all playlists
-            if(idx===likedPlaylists.length-1)setPlaylists(likedPlaylists)
+            if (idx === likedPlaylists.length - 1) setPlaylists(likedPlaylists)
         })
-        
+
     }
 
     return (
         <div className="library">
-            <div className="liked-songs">
+
+            <Link className="liked-songs" to="/playlist/liked">
                 <div className="songs-titles">
-                    {likedSongsCount>0&& <span>{user.likedSongs[0].title}</span>}
-                    {likedSongsCount>1&& <span>{user.likedSongs[1].title}</span>}
-                    {likedSongsCount>2&& <span>{user.likedSongs[2].title}</span>}
+                    {likedSongsCount > 0 && <span>{user.likedSongs[0].title}</span>}
+                    {likedSongsCount > 1 && <span>{user.likedSongs[1].title}</span>}
+                    {likedSongsCount > 2 && <span>{user.likedSongs[2].title}</span>}
                 </div>
                 <div className="songs-count">
-                <h1>Liked songs</h1>
-                <h6>{likedSongsCount} liked songs</h6>
+                    <h1>Liked songs</h1>
+                    <h6>{likedSongsCount} liked songs</h6>
                 </div>
-            </div>
+            </Link>
+
             {playlists.map((playlist) => {
-            return (
+                return (
                     <PlaylistPreview key={playlist._id} playlist={playlist} />
-            )
-        })}
+                )
+            })}
         </div>
     )
 

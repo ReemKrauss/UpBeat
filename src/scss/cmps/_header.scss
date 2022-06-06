@@ -27,6 +27,12 @@
         position: relative;
         z-index: 30;
         margin-right: 15px;
+        @media (min-width: 1000px) {
+            margin-right: 35px;
+        }
+        @media (min-width: 680px) {
+            margin-right: 25px;
+        }
         // margin-top: 10px;
         height: 35px;
         display: flex;

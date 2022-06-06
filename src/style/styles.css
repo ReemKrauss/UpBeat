@@ -1687,6 +1687,16 @@ input, select {
   padding-right: 10px;
   cursor: pointer;
 }
+@media (min-width: 1000px) {
+  .header .user-info {
+    margin-right: 35px;
+  }
+}
+@media (min-width: 680px) {
+  .header .user-info {
+    margin-right: 25px;
+  }
+}
 .header .user-info.open {
   background-color: #282828;
 }

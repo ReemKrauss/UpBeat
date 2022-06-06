@@ -1805,7 +1805,7 @@ input, select {
     margin-top: 10px;
   }
   .playlist-edit .img-container {
-    width: 180px;
+    width: 247px;
     height: 247px;
     justify-self: center;
     align-self: baseline;
@@ -1824,7 +1824,7 @@ input, select {
     font-size: 2.4rem;
   }
   .playlist-edit form textarea {
-    height: 31px;
+    height: 38px;
     background-color: transparent;
     box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.2);
     border-radius: 0px;
@@ -1846,10 +1846,12 @@ input, select {
   justify-content: flex-end;
   align-items: center;
   gap: 20px;
+  pointer-events: none;
 }
 .playlist-filter .filter-container {
   align-items: center;
   position: relative;
+  pointer-events: all;
 }
 .playlist-filter .filter-container .filter-name {
   padding: 9px;
@@ -1865,6 +1867,7 @@ input, select {
 }
 .playlist-filter select {
   padding: 9px 10px;
+  pointer-events: all;
 }
 
 .user-msg {

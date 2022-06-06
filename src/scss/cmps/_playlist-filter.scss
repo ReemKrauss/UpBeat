@@ -4,10 +4,12 @@
     justify-content: flex-end;
     align-items: center;
     gap: 20px;
+    pointer-events: none;
 
     .filter-container {
         align-items: center;
         position: relative;
+        pointer-events: all;
 
         .filter-name {
             padding: 9px;
@@ -24,6 +26,7 @@
                 position: absolute;
                 top: 8px;
                 left: 3px;
+                
             }
         }
         // .search-label{
@@ -35,5 +38,6 @@
 
     select {
         padding: 9px 10px;
+        pointer-events: all;
     }
 }

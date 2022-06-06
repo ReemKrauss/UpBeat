@@ -32,7 +32,6 @@ async function getById(playlistId, filterBy) {
 
 
 async function save(playlist) {
-    console.log(playlist)
     if (playlist._id) return await httpService.put(`playlist/${playlist._id}`, playlist)
     playlist = { ...playlist, tags: [], createdBy: { _id: 'u100', fullname: 'UpBeat' }, songs: playlist.songs || [] } //when swapping to frontend only, add "createdAt: Date.now()"
     return await httpService.post(`playlist/`, playlist)

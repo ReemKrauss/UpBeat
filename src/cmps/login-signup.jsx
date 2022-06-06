@@ -18,15 +18,12 @@ export function LoginSignup(props) {
     const handleChange = ev => {
         const field = ev.target.name;
         const value = ev.target.value;
-        console.log('handle', field, value)
         setCredentials({ ...credentials, [field]: value });
     }
 
     const onLogin = (ev = null) => {
-        console.log(credentials)
         if (ev) ev.preventDefault();
         if (!credentials.username) return;
-        console.log(props.onLogin)
         props.onLogin(credentials);
         clearState()
     }

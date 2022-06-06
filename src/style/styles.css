@@ -1393,6 +1393,15 @@ input, select {
     -webkit-appearance: none;
   }
 }
+@media screen and (max-width: 450px) {
+  .audio-player .player-controlers {
+    position: absolute;
+    width: 105vw;
+  }
+  .audio-player .player-controlers .player-btns {
+    width: 200px;
+  }
+}
 .playlist-list {
   display: flex;
   flex-wrap: nowrap;

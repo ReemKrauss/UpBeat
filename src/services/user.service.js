@@ -1,6 +1,8 @@
 import { storageService } from './async-storage.service.js'
 // import { socketService, SOCKET_EVENT_USER_UPDATED } from './socket.service'
 import { httpService } from './http.service.js'
+import { socketService } from './socket.service.js'
+import { utilService } from './util.service.js'
 
 export const userService = {
   login,
@@ -21,7 +23,10 @@ async function login(credentials) {
 
   try {
     const user = await httpService.post('auth/login', credentials)
-    if (user) return saveLocalUser(user, STORAGE_KEY_LOGGEDIN_USER)
+    if (user) {
+      socketService.login(user._id)
+      return saveLocalUser(user, STORAGE_KEY_LOGGEDIN_USER)
+    }
   } catch (err) {
     console.log('cannot login', err)
   }
@@ -33,7 +38,10 @@ async function signup(user) {
 
 async function logout() {
   sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
-  return _createGuest()
+  const guest = _createGuest()
+  socketService.logout()
+  socketService.login(guest.id)
+  return guest
 }
 
 function getLoggedinUser() { // check logged in user key
@@ -78,7 +86,7 @@ function getLikedSongsPlaylist() {
 
 
 function _createGuest() {
-  const guest = { fullname: 'Guest', likedSongs: [], likedPlaylists: [], imgUrl: 'https://pbs.twimg.com/profile_images/746460305396371456/4QYRblQD.jpg' }
+  const guest = { id: utilService.makeId(), fullname: 'Guest', likedSongs: [], likedPlaylists: [], imgUrl: 'https://pbs.twimg.com/profile_images/746460305396371456/4QYRblQD.jpg' }
   sessionStorage.setItem(STORAGE_KEY_GUEST, JSON.stringify(guest))
   return guest
 }

@@ -426,18 +426,35 @@ input, select {
   .playlist-details .playlist-header {
     padding-top: 150px;
     flex-direction: column;
+    background: linear-gradient(transparent 0, rgb(18, 18, 18) 100%);
+    margin-bottom: 26px;
+  }
+  .playlist-details .playlist-header:after {
+    display: none;
+  }
+  .playlist-details .playlist-header h5:nth-child(1) {
+    display: none;
+  }
+  .playlist-details .playlist-header h1 {
+    margin: 0;
   }
   .playlist-details .playlist-header .img-container {
     margin-left: auto;
     margin-right: auto;
-    min-width: 350px;
-    min-height: 350px;
+    min-width: 280px;
+    min-height: 280px;
   }
   .playlist-details .playlist-header img {
     height: 100%;
   }
   .playlist-details .song-preview {
-    grid-template-columns: auto 2fr auto auto;
+    grid-template-columns: auto 6fr 1fr auto;
+    gap: 8px;
+    padding: 7px 0;
+  }
+  .playlist-details .song-preview img {
+    height: 45px;
+    width: 45px;
   }
   .playlist-details .song-preview .play-container {
     display: none;
@@ -447,16 +464,16 @@ input, select {
   }
   .playlist-details .song-preview .options-btn {
     opacity: 1;
-  }
-  .playlist-details .song-preview .like {
-    opacity: 1;
+    height: 20px;
+    top: 0px;
   }
   .playlist-details .sorting-table {
     display: none;
   }
   .playlist-details .playlist-filter {
+    display: none;
     position: absolute;
-    top: -640px;
+    top: -533px;
     width: 100%;
   }
   .playlist-details .playlist-filter .filter-container {
@@ -474,16 +491,23 @@ input, select {
   .playlist-details .playlist-controls {
     margin-top: 15px;
   }
+  .playlist-details .playlist-controls .like {
+    height: 30px;
+    width: 30px;
+  }
+  .playlist-details .playlist-controls .options-btn {
+    height: 27px;
+  }
   .playlist-details .playlist-controls .play-all-btn {
     position: absolute;
     right: 0;
-    top: -12px;
-    width: 70px;
-    height: 70px;
+    top: -9px;
+    width: 50px;
+    height: 50px;
   }
   .playlist-details .playlist-controls .play-all-btn svg {
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
   }
   .playlist-details .header-element {
     margin-top: 10px;
@@ -1794,6 +1818,7 @@ input, select {
     grid-template-rows: 10% 30% 10%;
     z-index: 200;
     grid-template-columns: 10% auto 10%;
+    border-radius: 0;
   }
   .playlist-edit .close-btn {
     align-self: flex-start;
@@ -1822,6 +1847,7 @@ input, select {
     text-align: center;
     font-weight: bold;
     font-size: 2.4rem;
+    width: 100%;
   }
   .playlist-edit form textarea {
     height: 38px;

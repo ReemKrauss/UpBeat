@@ -15,7 +15,7 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import getAverageColor from 'get-average-color'
 import { userService } from '../services/user.service'
 import { useHeaderBGContext } from '../context/useBackgroundColor'
-import { toggleLike } from '../store/actions/user.actions'
+import { setUserMsg, toggleLike } from '../store/actions/user.actions'
 import { OptionsMenu } from '../cmps/options-menu'
 
 
@@ -63,6 +63,7 @@ export const PlaylistDetails = (props) => {
         if (playlist) {
             setIsLiked(user.likedPlaylists.some((userPlaylist) => userPlaylist._id === playlist._id))
             setEditData(playlist)
+            playlistService.onWatchPlaylist(playlist._id, user._id || user.id)
             if (!params.playlistId) history.push(`/playlist/${playlist._id}`)
         }
         else setEditData(initialValueEdit)
@@ -116,9 +117,14 @@ export const PlaylistDetails = (props) => {
         else setPlaylist(await playlistService.removeSong(song, playlist))
     }
 
-    const removePlaylist = () => {
-        playlistService.removePlaylist(playlist._id)
-        history.push('/')
+    const removePlaylist = async () => {
+        try{
+            await playlistService.removePlaylist(playlist._id)
+            dispatch(setUserMsg('Playlist deleted successfully', 'success'))
+            history.push('/')
+        }catch(err){
+            dispatch(setUserMsg('Could not delete playlist', 'err'))
+        }
     }
 
     const onLikePlaylist = () => {
@@ -141,16 +147,17 @@ export const PlaylistDetails = (props) => {
             setPlaylist(newPlaylist)
 
         }
-        else setPlaylist(await playlistService.save(editData))
+        else setPlaylist(await playlistService.save(editData, user))
         toggleEdit()
     }
 
-    const onAddFromPlaylist = async (song) => {
+    const onAddFromPlaylist = async (ev, song) => {
+        ev.stopPropagation()
         let newPlaylist
         if (playlist) {
             newPlaylist = await playlistService.addSong(song, playlist, user)
 
-        } else newPlaylist = await playlistService.save({ ...editData, songs: [song] })
+        } else newPlaylist = await playlistService.save({ ...editData, songs: [song] }, user)
         setPlaylist(newPlaylist)
     }
 

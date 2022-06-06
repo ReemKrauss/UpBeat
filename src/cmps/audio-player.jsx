@@ -22,21 +22,7 @@ class _AudioPlayer extends React.Component {
 
     timerIntervalId
 
-    // componentDidMount = () => {
-    //     this.setIsLiked()
-    // }
 
-    // componentDidUpdate = (prevProps) => {
-    //     if(this.props.user.likedSongs===prevProps.user.likedSongs)this.setIsLiked()
-    // }
-
-    // setIsLiked = () => {
-    //     const { songs, currSongIdx } = this.props.miniPlaylist
-    //     const song = songs[currSongIdx]
-    //     if(!song) return
-    //     if (this.props.user.likedSongs.some((currsong) => currsong.id === song.id)) this.setState({ isLiked: true })
-    //     else this.setState({ isLiked: false })
-    // }
 
     componentWillUnmount = () => {
         clearInterval(this.timerIntervalId)
@@ -158,7 +144,7 @@ class _AudioPlayer extends React.Component {
 
     render() {
         const { state, props } = this
-        const { songs, currSongIdx, playlistName, playlistId } = props.miniPlaylist
+        const { songs, currSongIdx, playlistName} = props.miniPlaylist
         const volume = (state.isMute) ? 0 : state.volume
         const song = songs[currSongIdx]
         if (!song) return

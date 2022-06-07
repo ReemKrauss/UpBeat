@@ -9,25 +9,27 @@ export const NavBarPlayLists = (props) => {
         <nav className="navbar-playlists">
 
             <ul className="nav-list">
-                <li>
-                    <NavLink exact to="/playlist/pOecp" activeClassName="chosen">
+            <li>
+                    <NavLink to="/playlist/6294fb042758800fcddddc4e" activeClassName="chosen" >
 
                         <div className="text">
-                            Heavenly music</div>
-
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to="/playlist/6EZB4" activeClassName="chosen" >
-
-                        <div className="text">
-                            Disney Spectacle
+                        Disney hits Spectacle!
                             </div>
 
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/playlist/IHdSx" activeClassName="chosen" >
+                    <NavLink exact to="/playlist/6294fb042758800fcddddc54" activeClassName="chosen">
+
+                        <div className="text">
+                            Justice - Justin Bieber
+                            </div>
+
+                    </NavLink>
+                </li>
+
+                <li>
+                    <NavLink to="/playlist/6294fb042758800fcddddc4f" activeClassName="chosen" >
 
                         <div className="text">
                             00's Rock Anthems
@@ -36,10 +38,19 @@ export const NavBarPlayLists = (props) => {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/playlist/OviSF" activeClassName="chosen" >
+                    <NavLink to="/playlist/6294fb042758800fcddddc60" activeClassName="chosen" >
 
                         <div className="text">
-                        Harry's House
+                         שירי מרפסת - רועי כפרי
+                            </div>
+
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to="/playlist/629d1299be45016c04d6048d" activeClassName="chosen" >
+
+                        <div className="text">
+                        90's workout
                             </div>
 
                     </NavLink>

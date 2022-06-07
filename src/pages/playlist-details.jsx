@@ -17,6 +17,10 @@ import { userService } from '../services/user.service'
 import { useHeaderBGContext } from '../context/useBackgroundColor'
 import { toggleLike } from '../store/actions/user.actions'
 import { OptionsMenu } from '../cmps/options-menu'
+import { WhatsappShareButton, FacebookShareButton } from 'react-share'
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { IoLogoFacebook, IoLogoWhatsapp, IoShareSocialSharp } from "react-icons/io5";
+import { RiWhatsappFill } from "react-icons/ri";
 
 
 
@@ -236,6 +240,27 @@ export const PlaylistDetails = (props) => {
                 )}
             </Droppable>
         </DragDropContext>
+        <div className="share-container">
+        <h5 >Share</h5> 
+            <div className="share-btns-container flex" >
+                <div className='share-btns'>
+                    <WhatsappShareButton url={`http://localhost:3000/playlist/${params.playlistId}`} title="I like to share with you this playlist from UpBeat!">
+                        <RiWhatsappFill />
+                    </WhatsappShareButton>
+                </div>
+                <div className='share-btns'>
+                    <FacebookShareButton url={`http://localhost:3000/playlist/${params.playlistId}`} title="I like to share with you this playlist from UpBeat!">
+                        <IoLogoFacebook />
+                    </FacebookShareButton>
+                </div>
+                <div className='share-btns'>
+                    <CopyToClipboard text={`http://localhost:3000/playlist/${params.playlistId}`}>
+                        <IoShareSocialSharp />
+                    </CopyToClipboard>
+                </div>
+
+            </div>
+        </div>
     </div> : ''
 
     if (!playlist && params.playlistId) return <h2></h2>

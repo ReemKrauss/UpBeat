@@ -191,6 +191,34 @@ input, select {
   font-weight: bold;
   color: #ffffff;
 }
+.playlist-details .share-container {
+  color: #b3b3b3;
+  display: flex;
+  justify-content: flex-end;
+  width: 40px;
+  align-items: center;
+  position: fixed;
+  right: 15px;
+  bottom: 150px;
+  font-size: 30px;
+}
+.playlist-details .share-container h5 {
+  font-size: 15px;
+  color: #b3b3b3;
+}
+.playlist-details .share-container .share-btns-container {
+  justify-content: space-around;
+  margin-bottom: 5px;
+  flex-direction: column;
+  margin-bottom: 0;
+}
+.playlist-details .share-container .share-btns-container .share-btns {
+  cursor: pointer;
+  padding: 3px;
+}
+.playlist-details .share-container .share-btns-container .share-btns:hover {
+  color: #ffffff;
+}
 .playlist-details .playlist-controls {
   position: relative;
   bottom: 42px;

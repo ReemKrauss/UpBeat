@@ -21,6 +21,7 @@ import { WhatsappShareButton, FacebookShareButton } from 'react-share'
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { IoLogoFacebook, IoLogoWhatsapp, IoShareSocialSharp } from "react-icons/io5";
 import { RiWhatsappFill } from "react-icons/ri";
+import { socketService } from '../services/socket.service'
 
 
 
@@ -67,7 +68,7 @@ export const PlaylistDetails = (props) => {
         if (playlist) {
             setIsLiked(user.likedPlaylists.some((userPlaylist) => userPlaylist._id === playlist._id))
             setEditData(playlist)
-            playlistService.onWatchPlaylist(playlist._id, user._id || user.id)
+            playlistService.onWatchPlaylist(playlist._id)
             if (!params.playlistId) history.push(`/playlist/${playlist._id}`)
         }
         else setEditData(initialValueEdit)
@@ -93,11 +94,20 @@ export const PlaylistDetails = (props) => {
 
     }, [playlist, params.playlistId])
 
+    useEffect(() => {
+        socketService.off('playlist-update', updatePlaylist)
+        socketService.on('playlist-update', updatePlaylist)
+    }, [])
+
 
     const loadPlaylist = async () => {
         if (params.playlistId === 'liked') setPlaylist(userService.getLikedSongsPlaylist())
         else if (!params.playlistId) setPlaylist(null)
         else setPlaylist(await playlistService.getById(params.playlistId))
+    }
+
+    const updatePlaylist = (playlist) => {
+        if (params.playlistId !== 'liked') loadPlaylist(playlist)
     }
 
     const onChangeFilter = useCallback(async (filterBy) => {
@@ -184,8 +194,10 @@ export const PlaylistDetails = (props) => {
         const songsCpy = playlist.songs.slice()
         const reorderedSong = songsCpy.splice(result.source.index, 1)
         songsCpy.splice(result.destination.index, 0, reorderedSong[0])
-        playlistService.save({ ...playlist, songs: songsCpy }) //for backend
-        setPlaylist({ ...playlist, songs: songsCpy })
+        const newPlaylist = { ...playlist, songs: songsCpy }
+        playlistService.save(newPlaylist) //for backend
+        socketService.emit('playlist-update', newPlaylist)
+        setPlaylist(newPlaylist)
     }
 
     const getAvgColor = async (url) => {

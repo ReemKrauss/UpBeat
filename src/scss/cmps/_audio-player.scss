@@ -299,7 +299,7 @@
             .like-btn {
                 position: relative;
                 left: 55px;
-                top: 6px;
+                top: 0px;
             }
 
             .song-preview {
@@ -323,7 +323,7 @@
 
                 .song-title {
                     color: $clr7;
-                    font-size: 0.8rem;
+                    font-size: 0.7rem;
                     width: 130px;
                     white-space: nowrap;
                     overflow: hidden;
@@ -351,8 +351,8 @@
             .time-container {
                 position: relative;
                 bottom: -10px;
-                width: calc(100% + 15px);
-                left: -7.5px;
+                width: 95vw;
+                left: -1px;
 
                 span {
                     display: none;

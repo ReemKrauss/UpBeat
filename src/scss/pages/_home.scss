@@ -1,7 +1,15 @@
 .home {
     margin-bottom: 150px;
-    .title-container {
+
+    @media (max-width: 679px) {
         margin-top: 62px;
+    }
+
+    .title-container {
+        @media (min-width: 680px) {
+            margin-top: 62px;
+        }
+
         display: flex;
         margin-bottom: 20px;
         justify-content: space-between;
@@ -15,10 +23,13 @@
     .see-all {
         color: $clr4;
         font-weight: 700;
-        &:hover{
+
+        &:hover {
             text-decoration: underline;
         }
+
         display: none;
+
         @media (min-width: 680px) {
             display: block;
         }

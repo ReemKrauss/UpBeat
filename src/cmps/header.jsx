@@ -35,7 +35,6 @@ export const AppHeader = ({ opacity }) => {
 
     useEffect(() => {
         if (userMenuOpen) {
-
             window.addEventListener('click', closeMenuListener)
         }
         return () => { window.removeEventListener('click', closeMenuListener) }

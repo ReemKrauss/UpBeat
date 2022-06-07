@@ -1445,9 +1445,6 @@ input, select {
   }
 }
 
-.nav-bar {
-  padding: 24px;
-}
 .nav-bar .nav-list {
   z-index: 15;
   width: 100%;
@@ -1463,6 +1460,9 @@ input, select {
   margin-bottom: 0;
   padding: 10px;
   box-shadow: 0px 0px 50px 50px #121212;
+}
+.nav-bar .nav-list .liked-li {
+  display: none;
 }
 .nav-bar .nav-list li {
   display: inline-block;
@@ -1495,7 +1495,6 @@ input, select {
   flex-direction: column;
 }
 .nav-bar .text.liked {
-  display: none;
   margin-bottom: 7px;
 }
 .nav-bar .text svg {
@@ -1543,6 +1542,9 @@ input, select {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 @media screen and (min-width: 680px) {
+  .nav-bar {
+    padding: 24px;
+  }
   .nav-bar .text {
     flex-direction: row;
   }
@@ -1568,6 +1570,9 @@ input, select {
     flex-direction: column;
   }
   .nav-bar .nav-list li {
+    display: inline;
+  }
+  .nav-bar .nav-list .liked-li {
     display: inline;
   }
 }

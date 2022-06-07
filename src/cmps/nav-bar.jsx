@@ -56,7 +56,7 @@ export const NavBar = (props) => {
 
                     </NavLink>
                 </li>
-                <li>
+                <li className="liked-li">
                     <NavLink exact to="/playlist/liked" activeClassName="chosen">
                         <div className="text liked">
                             <div className="svg-container flex">

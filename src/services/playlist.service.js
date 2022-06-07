@@ -1,5 +1,6 @@
 import { storageService } from "./async-storage.service";
 import { httpService } from "./http.service";
+import { socketService } from "./socket.service";
 
 const STORAGE_KEY = 'playlistDB'
 
@@ -15,6 +16,7 @@ export const playlistService = {
     removeSong,
     getTags,
     removePlaylist,
+    onWatchPlaylist,
 }
 
 window.ps = playlistService
@@ -31,10 +33,9 @@ async function getById(playlistId, filterBy) {
 }
 
 
-async function save(playlist) {
-    console.log(playlist)
+async function save(playlist, user) {
     if (playlist._id) return await httpService.put(`playlist/${playlist._id}`, playlist)
-    playlist = { ...playlist, tags: [], createdBy: { _id: 'u100', fullname: 'UpBeat' }, songs: playlist.songs || [] } //when swapping to frontend only, add "createdAt: Date.now()"
+    playlist = { ...playlist, tags: ['New Releases'], createdBy: { _id: user._id || '', fullname: user.fullname }, songs: playlist.songs || [] } //when swapping to frontend only, add "createdAt: Date.now()"
     return await httpService.post(`playlist/`, playlist)
 }
 
@@ -54,6 +55,10 @@ async function removeSong(song, playlist) {
 
 async function removePlaylist(playlistId) {
     return httpService.delete(`playlist/${playlistId}`)
+}
+
+function onWatchPlaylist(playlistId, userId){
+    socketService.watchPlaylist(playlistId, userId)
 }
 
 

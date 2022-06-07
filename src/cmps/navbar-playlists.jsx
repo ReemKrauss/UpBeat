@@ -1,60 +1,45 @@
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min"
 import { playlistService } from "../services/playlist.service";
+import { useSelector } from "react-redux"
+import { Link } from "react-router-dom"
+import { useEffect, useState } from "react"
+
+
 
 export const NavBarPlayLists = (props) => {
+    const [playlists, setPlaylists] = useState([])
+    const { user } = useSelector((storeState) => storeState.userModule)
+    useEffect(() => {
+        loadPlaylists()
+    }, [user])
 
 
-    
+    const loadPlaylists = () => {
+        if (!user.likedPlaylists?.length) return
+        setPlaylists([...user.likedPlaylists])
+    }
+
+
+
     return (
         <nav className="navbar-playlists">
 
             <ul className="nav-list">
-            <li>
-                    <NavLink to="/playlist/6294fb042758800fcddddc4e" activeClassName="chosen" >
+                {playlists.map((playlist, idx) => {
+                    if (idx > 4) {
+                        return null
+                    }
+                    return <li key={idx}>
+                        <NavLink exact to={`/playlist/${playlist._id}`} activeClassName="chosen">
 
-                        <div className="text">
-                        Disney hits Spectacle!
-                            </div>
+                            <div className="text">
+                                {playlist.name}</div>
 
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink exact to="/playlist/6294fb042758800fcddddc54" activeClassName="chosen">
+                        </NavLink>
+                    </li>
 
-                        <div className="text">
-                            Justice - Justin Bieber
-                            </div>
+                })}
 
-                    </NavLink>
-                </li>
-
-                <li>
-                    <NavLink to="/playlist/6294fb042758800fcddddc4f" activeClassName="chosen" >
-
-                        <div className="text">
-                            00's Rock Anthems
-                            </div>
-
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to="/playlist/6294fb042758800fcddddc60" activeClassName="chosen" >
-
-                        <div className="text">
-                         שירי מרפסת - רועי כפרי
-                            </div>
-
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to="/playlist/629d1299be45016c04d6048d" activeClassName="chosen" >
-
-                        <div className="text">
-                        90's workout
-                            </div>
-
-                    </NavLink>
-                </li>
             </ul>
         </nav>
     )

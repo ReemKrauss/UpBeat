@@ -1,10 +1,30 @@
-.home{
-    h2{
+.home {
+    margin-bottom: 150px;
+    .title-container {
         margin-top: 62px;
-        font-size: 2rem;
+        display: flex;
         margin-bottom: 20px;
+        justify-content: space-between;
+        align-items: flex-end;
     }
-    .playlist-container{
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    .see-all {
+        color: $clr4;
+        font-weight: 700;
+        &:hover{
+            text-decoration: underline;
+        }
+        display: none;
+        @media (min-width: 680px) {
+            display: block;
+        }
+    }
+
+    .playlist-container {
         margin-bottom: 40px;
     }
 }

@@ -1,6 +1,19 @@
-.playlist-list{
-    display:grid;
-    grid-template-columns: repeat(6,(210px));
+.playlist-list {
+    display: flex;
+    // grid-template-columns: repeat((210px));
     // grid-template-rows: 256.433px;
-    
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    @media (min-width: 680px) {
+        display: grid;
+    }
+
+    @media (max-width: 679px) {
+        max-width: calc(100vw - 31px);
+    }
 }

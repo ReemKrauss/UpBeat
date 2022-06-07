@@ -2,6 +2,7 @@ import { Home } from './pages/home.jsx'
 import { Search } from './pages/search.jsx'
 import { PlaylistDetails } from './pages/playlist-details.jsx'
 import { GenrePage } from './pages/genre-page.jsx'
+import { Library } from './pages/library.jsx'
 
 
 
@@ -22,6 +23,10 @@ export default [
     {
         path: '/genre/:genreTag?',
         component: <GenrePage/>,
+    },
+    {
+        path: '/library',
+        component: <Library/>,
     },
 
 

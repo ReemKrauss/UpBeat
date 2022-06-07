@@ -1,0 +1,35 @@
+.library{
+    margin-top: 65px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,190px);
+    gap: 20px;
+    overflow: hidden;
+    .liked-songs{
+        height: 260px;
+        grid-column: span 2;
+        background: linear-gradient(149.46deg,#450af5,#8e8ee5 99.16%);
+        &:hover{
+            background: linear-gradient(149.46deg,lighten(#470ef4,5%),#8e8ee5 99.16%);
+        }
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        margin: 5px;
+        padding: 20px;
+        padding-top: 70px;
+        justify-content: space-between;
+        .songs-count{
+            margin-bottom: 18px;
+        }
+        .songs-titles{
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+    }
+}
+@media (max-width: 680px) {
+    .library{
+        justify-content: center;
+    }
+  }

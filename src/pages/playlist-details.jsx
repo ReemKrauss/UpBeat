@@ -17,6 +17,10 @@ import { userService } from '../services/user.service'
 import { useHeaderBGContext } from '../context/useBackgroundColor'
 import { setUserMsg, toggleLike } from '../store/actions/user.actions'
 import { OptionsMenu } from '../cmps/options-menu'
+import { WhatsappShareButton, FacebookShareButton } from 'react-share'
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { IoLogoFacebook, IoLogoWhatsapp, IoShareSocialSharp } from "react-icons/io5";
+import { RiWhatsappFill } from "react-icons/ri";
 
 
 

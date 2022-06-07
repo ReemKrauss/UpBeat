@@ -50,8 +50,8 @@ function createSocketService() {
     logout() {
       socket.emit(SOCKET_EMIT_LOGOUT)
     },
-    watchPlaylist(playlist, userId) {
-        socket.emit(SOCKET_EMIT_PLAYLIST_WATCH , playlist, userId)
+    watchPlaylist(playlistId) {
+        socket.emit(SOCKET_EMIT_PLAYLIST_WATCH , playlistId)
     },
     terminate() {
       socket = null

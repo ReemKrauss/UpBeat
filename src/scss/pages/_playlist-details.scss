@@ -73,7 +73,43 @@
         }
     }
 
-    .playlist-controls {
+    .share-container {
+        color: $clr7;
+        display: flex;
+        // flex-direction: column;
+        justify-content: flex-end;
+        width: 40px;
+        align-items: center;
+        position: fixed;
+        right: 15px;
+        bottom: 150px;
+        font-size: 30px;
+        h5{
+            font-size: 15px;
+            color: $clr7;
+        }
+        .share-btns-container {
+          justify-content: space-around;
+          margin-bottom: 5px;
+            flex-direction: column;
+            margin-bottom: 0;
+          .share-btns {
+            //   display: flex;
+            // height: 15px;
+            // align-self: center;
+            // justify-content: end;
+             cursor: pointer;
+              padding: 3px;
+          }
+          .share-btns:hover{
+              color: $clr3;
+          }
+          }
+          }
+        
+      
+
+    .playlist-controls{
         position: relative;
         bottom: 42px;
         align-items: center;
@@ -113,6 +149,7 @@
             height: 33px;
             width: 27px;
         }
+
     }
 
     .song-preview {

@@ -389,10 +389,11 @@
 @media screen and (max-width: 680px) {
     .playlist-details {
         .playlist-header {
-            padding-top: 150px;
+            padding-top: 94px;
             flex-direction: column;
             background: linear-gradient(transparent 0, rgb(18, 18, 18) 100%);
             margin-bottom: 26px;
+            gap:20px;
 
             &:after {
                 display: none;

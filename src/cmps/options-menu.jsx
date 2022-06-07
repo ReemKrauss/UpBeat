@@ -23,13 +23,25 @@ export const OptionsMenu = ({ song, removeSong, removePlaylist }) => {
     removePlaylist()
   }
 
+  const bindTriggerWrapper = (bindTrigger) => {
+    const onClick = ((ev) => {
+      ev.stopPropagation()
+      bindTrigger.onClick(ev)
+    })
+    const onTouchStart = ((ev) => {
+      ev.stopPropagation()
+      bindTrigger.onTouchStart(ev)
+    })
+    return {onClick, onTouchStart}
+  }
+
 
 
   return <PopupState variant="popover" popupId="demo-popup-menu">
     {(popupState) => (
       <React.Fragment>
         {width > 680 && <FiMoreHorizontal className="options-btn" {...bindTrigger(popupState)} /> ||
-        <FiMoreVertical className="options-btn" {...bindTrigger(popupState)} />}
+        <FiMoreVertical className="options-btn" {...bindTriggerWrapper(bindTrigger(popupState))} />}
         <Menu {...bindMenu(popupState)}>
           {removeSong && <MenuItem onClick={() => onRemoveSong(popupState)}>Remove from {from}</MenuItem>}
           {removePlaylist && <MenuItem onClick={() => onRemovePlaylist(popupState)}>Delete playlist</MenuItem>}

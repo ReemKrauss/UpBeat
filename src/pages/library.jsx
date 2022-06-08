@@ -17,7 +17,6 @@ export const Library = (props) => {
         loadPlaylists()
     }, [user])
 
-
     const loadPlaylists = () => {
         if (!user.likedPlaylists?.length) return
         const likedPlaylists = [...user.likedPlaylists]

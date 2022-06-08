@@ -799,11 +799,12 @@ input, select {
 }
 @media (max-width: 679px) {
   .home {
-    margin-top: 62px;
+    margin-top: 50px;
   }
 }
 .home .title-container {
   display: flex;
+  margin-top: 16px;
   margin-bottom: 20px;
   justify-content: space-between;
   align-items: flex-end;
@@ -1628,8 +1629,8 @@ body {
 .nav-bar .logo-container {
   position: fixed;
   z-index: 16;
-  top: 11px;
-  left: 5px;
+  top: 10px;
+  left: 15px;
   display: flex;
   flex-direction: row;
   align-items: center;

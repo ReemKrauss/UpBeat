@@ -5,4 +5,3 @@ export const PlaylistList = ({ playlists, inLineStyle={} }) => {
         {playlists.map((playlist) => <PlaylistPreview key={playlist._id} playlist={playlist} />)}
     </section>
 }
-

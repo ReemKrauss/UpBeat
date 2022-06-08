@@ -1,30 +1,42 @@
 .hero {
     filter: drop-shadow(0px 0px 1px);
-    z-index: 20;
+    z-index: 300;
     display: flex;
-    position: absolute;
+    position: fixed;
     flex-direction: column;
-        justify-content: center;
+    justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 100vh;
-    left: 0%;
-    top: 0%;
+    right: 0;
+    left: 0;
+    top: 0;
+    
     
     
     h1{
         margin: 5px;
-        font-size: 17vh;
+        font-size: 10vh;
+        @include for-wide-layout {
+            font-size: 17vh;
+        }
     }
 
     h3{
         margin: 5px;
-        font-size: 5vh;
+        font-size: 4.5vh;
+        @include for-wide-layout {
+            font-size: 5vh;
+        }
     }
 
     p{
+        align-self: center;
         margin: 5px;
-        font-size: 3vh;
+        font-size: 2.5vh;
+        max-width: 30vh;
+        @include for-wide-layout {
+            max-width: none;
+            font-size: 3vh;
+        }
     }
 
     .hero-txt-container {
@@ -32,6 +44,7 @@
         top: 40%;
         align-self: center;
         color: $clr5;
+        justify-content: center;
         text-align: center;
         display: flex;
         flex-direction: column;
@@ -47,8 +60,11 @@
         border-radius: 25px;
         border: none;
         font-size: 4vh;
-        width: 50vh;
+        width: 80%;
         padding: 5px;
+        @include for-wide-layout {
+            width: 50vh;
+        }
     }
 
     .hero-container {
@@ -57,9 +73,9 @@
         background: linear-gradient(to bottom right, #1c2c74 0%, #3452d9 100%);
         position: absolute;
         left: 0;
+        right: 0;
         top: 0;
-        width: 100%;
-        height: 100%;
+        bottom: 0;
         margin-top: 0px;
         overflow: hidden;
     }
@@ -95,26 +111,32 @@
 
     .bg-bubbles li:nth-child(1) {
         left: 10%;
+        -webkit-animation-delay: 5s;
+        animation-delay: 5s;
+        -webkit-animation-duration: 15s;
+        animation-duration: 15s;
     }
 
     .bg-bubbles li:nth-child(2) {
-        left: 20%;
+        left: 70%;
         width: 80px;
         height: 80px;
         -webkit-animation-delay: 0s;
         animation-delay: 0s;
-        -webkit-animation-duration: 17s;
-        animation-duration: 17s;
+        -webkit-animation-duration: 23s;
+        animation-duration: 23s;
     }
 
     .bg-bubbles li:nth-child(3) {
         left: 25%;
-        -webkit-animation-delay: 10s;
-        animation-delay: 10s;
+        width: 80px;
+        height: 80px;
+        -webkit-animation-delay: 50s;
+        animation-delay: 50s;
     }
 
     .bg-bubbles li:nth-child(4) {
-        left: 40%;
+        left: 900%;
         width: 60px;
         height: 60px;
         -webkit-animation-duration: 22s;
@@ -122,49 +144,58 @@
     }
 
     .bg-bubbles li:nth-child(5) {
-        left: 70%;
+        left: 40%;
+        -webkit-animation-duration: 15s;
+        animation-duration: 15s;
     }
 
     .bg-bubbles li:nth-child(6) {
-        left: 80%;
+        left: 105%;
         width: 120px;
         height: 120px;
-        -webkit-animation-delay: 10s;
-        animation-delay: 10s;
+        -webkit-animation-delay: 7s;
+        animation-delay: 7s;
     }
 
     .bg-bubbles li:nth-child(7) {
-        left: 32%;
+        left: 90%;
         width: 160px;
         height: 160px;
-        -webkit-animation-delay: 25s;
-        animation-delay: 25s;
+        -webkit-animation-delay: 10s;
+        animation-delay: 10s;
+        @include for-wide-layout {
+            left: 80%;
+                    }
     }
 
     .bg-bubbles li:nth-child(8) {
-        left: 12%;
+        left: -55%; 
         width: 300px;
         height: 300px;
         -webkit-animation-delay: 0s;
         animation-delay: 0s;
-        -webkit-animation-duration: 40s;
-        animation-duration: 40s;
+        -webkit-animation-duration: 30s;
+        animation-duration: 30s;        
+        @include for-wide-layout {
+left: -5%;
+        }
     }
 
     .bg-bubbles li:nth-child(9) {
-        left: 25%;
+        left: 85%;
         width: 200px;
         height: 200px;
-        -webkit-animation-delay: 3s;
-        animation-delay: 3s;
-        -webkit-animation-duration: 40s;
-        animation-duration: 40s;
+        -webkit-animation-delay: 5s;
+        animation-delay: 5s;
+        -webkit-animation-duration: 30s;
+        animation-duration: 30s;
+        @include for-wide-layout {
+            left: 95%;
+                    }
     }
 
     .bg-bubbles li:nth-child(10) {
-        left: 90%;
-        width: 160px;
-        height: 160px;
+        left: 70%;
         -webkit-animation-delay: 28s;
         animation-delay: 28s;
     }

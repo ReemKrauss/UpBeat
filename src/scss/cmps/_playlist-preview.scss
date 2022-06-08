@@ -51,14 +51,17 @@
     }
 
     .play-btn {
+        display: flex;
+        transition: 0.3s;
         position: absolute;
-        bottom: 5px;
+        bottom: 0px;
         right: 5px;
         height: 50px;
         width: 50px;
         justify-content: center;
         align-items: center;
         background-color: $clr5;
+        opacity: 0;
         border: 1px solid transparent;
         border-radius: 50%;
         box-shadow: 0px 8px 24px 0px rgba($color: $clr1, $alpha: 0.9);
@@ -78,6 +81,8 @@
     }
 
     &:hover .play-btn {
+        opacity: 1;
+        bottom: 5px;
         display: flex;
     }
 

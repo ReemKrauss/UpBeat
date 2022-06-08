@@ -27,6 +27,11 @@
   display: none;
 }
 
+.disappear {
+  opacity: 0;
+  transition: 0.3s;
+}
+
 .relative {
   position: relative;
 }
@@ -399,6 +404,7 @@ input, select {
   top: 7px;
   justify-content: center;
   gap: 20px;
+  transition: 0.3s;
 }
 .playlist-details .header-element .play-all-btn {
   position: static;
@@ -563,7 +569,6 @@ input, select {
   }
 }
 .hero {
-  filter: drop-shadow(0px 0px 1px);
   z-index: 300;
   display: flex;
   position: fixed;
@@ -575,6 +580,7 @@ input, select {
   top: 0;
 }
 .hero h1 {
+  filter: drop-shadow(0px 0px 1px #1c2c74);
   margin: 5px;
   font-size: 10vh;
 }
@@ -584,6 +590,7 @@ input, select {
   }
 }
 .hero h3 {
+  filter: drop-shadow(0px 0px 1px #1c2c74);
   margin: 5px;
   font-size: 4.5vh;
 }
@@ -593,6 +600,7 @@ input, select {
   }
 }
 .hero p {
+  filter: drop-shadow(0px 0px 1px #1c2c74);
   align-self: center;
   margin: 5px;
   font-size: 2.5vh;
@@ -616,6 +624,7 @@ input, select {
   z-index: 5;
 }
 .hero button {
+  filter: drop-shadow(0px 0px 1px #1c2c74);
   margin: 20px;
   cursor: pointer;
   align-self: center;
@@ -1727,14 +1736,17 @@ body {
   font-size: 3.4375rem;
 }
 .playlist-preview .play-btn {
+  display: flex;
+  transition: 0.3s;
   position: absolute;
-  bottom: 5px;
+  bottom: 0px;
   right: 5px;
   height: 50px;
   width: 50px;
   justify-content: center;
   align-items: center;
   background-color: #1ed760;
+  opacity: 0;
   border: 1px solid transparent;
   border-radius: 50%;
   box-shadow: 0px 8px 24px 0px rgba(18, 18, 18, 0.9);
@@ -1750,6 +1762,8 @@ body {
   background-color: rgba(255, 255, 255, 0.2);
 }
 .playlist-preview:hover .play-btn {
+  opacity: 1;
+  bottom: 5px;
   display: flex;
 }
 @media (max-width: 679px) {

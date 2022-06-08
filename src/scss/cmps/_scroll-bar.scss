@@ -6,7 +6,9 @@
     display: block
 }
 }
-
+body {
+   scrollbar-width: none;
+}
 /* Track */
 ::-webkit-scrollbar-track {
   background: none;

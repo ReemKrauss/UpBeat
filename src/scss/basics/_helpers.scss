@@ -26,6 +26,11 @@
     display: none;
 }
 
+.disappear{
+    opacity: 0;
+    transition: 0.3s;
+}
+
 .relative {
     position: relative;
 }

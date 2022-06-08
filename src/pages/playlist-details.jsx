@@ -84,8 +84,8 @@ export const PlaylistDetails = (props) => {
     useEffect(() => {
         if (playlist?.songs.length) {
             if (!observer.current) observer.current = new IntersectionObserver((entry) => {
-                if ([...headerElementRef.current.classList].includes('hidden') && entry[0].isIntersecting) return
-                headerElementRef.current.classList.toggle("hidden", entry.isIntersecting)
+                if ([...headerElementRef.current.classList].includes('disappear') && entry[0].isIntersecting) return
+                headerElementRef.current.classList.toggle("disappear", entry.isIntersecting)
             }, {
                 threshold: 1,
             })

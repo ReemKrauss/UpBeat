@@ -27,21 +27,20 @@ export const App = () => {
   }
 
 
-
   const onScroll = (e) => {
     let currScroll = e.currentTarget.scrollTop
-
-    if (currScroll > 200) { setOpacity(1) }
-    else if (currScroll > 180) { setOpacity(0.9) }
-    else if (currScroll > 160) { setOpacity(0.8) }
-    else if (currScroll > 140) { setOpacity(0.7) }
-    else if (currScroll > 120) { setOpacity(0.6) }
-    else if (currScroll > 100) { setOpacity(0.5) }
-    else if (currScroll > 80) { setOpacity(0.4) }
-    else if (currScroll > 60) { setOpacity(0.3) }
-    else if (currScroll > 40) { setOpacity(0.2) }
-    else if (currScroll > 20) { setOpacity(0.1) }
-    else { setOpacity(0) }
+    if (currScroll > 200 && opacity === 1) return
+    else if (currScroll > 200) setOpacity(1)
+    else if (currScroll > 180) setOpacity(0.9)
+    else if (currScroll > 160) setOpacity(0.8)
+    else if (currScroll > 140) setOpacity(0.7)
+    else if (currScroll > 120) setOpacity(0.6)
+    else if (currScroll > 100) setOpacity(0.5)
+    else if (currScroll > 80) setOpacity(0.4)
+    else if (currScroll > 60) setOpacity(0.3)
+    else if (currScroll > 40) setOpacity(0.2)
+    else if (currScroll > 20) setOpacity(0.1)
+    else setOpacity(0) 
   }
 
 

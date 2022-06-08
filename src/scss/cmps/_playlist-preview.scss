@@ -1,7 +1,7 @@
 .playlist-preview {
     border-radius: 5px;
-    width: 188.433px;
-    height: 266.433px;
+    width: 188px;
+    height: 266px;
     background-color: rgba($color: #ffffff, $alpha: 0.03);
     padding: 16px;
     margin: 5px;
@@ -23,6 +23,7 @@
         -webkit-box-orient: vertical;
         overflow: hidden;
         text-overflow: ellipsis;
+
     }
 
     .img-container {
@@ -50,14 +51,17 @@
     }
 
     .play-btn {
+        display: flex;
+        transition: 0.3s;
         position: absolute;
-        bottom: 5px;
+        bottom: 0px;
         right: 5px;
         height: 50px;
         width: 50px;
         justify-content: center;
         align-items: center;
         background-color: $clr5;
+        opacity: 0;
         border: 1px solid transparent;
         border-radius: 50%;
         box-shadow: 0px 8px 24px 0px rgba($color: $clr1, $alpha: 0.9);
@@ -70,19 +74,53 @@
             transition-property: all
         }
     }
-    
+
     &:hover {
         background-color: rgba($color: #ffffff, $alpha: 0.20);
-    
+
     }
 
-    &:hover > .img-container > .play-btn{
+    &:hover .play-btn {
+        opacity: 1;
+        bottom: 5px;
         display: flex;
     }
 
+    @media (max-width: 679px) {
+        width: 150px;
+        height: auto;
+        padding: 0;
+        background-color: transparent;
+        margin: 0 5px 5px 5px;
+
+        &:hover {
+            background-color: transparent;
+        }
+        &:hover .play-btn {
+            display: none;
+        }
+        h3 {
+
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 10px;
+        }
+
+        p {
+            white-space: nowrap;
+        }
+
+        .img-container {
+            height: 150px;
+            width: 150px;
+            border-radius: 0px;
+            background: transparent;
+            img{
+                border-radius: 0;
+            }
+
+        }
+    }
+
 }
-
-// .playlist-preview:hover {
-//     background-color: rgba($color: #ffffff, $alpha: 0.20);
-
-// }

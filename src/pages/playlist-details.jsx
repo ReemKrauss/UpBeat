@@ -128,7 +128,10 @@ export const PlaylistDetails = (props) => {
 
     const removeSong = async (song) => {
         if (params.playlistId === 'liked') dispatch(toggleLike(song))
-        else setPlaylist(await playlistService.removeSong(song, playlist))
+        else {
+            const newPlaylist = await playlistService.removeSong(song, playlist)
+            socketService.emit('playlist-update', newPlaylist)
+            setPlaylist(newPlaylist)}
     }
 
     const removePlaylist = async () => {
@@ -158,6 +161,7 @@ export const PlaylistDetails = (props) => {
         ev.preventDefault()
         if (playlist) {
             const newPlaylist = await playlistService.save({ ...editData, _id: playlist._id })
+            socketService.emit('playlist-update', newPlaylist)
             setPlaylist(newPlaylist)
 
         }
@@ -172,6 +176,7 @@ export const PlaylistDetails = (props) => {
             newPlaylist = await playlistService.addSong(song, playlist, user)
 
         } else newPlaylist = await playlistService.save({ ...editData, songs: [song] }, user)
+        socketService.emit('playlist-update', newPlaylist)
         setPlaylist(newPlaylist)
     }
 

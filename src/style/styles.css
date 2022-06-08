@@ -376,9 +376,19 @@ input, select {
   box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.2);
   margin-bottom: 20px;
   display: grid;
-  grid-template-columns: auto 14fr 7.4fr auto 0.35fr;
+  grid-template-columns: 14px 40px 2fr 1fr 16px 40px 22px;
   align-items: center;
   gap: 20px;
+}
+.playlist-details .sorting-table .title-label {
+  column-count: 2;
+}
+.playlist-details .sorting-table .date-label {
+  grid-column-start: 4;
+}
+.playlist-details .sorting-table .duration-label {
+  grid-column-start: 6;
+  margin-left: 24px;
 }
 .playlist-details .header-element {
   position: fixed;
@@ -442,9 +452,6 @@ input, select {
   }
   .playlist-details .song-preview .date {
     display: none;
-  }
-  .playlist-details .sorting-table {
-    grid-template-columns: auto 14fr auto 0.35fr;
   }
   .playlist-details .sorting-table .date-label {
     display: none;
@@ -951,6 +958,9 @@ input, select {
   left: 1px;
 }
 
+.genre {
+  margin-bottom: 90px;
+}
 .genre h2 {
   font-size: 2rem;
   margin-bottom: 20px;
